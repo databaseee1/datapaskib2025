@@ -877,11 +877,45 @@ Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paski
     <p style="margin: 0; color: #4b5563;">admin@paskibra.id</p>
   </div>
 </div>
-  <!-- Copyright -->
-  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
-    © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
+
+  <!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN -->
+<body style="font-family: sans-serif; background: #f9fafb; margin: 0; padding: 20px;">
+
+  <!-- Form Masukan Kode Admin -->
+  <div id="kodeSection" style="max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+    <h3 style="color:#1e40af;">🔒Masukan Code Absen</h3>
+    <input type="password" id="kodeInput" placeholder="Masukkan kode..." style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ccc; border-radius: 6px;" />
+    <button onclick="cekKode()" style="padding: 10px 20px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer;">Masuk</button>
+    <p id="kodeSalah" style="color: red; display: none; margin-top: 10px;">Kode salah, coba lagi.</p>
   </div>
-</div>
+
+  <!-- Form Upload Postingan (Disembunyikan) -->
+  <div id="formPosting" style="display: none;">
+    <h2 style="text-align:center; color:#1e40af; display: flex; align-items: center; justify-content: center; gap: 10px;">
+    <img src="RI.webp" alt="Upload" style="width: 50px; height: 50px;">Absen Disini
+    </h2>
+    <form id="postForm" style="max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <input type="text" id="judul" placeholder="Nama Peserta" required
+        style="width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px;" />
+
+      <textarea id="deskripsi" placeholder="Posisi Barisan" required
+        style="width: 100%; padding: 12px; height: 45px; margin-bottom: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px;"></textarea>
+
+      <input type="file" id="gambar" accept="image/*" required style="margin-bottom: 12px;" />
+
+      <button type="submit"
+        style="width: 100%; padding: 12px; background: #2563eb; color: white; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">
+        Absen Sekarang
+      </button>
+    </form>
+
+    <div id="preview" style="max-width: 600px; margin: 30px auto; text-align: center;"></div>
+  </div>
+
+ <!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN -->
+
+ 
+
   <!-- Copyright -->
   <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
     © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
@@ -1469,6 +1503,63 @@ countdownEl.innerHTML = `🕒 ${days} Hari ${hours} Jam ${minutes} Menit ${secon
 
 
 
+// ← ABSEN BARU ------------------------------------------ABSEN BARU----------------------
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyC0yd30ExJU56N6HgNPKB0RgX_5l9-EugXVW_t13Q2euHnQjJLq_A_RImYap4nZJZ8mw/exec";
+
+    document.getElementById('postForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const judul = document.getElementById('judul').value;
+      const deskripsi = document.getElementById('deskripsi').value;
+      const gambar = document.getElementById('gambar').files[0];
+      const tanggal = new Date().toLocaleDateString('id-ID', {
+        day: '2-digit', month: 'long', year: 'numeric'
+      });
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64Image = event.target.result;
+
+        // Tampilkan preview di bawah form
+        const preview = document.createElement('div');
+        preview.style = "background: white; padding: 16px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: left; margin-bottom: 16px;";
+        preview.innerHTML = `
+          <img src="${base64Image}" style="width: 100%; border-radius: 8px; margin-bottom: 12px;">
+          <h3>${judul}</h3>
+          <p>${deskripsi}</p>
+          <p style="font-size: 12px; color: gray;">Diposting pada: ${tanggal}</p>
+        `;
+        document.getElementById('preview').prepend(preview);
+
+        // Kirim ke Google Apps Script
+        const data = {
+          judul,
+          deskripsi,
+          gambar: base64Image,
+          tanggal
+        };
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          },
+          mode: "no-cors"
+        })
+        .then(() => {
+          alert("✅ABSEN berhasil dikirim!");
+          document.getElementById('postForm').reset();
+        })
+        .catch(error => {
+          alert("❌ Terjadi kesalahan: " + error.message);
+        });
+      };
+
+      reader.readAsDataURL(gambar);
+    });
+
+// ← ABSEN BARU ------------------------------------------ABSEN BARU---------------------
 
   function toggleLokasi() {
     const lokasiList = document.getElementById('lokasiList');
@@ -1616,7 +1707,7 @@ function closePopup() {
 }
 
 
-///POST HALAMAN ADMIN ----------------------------POSS ADMIN---------
+///ABSEN HALAMAN ----------------------------POSTINGAN HALAMAN---------
 
  window.onload = function() {
     fetch("https://script.google.com/macros/s/AKfycbyC0yd30ExJU56N6HgNPKB0RgX_5l9-EugXVW_t13Q2euHnQjJLq_A_RImYap4nZJZ8mw/exec")
@@ -1645,8 +1736,71 @@ function closePopup() {
         document.getElementById("galeri-postingan").innerHTML = "<p>❌ Gagal memuat postingan</p>";
       });
   };
+
 ///POST HALAMAN ADMIN ----------------------------POSS ADMIN---------
 
+  function cekKode() {
+    const kodeBenar = "802025"; // Ganti ini dengan kode rahasia kamu
+    const input = document.getElementById("kodeInput").value;
+    const salah = document.getElementById("kodeSalah");
+
+    if (input === kodeBenar) {
+      document.getElementById("kodeSection").style.display = "none";
+      document.getElementById("formPosting").style.display = "block";
+    } else {
+      salah.style.display = "block";
+    }
+  }
+
+  // Fungsi untuk mengubah waktu ke format tanggal lengkap WIB
+function getTanggalWaktuWIB() {
+  const now = new Date();
+
+  const options = {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'Asia/Jakarta' // ini yang penting
+  };
+
+  return `Absen pada: ${now.toLocaleString('id-ID', options)} WIB`;
+}
+
+  document.getElementById("postForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const judul = document.getElementById("judul").value;
+    const deskripsi = document.getElementById("deskripsi").value;
+    const gambarInput = document.getElementById("gambar");
+    const waktuAbsen = getTanggalWaktuWIB();
+
+    if (gambarInput.files.length === 0) {
+      alert("Silakan pilih gambar terlebih dahulu.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const imgPreview = `<img src="${event.target.result}" style="max-width: 100%; border-radius: 8px; margin-top: 20px;" />`;
+
+      document.getElementById("preview").innerHTML = `
+        <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 30px;">
+          <h3 style="margin-bottom: 5px;">✅ ${judul}</h3>
+          <p style="margin: 5px 0;">👥${deskripsi}</p>
+          ${imgPreview}
+          <p style="margin-top: 15px; color: #2563eb; font-weight: bold;">${waktuAbsen}</p>
+          <p style="font-size: 12px; color: #888;">Note dicatat oleh @Admin</p>
+        </div>
+      `;
+    };
+
+    reader.readAsDataURL(gambarInput.files[0]);
+  });
+///ABSEN HALAMAN ----------------------------POSTINGAN HALAMAN---------
 
 
 </script>
