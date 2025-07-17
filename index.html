@@ -31,7 +31,7 @@ header {
   color: #ffffff;
   padding: 5px;
   text-align: center;
-  font-size: 100%;
+  font-size: 130%;
   font-weight: 500;
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 50px;
@@ -285,7 +285,7 @@ nav button:hover .icon-img {
 }
 
 .logo-header {
-  height: 80px;
+  height: 50px;
   width: auto;
   border-radius: 8px;
 }
@@ -485,19 +485,47 @@ nav button:hover .icon-img {
 <!-- MENU ICON STYLE -->
 <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; margin-bottom: 30px; flex-wrap: wrap;">
 
-  <div class="menu-box" onclick="showPopup('sponsor')">
-    <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
-      <img src="sponsor.png" style=" width: 32px; height: 32px;" />
-    </div>
-    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Sponsor</div>
+<!-- Tombol Brand Sponsor -->
+<div class="menu-box" onclick="showPopupBrandSponsor()" style="text-align: center;">
+  <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="lagu nasional.png" style="width: 32px; height: 32px;" />
   </div>
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Lagu Wajib</div>
+</div>
 
-  <div class="menu-box" onclick="showPopup('jadwal')">
-    <div style="background: #10b981; border-radius: 12px; padding: 10px;">
-      <img src="jadwal.png" style=" width: 32px; height: 32px;" />
-    </div>
-    <div style="font-size: 12px; margin-top: 6px; color: #166534;">Jadwal</div>
+<!-- Popup Brand Sponsor -->
+<div id="popupBrandSponsor" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+  <div style="background:white; border-radius:12px; padding:20px; max-width:400px; width:90%; text-align:center; position:relative;">
+    <button onclick="closePopupBrandSponsor()" style="position:absolute; top:10px; right:10px; background:red; color:white; border:none; border-radius:50%; width:30px; height:30px;">×</button>
+    <div id="popupBrandSponsorContent"></div>
   </div>
+</div>
+
+<!-- Tombol Jadwal -->
+<div class="menu-box" onclick="showPopupJadwal2()">
+  <div style="background: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="jadwal.png" style="width: 32px; height: 32px;" />
+  </div>
+  <div style="font-size: 12px; margin-top: 6px; color: #166534;">Jadwal</div>
+</div>
+
+<!-- Popup Jadwal -->
+<div id="popupJadwal2" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+  <div style="background:white; border-radius:12px; padding:20px; max-width:400px; width:90%; text-align:left; position:relative; box-shadow:0 10px 25px rgba(0,0,0,0.2); font-family:sans-serif;">
+    <button onclick="closePopupJadwal2()" style="position:absolute; top:10px; right:10px; background:red; color:white; border:none; border-radius:50%; width:30px; height:30px; font-size:18px;">×</button>
+    <h3 style="margin-bottom: 10px;font-size: 16px; color: #1e40af;">📅 Jadwal Kegiatan paskib padang tualang</h3>
+    <p style="font-size: 12px; color:#374151;">Berikut adalah jadwal resmi kegiatan Paskibra:</p>
+    <ul style="margin-top: 15px; padding-left: 20px; color: #111827;">
+      <li><strong>07.30 WIB</strong> – Latihan baris-berbaris utama</li>
+      <li><strong>12.00 WIB</strong> – Istirahat dan makan siang</li>
+      <li><strong>02.00 WIB</strong> – Latihan formasi pengibaran</li>
+      <li><strong>16.00 WIB</strong> – Evaluasi harian dan motivasi</li>
+      <li><strong>17.00 WIB</strong> – KEMBALI KE RUMAH</li>
+    </ul>
+    <p style="margin-top: 15px; font-size: 13px; color: #6b7280;">⏰ Harap datang tepat waktu dan membawa perlengkapan lengkap. Absensi dilakukan setiap sesi latihan.</p>
+  </div>
+</div>
+
 
  <div class="menu-box" onclick="showPopup('forum')">
     <div style="background: #10b981; border-radius: 12px; padding: 10px;">
@@ -508,9 +536,9 @@ nav button:hover .icon-img {
 
   
 
-<!-- Tombol Prestasi ala Sponsor -->
 
-<!-- Tombol Buka Popup -->
+
+<!-- Tombol Buka Popup prestasi-->
   <div class="menu-box" onclick="document.getElementById('popupPrestasi').style.display ='flex'">
     <div style="background: #10b981; border-radius: 12px; padding: 10px;">
       <img src="prestasi.png" style="width: 32px; height: 32px;" />
@@ -569,30 +597,55 @@ nav button:hover .icon-img {
 
 
 
+<div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; margin-bottom: 30px; flex-wrap: wrap;">
 
+<!-- Undangan -->
+<div class="menu-box" onclick="scrollToKodeSection()">
+  <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="fingerprint.png" style="width: 32px; height: 32px;" />
+  </div>
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Absen</div>
+</div>
 
+  <!-- Rekreasi -->
+<div class="menu-box" onclick="scrollToRekreasi()">
+  <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="RI.webp" style="width: 32px; height: 32px;" />
+  </div>
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Lokasi 17</div>
+</div>
 
+  <!-- Motor -->
+  <div class="menu-box" onclick="showPopup('motor')">
+    <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+      <img src="logo langkat.png" style="width: 32px; height: 32px;" />
+    </div>
+    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Camat</div>
+  </div>
 
-
-
-<div id="popup-sponsor" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
-  <div style="background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 400px;">
-    <h3 style="margin-bottom: 12px; color: #1e3a8a;">Form Sponsor</h3>
-    
-    <label style="font-size: 14px;">Nama Peserta</label>
-    <input type="text" id="namaPeserta" placeholder="Nama Lengkap" style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
-
-    <label style="font-size: 14px;">Nomor WhatsApp</label>
-    <input type="text" id="nomorWa" placeholder="08xxxxxxxxxx" style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
-
-    <label style="font-size: 14px;">Posisi</label>
-    <input type="text" id="posisi" placeholder="Contoh: Pendukung" style="width: 100%; margin-bottom: 16px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
-
-    <button onclick="submitSponsor()" style="background-color: #10b981; color: white; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">Kirim</button>
-    <button onclick="closePopup()" style="margin-left: 10px; background-color: #ef4444; color: white; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">Tutup</button>
+<!-- Popup motor -->
+<!-- Popup motor -->
+<div id="popupMotor" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+  <div style="background:white; border-radius:12px; padding:20px; max-width:400px; width:90%; text-align:center; position:relative;">
+    <span onclick="closePopupMotor()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+    <div id="popupMotorContent"></div>
   </div>
 </div>
 
+
+
+
+
+
+  <!-- Coffee -->
+  <div class="menu-box" onclick="showPopup('coffee')">
+    <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+      <img src="fingerprint.png" style="width: 32px; height: 32px;" />
+    </div>
+    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Coffee</div>
+  </div>
+
+</div>
 
 
 <!-- OVERLAY POPUP -->
@@ -672,7 +725,7 @@ nav button:hover .icon-img {
   <div style="max-width:700px; background:white; padding:20px; border-radius:12px; overflow-y:auto; max-height:80vh;">
     <h3 style="font-size:18px; margin-bottom:14px; color:#1f2937; display:flex; align-items:center; gap:10px;">
       <img src="RI.webp" style="width:50px; height:50px;">
-      PELATIH
+      PELATIH PADANG TUALANG
     </h3>
     <div id="pelatihContent"></div>
     <button onclick="closeAllPopup()" style="margin-top:16px; background-color:#ef4444; color:white; border:none; padding:12px 20px; font-size:14px; font-weight:600; border-radius:8px; cursor:pointer; width:100%; transition:background-color 0.3s ease;">Tutup</button>
@@ -684,7 +737,7 @@ nav button:hover .icon-img {
   <div style="max-width:700px; background:white; padding:20px; border-radius:12px; overflow-y:auto; max-height:80vh;">
     <h3 style="font-size:18px; margin-bottom:14px; color:#1f2937; display:flex; align-items:center; gap:10px;">
       <img src="RI.webp" style="width:50px; height:50px;">
-      PURNA
+      PURNA PADANG TUALANG
     </h3>
     <div id="purnaContent"></div>
     <button onclick="closeAllPopup()" style="margin-top:16px; background-color:#ef4444; color:white; border:none; padding:12px 20px; font-size:14px; font-weight:600; border-radius:8px; cursor:pointer; width:100%; transition:background-color 0.3s ease;">Tutup</button>
@@ -778,29 +831,27 @@ Jadilah bagian dari PASKIBRA 2025 dan harumkan nama sekolah & daerahmu!.</p>
   </div>
 </div>
 
-       <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
-      <img src="RI.webp" alt="Latihan">
+       <div class="foto-item" onclick="showPost('RI.webp', 'Pemeriksaan Kesehatan Calon Anggota Paskibra Padang Tualang 2025', 'Kegiatan latiha')">
+      <img src="cek kesehatan.jpg" alt="Latihan">
       <div class="foto-caption">
         <h5>Pemeriksaan Kesehatan Calon Anggota Paskibra Padang Tualang 2025</h5>
-        <p><p>Padang Tualang, 14 Juli 2025<p> —
-Hari ini menjadi momen penting dalam proses pembinaan calon anggota Paskibra Kecamatan Padang Tualang. Bertempat di aula kegiatan, seluruh peserta menjalani pemeriksaan kesehatan menyeluruh sebagai bagian dari tahap seleksi dan kesiapan fisik.
-Kegiatan ini dipandu langsung oleh...</p>
+        <p><p>Padang Tualang, 14 Juli 2025
+Hari ini menjadi momen penting dalam proses pelatihan calon anggota Paskibra Kecamatan Padang Tualang. Bertempat di aula kegiatan, seluruh peserta menjalani pemeriksaan kesehatan menyeluruh sebagai bagian dari tahap seleksi dan kesiapan fisik.
+Kegiatan ini berjalan dengan lancar berkat dukungan penuh dari berbagai pihak. Kami menyampaikan apresiasi setinggi-tingginya kepada Bapak Camat Padang Tualang atas perhatian dan dukungannya terhadap generasi muda di wilayah ini. Tak lupa, kami juga mengucapkan terima kasih yang sebesar-besarnya kepada Ibu/Bapak tenaga medis dari Puskesmas Tanjung Selamat, yang telah memberikan pelayanan pemeriksaan kesehatan secara profesional dan penuh dedikasi.
+Kehadiran dan kolaborasi semua pihak menjadi bukti nyata sinergi dalam membentuk calon Paskibra yang tangguh, disiplin, dan siap mengemban tugas mulia pada upacara HUT Kemerdekaan Republik Indonesia mendatang.</p>
       </div>
     </div>
     
-       <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
-      <img src="RI.webp" alt="Latihan">
-      <div class="foto-caption">
-        <h5>Pemeriksaan Kesehatan Calon Anggota Paskibra Padang Tualang 2025</h5>
-        <p><p>Padang Tualang, 14 Juli 2025<p> —
-Hari ini menjadi momen penting dalam proses pembinaan calon anggota Paskibra Kecamatan Padang Tualang. Bertempat di aula kegiatan, seluruh peserta menjalani pemeriksaan kesehatan menyeluruh sebagai bagian dari tahap seleksi dan kesiapan fisik.
-Kegiatan ini dipandu langsung oleh tim tenaga medis dari Puskesmas Tanjung Selamat, yang dipimpin oleh para ibu-ibu petugas kesehatan yang ramah, sigap, dan penuh dedikasi. Pemeriksaan meliputi tekanan darah, tinggi badan, berat badan, kondisi umum fisik, serta evaluasi kebugaran peserta.
-Kami ucapkan terima kasih yang sebesar-besarnya kepada ibu-ibu tim medis dari Puskesmas Tanjung Selamat, yang telah memberikan waktu, tenaga, dan perhatian sepenuh hati kepada generasi muda calon pengibar bendera tahun ini. Semangat dan kepedulian kalian adalah contoh nyata pengabdian tanpa pamrih.
-Tak lupa, kami juga menyampaikan apresiasi dan rasa hormat kepada Bapak Camat Padang Tualang, yang terus mendukung penuh kegiatan pembinaan Paskibra sebagai bagian dari pembentukan karakter pemuda berjiwa nasionalis dan disiplin tinggi.
+<!----------------------------POSTINGAN KE 5----------------------------->
 
-Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paskibra Kecamatan Padang Tualang menuju 17 Agustus 2025 dengan penuh kebanggaan dan semangat merah putih.</p>.</p>
-      </div>
-    </div>
+<div class="foto-item" onclick="showPostByIndex(0)">
+  <strong><p>PESAN PENTING!</p></strong>
+  <div class="foto-caption">
+    <h5>Jumlah Calon Anggota Serta Lokasi Pengibaran</h5>
+    <p>Dengan ini disampaikan bahwa jumlah Putra & Putri Calon Anggota Paskibra Kecamatan Padang Tualang Tahun 2025 telah di tetapkan sebanyak 40 orang, dan akan dibina 2 orang pelatih resmi, serta didampingi oleh 3 orang purna Paskibra tetap serta Mengenai lokasi resmi pelaksanaan Upacara akan dilaksanakan di:Lapangan Sidomukti, Desa Tanjung Selamat
+Keputusan ini bersifat final dan menjadi dasar pelaksanaan seluruh rangkaian kegiatan pelatihan hingga pelaksanaan upacara. Diharapkan seluruh pihak yang terlibat dapat menjalankan peran masing-masing dengan penuh tanggung jawab</p>
+  </div>
+</div>
 
        <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
       <img src="RI.webp" alt="Latihan">
@@ -837,7 +888,7 @@ Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paski
 
 
 
-<h4 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827; text-align: center;">
+<h4 id="infoPenting" style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827; text-align: center;">
   📍 Informasi Penting
 </h4>
 <!-- Lokasi Pengibaran Stepper -->
@@ -930,15 +981,34 @@ Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paski
 
  
 
-  <!-- Copyright1 -->
-  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
-    © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
+<!-- Footer -->
+<div style="margin-top: 40px; text-align: center; color: #6b7280; font-size: 13px;">
+
+  <!-- Social Media Icons -->
+  <div style="margin-bottom: 10px;">
+    <a href="https://blank" target="_blank" style="margin: 0 8px;">
+      <img src="facebook gambar (1).png" alt="Facebook" style="width: 24px; height: 24px;">
+    </a>
+    <a href="https://blank" target="_blank" style="margin: 0 8px;">
+      <img src="facebook gambar (2).png" alt="Instagram" style="width: 24px; height: 24px;">
+    </a>
+    <a href="https://" target="_blank" style="margin: 0 8px;">
+      <img src="facebook gambar (3).png" alt="TikTok" style="width: 24px; height: 24px;">
+    </a>
+    <a href="https://blank" target="_blank" style="margin: 0 8px;">
+      <img src="facebook gambar (4).png" alt="YouTube" style="width: 24px; height: 24px;">
+    </a>
+  </div>
+
+  <!-- Copyright -->
+  <div>
+    © 2025 Paskibra Padang Tualang. All rights reserved —@ilhamkrt
   </div>
 </div>
 
   <!-- Copyright2 -->
   <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
-    © 2025
+    
   </div>
 </div>
 
@@ -1243,15 +1313,15 @@ const pelatihList = [
   const purnaList = [
     { nama: "ILHAM KURNIANTO",
       prioritas: true, 
-      sekolah: "LAKI-LAKI", 
+      sekolah: "Tahun 2019", 
       foto: "kami.png" },
     { nama: "IHSAN MAULANA AZIZI",
       prioritas: true, 
-      sekolah: "LAKI-LAKI", 
+      sekolah: "Tahun 2019", 
       foto: "kami.png" },
     { nama: "MIRA ADELIA",
       prioritas: true, 
-      sekolah: "PEREMPUAN", 
+      sekolah: "Tahun 2017", 
       foto: "mira (1).png" },
   ];
 
@@ -1322,7 +1392,7 @@ function closeAllPopup() {
     function showPost(img, judul, deskripsi) {
     const popup = document.getElementById('popupPost');
     popup.innerHTML = `
-      <h3 style="margin-bottom:12px;">(KRT) ${judul}</h3>
+      <h3 style="margin-bottom:12px;">(PENJELASAN) ${judul}</h3>
       <img src="${img}" style="width:100%;border-radius:10px;object-fit:cover;margin-bottom:12px;" />
       <p style="font-size:14px;color:#444;">${deskripsi}</p>
       <button onclick="closePost()" style="margin-top:14px;padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;">Tutup</button>
@@ -1593,139 +1663,6 @@ countdownEl.innerHTML = `🕒 ${days} Hari ${hours} Jam ${minutes} Menit ${secon
     }
   }
 
-    function showPopup() {
-    document.getElementById('popupModal').style.display = 'flex';
-  }
-
-
-  function closePopup() {
-    document.getElementById('popupModal').style.display = 'none';
-  }
-
-
-function showPopup(type) {
-  document.getElementById("popupOverlay").style.display = "block";
-  document.getElementById("popupBox").style.display = "block";
-  let title = "Lapangan Sidomukti";
-  let content = `Lapangan Sidomukti merupakan lokasi utama upacara pengibaran bendera tahun 2025. Terletak di kawasan Jalan Tanjung Selamat, Desa Sidomukti,
-lapangan ini dikenal sebagai salah satu fasilitas olahraga yang luas dan strategis 
-di wilayah tersebut.Dikelilingi oleh pemukiman warga dan akses jalan utama,
- lapangan ini kerap digunakan untuk kegiatan olahraga, upacara sekolah, dan acara kenegaraan. Kondisi lapangan yang datar, terbuka, dan mudah dijangkau menjadikannya pilihan ideal untuk pelaksanaan upacara bendera yang melibatkan peserta dari berbagai sekolah dan instansi.
-
-𝗙𝗮𝘀𝗶𝗹𝗶𝘁𝗮𝘀 𝗣𝗲𝗻𝗱𝘂𝗸𝘂𝗻𝗴:
-Akses jalan kendaraan roda dua & empat
-Area parkir terbuka
-Lokasi dekat dengan fasilitas kesehatan & posko P3K
-Daya tampung lapangan mencapai ±500 peserta
-rapi kan.`;
-
-  if (type === "sponsor") {
-    title = "Langkah Tegap Menuju Masa Depan Gemilang";
-    content = "Bergabunglah bersama PASKIBRA Padang Tualang – tempat lahirnya para pemimpin muda yang berkarakter, berwibawa, dan berprestasi!\n\n" +
-"Kami bukan sekadar barisan tegap dengan seragam merah putih. Kami adalah keluarga besar yang dipenuhi semangat, disiplin, kekompakan, dan jiwa nasionalisme yang tinggi. Setiap langkah kaki dan ayunan tangan adalah cermin dari latihan keras, dedikasi tinggi, dan rasa cinta tanah air yang mendalam.\n\n" +
-"Di sini, kamu akan dibina menjadi pribadi yang lebih tangguh – secara fisik, mental, dan emosional. Pelatihan kami bukan hanya tentang baris-berbaris, tetapi juga tentang kepemimpinan, kerja sama tim, ketepatan waktu, dan loyalitas. Kamu akan belajar menjadi teladan – di sekolah, di lingkungan, bahkan di masa depan.\n\n" +
-"PASKIBRA bukan hanya tentang upacara 17 Agustus. Ini tentang bagaimana kita mempersiapkan generasi muda untuk menjadi sosok yang bertanggung jawab dan bisa diandalkan. Kami hadir untuk membentuk karakter – bukan dengan paksaan, tetapi dengan hati dan keteladanan.\n\n" +
-"Ayo daftarkan dirimu sekarang dan jadilah bagian dari sejarah. Tunjukkan semangatmu, dedikasimu, dan cintamu pada Indonesia lewat barisan yang gagah, langkah yang pasti, dan jiwa yang membara.\n\n" +
-"Bersama PASKIBRA Padang Tualang, mari kita tunjukkan bahwa generasi muda mampu membawa perubahan. Tegap langkahmu, teguh jiwamu, harum namamu.\n\n" +
-"#PASKIBRA2025 #PadangTualang #Disiplin #Semangat #PemimpinMuda";
-  } else if (type === "jadwal") {
-    title = "JADWAL LATIHAN PASKIBRA PADANG TUALANG";
-    content = "HARIAN (Senin – Jumat)\n" +
-"Waktu                | Kegiatan Latihan                 | Keterangan\n" +
-"---------------------|----------------------------------|--------------------------------------------\n" +
-"06.30 – 07.00        | Pemanasan & Senam Pagi           | Latihan kelenturan & kekuatan otot\n" +
-"07.00 – 08.00        | Baris-Berbaris Dasar             | Posisi siaga, hormat, jalan di tempat\n" +
-"08.00 – 08.15        | Istirahat                        | Air minum & snack ringan\n" +
-"08.15 – 09.30        | Latihan Formasi Pengibaran       | Formasi 17-8-45, sinkronisasi gerak\n" +
-"09.30 – 10.30        | Latihan Fisik & Ketahanan Mental | Lari, push-up, sit-up, meditasi fokus\n" +
-"10.30 – 11.00        | Evaluasi & Briefing Harian       | Catatan pelatih & refleksi pribadi\n\n" +
-
-"KHUSUS SABTU (Penguatan Mental & Kepemimpinan)\n" +
-"Waktu                  Kegiatan\n" +
-"---------------------|----------------------------------------\n" +
-"07.00 – 08.30        | Diskusi Kepemimpinan & Disiplin\n" +
-"08.30 – 10.00        | Sharing Alumni & Motivasi\n" +
-"10.00 – 11.30        | Simulasi Pengibaran Bendera";
-  } else if (type === "forum") {
-    title = "FORUM DISKUSI NASIONAL: PASKIBRA & 17 AGUSTUS – JIWA NASIONALISME, DARI MASA KE MASA";
-    content = `TOPIK UTAMA 1: SEJARAH 17 AGUSTUS DAN MAKNA KEMERDEKAAN
-- Bagaimana proses kemerdekaan Indonesia sebenarnya terjadi?
-- Peran Ir. Soekarno dan Drs. Mohammad Hatta dalam pembacaan Proklamasi.
-- Apa yang terjadi setelah proklamasi: Perjuangan mempertahankan kemerdekaan (1945–1949)?
-- Kenapa tanggal 17 Agustus dipilih dan dimuliakan secara nasional?
-- Bagaimana masyarakat dulu memperingati Hari Kemerdekaan?
-
-TOPIK UTAMA 2: LAHIRNYA PASKIBRA DAN PASKIBRAKA
-- Siapa Husein Mutahar dan apa kontribusinya dalam pembentukan Paskibraka?
-- Bagaimana formasi pengibaran bendera dibentuk dan kenapa ada Pasukan 17, 8, dan 45?
-- Apa perbedaan Paskibra, Paskibraka, dan Pasukan Kehormatan lainnya?
-- Evolusi Paskibraka dari awal dibentuk hingga sekarang.
-- Bagaimana perubahan sistem seleksi dan pembinaan Paskibraka dari zaman ke zaman?
-
-TOPIK UTAMA 3: NILAI-NILAI YANG DIJUNJUNG PASKIBRA
-- Disiplin dan kepemimpinan dalam pelatihan Paskibra.
-- Nasionalisme dan cinta tanah air melalui kegiatan Paskibra.
-- Bagaimana Paskibra membentuk karakter generasi muda?
-- Apakah semangat Paskibra masih relevan di era digital sekarang?
-
-TOPIK UTAMA 4: PERINGATAN 17 AGUSTUS DI MASA MODERN
-- Perubahan cara memperingati 17 Agustus dari masa ke masa.
-- Tradisi perlombaan, upacara, dan kegiatan sosial: mana yang paling berdampak?
-- Digitalisasi perayaan kemerdekaan: dari livestream hingga tantangan media sosial – apakah masih bermakna?
-- Bagaimana generasi muda memaknai 17 Agustus dibandingkan generasi sebelumnya?
-
-TOPIK UTAMA 5: TANTANGAN DAN MASA DEPAN PASKIBRA
-- Apa saja tantangan dalam perekrutan dan pelatihan Paskibra saat ini?
-- Bagaimana pemerintah daerah dan sekolah bisa mendukung lebih baik?
-- Perlu atau tidak pembaruan sistem Paskibraka nasional?
-- Masa depan Paskibra: Hanya seremoni atau menjadi agen perubahan sosial?
-
-TOPIK UTAMA 6: CERITA PRIBADI DAN PENGALAMAN
-- Cerita alumni Paskibra: dari latihan keras hingga hari pengibaran.
-- Pengalaman unik saat upacara 17-an di desa, kota, atau luar negeri.
-- Apa arti menjadi bagian dari upacara pengibaran bagi kamu secara pribadi?
-
-TOPIK UTAMA 7: PERAN MEDIA, SEKOLAH DAN KELUARGA
-- Peran sekolah dalam membina Paskibra dan semangat nasionalisme.
-- Perlukah keluarga ikut dilibatkan dalam pendidikan karakter seperti ini?
-- Bagaimana media bisa membingkai kegiatan Paskibra secara lebih positif?
-
-TOPIK UTAMA 8: PENGARUH GLOBALISASI TERHADAP NASIONALISME
-- Apakah semangat nasionalisme makin menurun di era global?
-- Bagaimana menjaga identitas bangsa di tengah arus budaya asing?
-- Apakah kegiatan seperti Paskibra masih menjadi solusi?
-
-TOPIK UTAMA 9: SIMBOL-SIMBOL KEBANGSAAN DAN MAKNA BENDERA
-- Kenapa merah putih menjadi warna bendera kita?
-- Apa makna filosofis pengibaran bendera di tanggal 17 Agustus?
-- Bagaimana cara kita menghormati simbol negara secara benar?
-
-TOPIK UTAMA 10: USUL DAN INOVASI UNTUK GENERASI BARU
-- Inovasi pelatihan Paskibra berbasis teknologi.
-- Ide kreatif untuk merayakan kemerdekaan secara modern tapi tetap bermakna.
-- Apakah kita perlu membentuk komunitas alumni Paskibra aktif?
-
-FORMAT FORUM
-Setiap peserta forum dapat memilih topik yang ingin didiskusikan secara mendalam, kemudian:
-1. Membagikan pendapat pribadi.
-2. Memberikan referensi sejarah atau fakta.
-3. Menanggapi pendapat peserta lain.
-4. Boleh menyisipkan dokumentasi kegiatan atau pengalaman.
-5. Bisa dilakukan secara offline (diskusi kelompok) atau online (Google Meet, Zoom, grup WhatsApp/Telegram).`;
-  }
-
-  document.getElementById("popupTitle").innerText = title;
-  document.getElementById("popupContent").innerText = content;
-  document.getElementById("popupOverlay").style.display = "block";
-  document.getElementById("popupBox").style.display = "block";
-  
-}
-
-function closePopup() {
-  document.getElementById("popupOverlay").style.display = "none";
-  document.getElementById("popupBox").style.display = "none";
-}
-
 
 ///ABSEN HALAMAN ----------------------------POSTINGAN HALAMAN---------
 
@@ -1753,7 +1690,7 @@ function closePopup() {
       })
       .catch(err => {
         console.error("Gagal menampilkan postingan:", err);
-        document.getElementById("galeri-postingan").innerHTML = "<p>❌ Gagal memuat postingan</p>";
+        document.getElementById("galeri-postingan").innerHTML = "<p>❌Fitur ini Sedang Maintenance</p>";
       });
   };
 
@@ -1808,15 +1745,23 @@ function getTanggalWaktuWIB() {
       const imgPreview = `<img src="${event.target.result}" style="max-width: 100%; border-radius: 8px; margin-top: 20px;" />`;
 
 document.getElementById("preview").innerHTML = `
-  <div style="background: #b9b7b7; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 30px;">
-    <div style="text-align: center;">
-      <h3 style="margin-bottom: 5px;">
-        <span style="display: inline-flex; align-items: center; gap: 8px; background-color: #facc15; padding: 6px 12px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); font-weight: 600;">
-          <img src="RI.webp" alt="Logo" style="width: 20px; height: 20px;" />
-          ${judul}
-        </span>
-      </h3>
-    </div>
+<div style="text-align: center; margin-bottom: 12px;">
+  <div style="
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fef3c7;
+    padding: 6px 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    font-weight: bold;
+    color: #92400e;
+    font-size: 16px;
+  ">
+    <img src="RI.webp" alt="Logo" style="width: 20px; height: 20px;" />
+    ${judul}
+  </div>
+</div>
     <p style="margin: 5px 0;">👥${deskripsi}</p>
     ${imgPreview}
     <p style="margin-top: 15px; color: #2563eb; font-weight: bold;">${waktuAbsen}</p>
@@ -1828,6 +1773,137 @@ document.getElementById("preview").innerHTML = `
     reader.readAsDataURL(gambarInput.files[0]);
   });
 ///ABSEN HALAMAN ----------------------------POSTINGAN HALAMAN---------
+
+
+
+///auto scrol absen ----------------------------auto--------
+  function scrollToKodeSection() {
+    const section = document.getElementById("kodeSection");
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+
+  ///auto scrol lokasi ----------------------------auto--------
+ function scrollToRekreasi() {
+  // Scroll ke elemen "Informasi Penting"
+  const info = document.getElementById("infoPenting");
+  info.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  // Buka lokasiList jika belum terbuka
+  const lokasiList = document.getElementById("lokasiList");
+  const arrow = document.getElementById("arrowLokasi");
+
+  if (lokasiList.style.display === "none") {
+    lokasiList.style.display = "block";
+    arrow.textContent = "▲";
+
+    // Sembunyikan lagi setelah 4 detik
+    setTimeout(() => {
+      lokasiList.style.display = "none";
+      arrow.textContent = "▼";
+    }, 50000);
+  }
+}
+  ///POP UP CAMAT ----------------------------POP UP camat--------
+  function showPopup(type) {
+    if (type === 'motor') {
+      const content = `
+        <h3 style="margin-bottom: 10px; color: #1e40af;">BAPAK CAMAT & WAKIL CAMAT</h3>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <img src="camat.jpeg"
+             style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
+            <div style="font-weight:600; margin-top:5px;font-size:10px;">MUHAMMAD IZWANDA SE.Kp.M.SP(PNS)</div>
+            <div style="font-size:6px; color:#1e3a8a;">(Camat)</div>
+          </div>
+          <div style="text-align:center;">
+            <img src="ZUL.jpeg"
+             style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
+            <div style="font-weight:600;font-size:10px; margin-top:5px;">ZULKARNAIN,SE (PNS)</div>
+            <div style="font-size:6px; color:#1e3a8a;">(Wakil Camat</div>
+          </div>
+        </div>
+        <p style="margin-top:15px; font-size:14px; color:#333;">
+          Padang Tualang,
+Sebagai bagian dari upaya memastikan keselamatan dan kelancaran kegiatan, tim motor pengawal disiapkan untuk mengawal perjalanan peserta dari titik kumpul hingga lokasi pengibaran bendera. Tim ini terdiri dari anggota pilihan yang telah melalui proses seleksi ketat, memiliki pengalaman lapangan, serta kendaraan yang aman dan terverifikasi.
+Kami menyampaikan apresiasi setinggi-tingginya kepada Bapak Camat Padang Tualang, yang telah memberikan perhatian penuh terhadap kelancaran kegiatan ini. Dukungan beliau dalam penyediaan dan pengawasan tim pengawal lapangan menjadi bagian penting dari suksesnya rangkaian pelatihan dan pengibaran yang tertib dan aman..
+        </p>
+      `;
+      document.getElementById("popupMotorContent").innerHTML = content;
+      document.getElementById("popupMotor").style.display = "flex";
+    }
+  }
+
+  function closePopupMotor() {
+    document.getElementById("popupMotor").style.display = "none";
+  }
+
+//// POP UP BRAND SPONSOR ----------------------------POP UP BRAND SPONSOR--------
+  function showPopupBrandSponsor() {
+    const content = `
+      <h3 style="margin-bottom: 12px; color: #1e40af;">3 LAGU WAJIB NASIONAL</h3>
+      <p style="font-size: 14px; margin-bottom: 12px;">Kenali kembali lagu-lagu wajib nasional yang menjadi simbol perjuangan dan cinta tanah air.</p>
+      
+      <div style="display:flex; gap:10px; flex-direction:column; align-items:center;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <img src="lagu nasional.png" alt="PT. Semangat Merdeka" style="width:50px; height:50px; border-radius:8px;">
+          <div style="text-align:left;">
+            <strong>Indonesia Raya</strong><br>
+            <span style="font-size:12px; color:gray;">Pencipta: Wage Rudolf Soepratman
+<p>Peran: Lagu kebangsaan Republik Indonesia.
+Lagu ini pertama kali diperdengarkan pada tahun 1928 saat Kongres Pemuda II dan menjadi simbol perjuangan kemerdekaan serta identitas bangsa Indonesia..</span>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <img src="lagu nasional.png" alt="Warung Makan Ibu Yani" style="width:50px; height:50px; border-radius:8px;">
+          <div style="text-align:left;">
+            <strong>Bagimu Negeri</strong><br>
+            <span style="font-size:12px; color:gray;">Pencipta: Kusbini
+<p>Peran: Lagu ini mencerminkan semangat pengabdian dan cinta tanah air.
+Sering dinyanyikan dalam upacara kenegaraan dan acara resmi sebagai bentuk janji rakyat untuk berbakti sepenuhnya kepada Indonesia.</span>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <img src="lagu nasional.png" alt="Bengkel Motor Amanah" style="width:50px; height:50px; border-radius:8px;">
+          <div style="text-align:left;">
+            <strong>Hari Merdeka (17 Agustus 1945)</strong><br>
+            <span style="font-size:12px; color:gray;">Pencipta: H. Mutahar (Husein Mutahar)
+
+<p>Peran: Lagu ini merayakan hari kemerdekaan Indonesia.
+Dinyanyikan secara luas setiap peringatan 17 Agustus dan menggugah semangat patriotisme rakyat Indonesia.</span>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById("popupBrandSponsorContent").innerHTML = content;
+    document.getElementById("popupBrandSponsor").style.display = "flex";
+  }
+
+  function closePopupBrandSponsor() {
+    document.getElementById("popupBrandSponsor").style.display = "none";
+  }
+
+
+  function showPopupJadwal2() {
+    document.getElementById("popupJadwal2").style.display = "flex";
+  }
+
+  function closePopupJadwal2() {
+    document.getElementById("popupJadwal2").style.display = "none";
+  }
+
+//// POP UP JADWAL2 ----------------------------POP UP JADWAL2--------
+  function showPopupJadwal2() {
+    document.getElementById("popupJadwal2").style.display = "flex";
+  }
+
+  function closePopupJadwal2() {
+    document.getElementById("popupJadwal2").style.display = "none";
+  }
 
 
 </script>
