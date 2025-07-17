@@ -9,6 +9,20 @@
 
     body { margin:0; font-family:'Segoe UI',sans-serif; background:#f3f4f6; color:#333 }
   
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* supaya gak bisa geser horizontal */
+}
+
+.container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+    
 header {
   position: sticky;
   top: 0;
@@ -879,7 +893,7 @@ Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paski
 </div>
 
   <!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN --><!-- JUDL ABSENNNNNNN -->
-<body style="font-family: sans-serif; background: #f9fafb; margin: 0; padding: 20px;">
+<body style="font-family: sans-serif; background: #f9fafb; margin: 0; padding: 0px;">
 
   <!-- Form Masukan Kode Admin -->
   <div id="kodeSection" style="max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
@@ -916,13 +930,19 @@ Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paski
 
  
 
-  <!-- Copyright -->
+  <!-- Copyright1 -->
   <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
     © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
   </div>
 </div>
 
-  <!-- Copyright -->
+  <!-- Copyright2 -->
+  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
+    © 2025
+  </div>
+</div>
+
+  <!-- Copyright3 -->
   <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
     © 2025
   </div>
@@ -1787,15 +1807,22 @@ function getTanggalWaktuWIB() {
     reader.onload = function(event) {
       const imgPreview = `<img src="${event.target.result}" style="max-width: 100%; border-radius: 8px; margin-top: 20px;" />`;
 
-      document.getElementById("preview").innerHTML = `
-        <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 30px;">
-          <h3 style="margin-bottom: 5px;">✅ ${judul}</h3>
-          <p style="margin: 5px 0;">👥${deskripsi}</p>
-          ${imgPreview}
-          <p style="margin-top: 15px; color: #2563eb; font-weight: bold;">${waktuAbsen}</p>
-          <p style="font-size: 12px; color: #888;">Note dicatat oleh @Admin</p>
-        </div>
-      `;
+document.getElementById("preview").innerHTML = `
+  <div style="background: #b9b7b7; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 30px;">
+    <div style="text-align: center;">
+      <h3 style="margin-bottom: 5px;">
+        <span style="display: inline-flex; align-items: center; gap: 8px; background-color: #facc15; padding: 6px 12px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); font-weight: 600;">
+          <img src="RI.webp" alt="Logo" style="width: 20px; height: 20px;" />
+          ${judul}
+        </span>
+      </h3>
+    </div>
+    <p style="margin: 5px 0;">👥${deskripsi}</p>
+    ${imgPreview}
+    <p style="margin-top: 15px; color: #2563eb; font-weight: bold;">${waktuAbsen}</p>
+    <p style="font-size: 12px; color: #888;">Note dicatat oleh @Admin ganteng</p>
+  </div>
+`;
     };
 
     reader.readAsDataURL(gambarInput.files[0]);
