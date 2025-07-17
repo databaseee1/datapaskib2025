@@ -1653,3 +1653,494 @@ function closePopup() {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>DATA PASKIB 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body { margin:0; font-family:'Segoe UI',sans-serif; background:#f3f4f6; color:#333 }
+    header { background:#2563eb; color:#fff; padding:20px; text-align:center; font-size:1.2rem; font-weight:600;
+             border-bottom-left-radius:16px;border-bottom-right-radius:16px; }
+    
+    
+.container {
+  margin: 16px 12px;
+  width: auto;
+  max-width: 100%;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  padding-bottom: 120px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+
+
+
+    label{ display:block; margin-top:14px; font-weight:500;}
+    input, select, textarea{ width:100%; padding:10px; margin-top:6px; border:1px solid #cbd5e1;
+                              border-radius:8px; font-size:1rem; box-sizing:border-box; }
+    button.submit{ margin-top:24px; width:100%; padding:12px; font-size:1rem; background:#2563eb;
+                   color:#fff; border:none; border-radius:10px; cursor:pointer; transition:0.2s;}
+    button.submit:hover{ background:#1e40af; }
+    nav{ position:fixed; bottom:0; width:100%; background:#2563eb; display:flex;
+         justify-content:space-around; padding:10px 0; box-shadow:0 -2px 6px rgba(0,0,0,0.1);}
+    nav button{ background:none; border:none; color:#fff; font-size:14px; display:flex;
+                flex-direction:column; align-items:center; }
+    nav button.active{ font-weight:bold; }
+    .icon{ font-size:20px; margin-bottom:4px;}
+    .tab{ display:none; }
+    .tab.active{ display:block;}
+    #msg{ margin-top:12px; color:green;}
+    .overlay{ position:fixed;top:0;left:0;right:0;bottom:0;
+              background:rgba(0,0,0,0.5); display:none; z-index:998;}
+    .popup{ position:fixed; top:50%;left:50%; transform:translate(-50%,-50%);
+            background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.3);
+            max-width:90%; width:400px; display:none; z-index:999; }
+  .announcement-box {
+  margin-top: 24px;
+  background-color: #fff8e1;
+  border-left: 6px solid #f59e0b;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.announcement-box h4 {
+  margin: 0 0 6px;
+  color: #92400e;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.galeri-foto {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #1f2937;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+.galeri-foto h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #1f2937;
+  text-align: center;
+  font-size: 18px;
+}
+
+.foto-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.foto-grid img {
+  width: 50%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(65, 59, 59, 0.06);
+}
+
+#user .container {
+  max-width: 1000px;
+  margin: 1px;
+  padding: 10px 10px;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+.foto-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  gap: 14px;
+}
+
+.foto-item img {
+  width: 120px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.foto-info h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.foto-info p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+  
+  </style>
+</head>
+<body>
+
+<header>DATA PASKIBRA KEC.PADANG TUALANG</header>
+
+<!-- Formulir -->
+<div class="tab active" id="form">
+  <div class="container">
+    <form id="formPaskib">
+      <label>Nama Peserta<input type="text" name="namaPeserta" required></label>
+      <label>Tinggi Badan<input type="number" name="tinggiBadan" required></label>
+      <label>Nomor Peserta<input type="text" name="nomorPeserta" required></label>
+      <label>WhatsApp<input type="text" name="whatsapp" required></label>
+      <label>Nama Pelatih
+        <select name="namapelatih" required>
+          <option value="">-- Pilih Pelatih --</option>
+          <option value="SUTRISNO - ELKY FERNANDA">SUTRISNO-ELKY FERNANDA</option>
+        </select>
+      </label>
+      <label>Angkatan Tahun<input type="number" name="angkatanTahun" required></label>
+      <label>Alamat<input type="text" name="alamat" required></label>
+      <label>Asal Sekolah
+        <select name="asalSekolah" required>
+          <option value="">-- Pilih Sekolah --</option>
+          <option value="SMA NEGERI 1 PADANG TUALANG">SMA NEGERI 1 PADANG TUALANG</option>
+          <option value="SMA PERSIAPAN PADANG TUALANG">SMA PERSIAPAN PADANG TUALANG</option>
+          <option value="SMK PERSIAPAN PADANG TUALANG">SMK PERSIAPAN PADANG TUALANG</option>
+          <option value="TAMAN SISWA PADANG TUALANG">TAMAN SISWA PADANG TUALANG</option>
+        </select>
+      </label>
+      <label>Tanggal Lahir<input type="date" name="tanggalLahir" required></label>
+      <label>Umur<input type="number" name="umur" required></label>
+      <button type="submit" class="submit">Kirim Data</button>
+    </form>
+    <div id="msg"></div>
+  </div>
+</div>
+
+<!-- User List -->
+<div class="tab" id="user">
+  <div class="container">
+    <h3>Daftar Peserta</h3>
+    <input id="searchInp" type="text" placeholder="Cari data!" style="margin-bottom:14px;padding:8px;border-radius:8px;border:1px solid #cbd5e1;width:100%;">
+    <div id="userList">Data sukses di kirim...</div>
+  </div>
+
+  <!-- Box Pemberitahuan -->
+<div class="announcement-box">
+  <h4>📢 PENGUMUMAN</h4>
+  <p>Mohon pastikan data yang dikirim sudah benar dan hanya sekali kirim.</p>
+</div>
+
+<!-- Galeri Foto Dokumentasi -->
+<div class="galeri-foto">
+  <h6>POSTINGAN KEGIATAN</h6>
+  <div class="foto-grid">
+    <img src="RI.webp" alt="Foto 1">
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+<div class="foto-item">
+  <img src="RI.webp" alt="Foto 1">
+  <div class="foto-info">
+    <h5>Judul Foto</h5>
+    <p>Deskripsi singkat kegiatan yang ada di foto ini.</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Pop Up -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup"></div>
+
+<!-- Navigasi -->
+<nav>
+  <button id="btn-form" class="active" onclick="switchTab('form')"><div class="icon">📝</div>Form</button>
+  <button id="btn-user" onclick="switchTab('user')"><div class="icon">👤</div>User</button>
+</nav>
+
+<script>
+  let users = [];
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + tab).classList.add('active');
+    if (tab === 'user') loadUsers();
+  }
+
+  document.getElementById('formPaskib').onsubmit = e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    
+    google.script.run.withSuccessHandler(res => {
+      showNotif(`✅ Data berhasil dikirim!<br>Tersimpan pada: ${res.time}`);
+      document.getElementById('formPaskib').reset();
+      users.push(res.data);
+      renderList(document.getElementById('searchInp').value.toLowerCase());
+    }).submitForm(data);
+  };
+
+
+  function showNotif(msg) {
+    const n = document.createElement('div');
+    n.style.position = 'fixed';
+    n.style.top = '20px';
+    n.style.left = '50%';
+    n.style.transform = 'translateX(-50%)';
+    n.style.background = '#333';
+    n.style.color = '#fff';
+    n.style.padding = '12px 20px';
+    n.style.borderRadius = '8px';
+    n.style.zIndex = '9999';
+    n.innerHTML = msg;
+    document.body.appendChild(n);
+    setTimeout(() => n.style.display = 'none', 4000);
+  }
+
+  function loadUsers() {
+    google.script.run.withSuccessHandler(data => {
+      if (!Array.isArray(data)) {
+        console.error('Data yang diterima bukan array:', data);
+        document.getElementById('userList').innerHTML = "❌ Kalau Udah isi jangan di isi lagi!!!";
+        return;
+      }
+      users = data;
+      renderList('');
+    }).getAllData();
+  }
+
+  function showNotif(msg){
+  const n = document.getElementById('notif');
+  n.innerHTML = ` ${msg}`;
+  n.style.display = 'block';
+  setTimeout(()=>n.style.display='none', 4000);
+}
+
+
+
+  document.getElementById('searchInp').oninput = e => {
+    if (!Array.isArray(users)) return;
+    renderList(e.target.value.toLowerCase());
+  };
+
+  function renderList(filter) {
+    const cont = document.getElementById('userList');
+    cont.innerHTML = '';
+
+    if (!Array.isArray(users)) {
+      cont.innerHTML = '<em>Kalau Udah isi jangan di isi lagi!!!</em>';
+      return;
+    }
+
+    const filtered = users.filter(r =>
+      (r['Nama Peserta'] || '').toLowerCase().includes(filter) ||
+      (r['WhatsApp'] || '').toLowerCase().includes(filter) ||
+      (r['Nomor Peserta'] || '').toLowerCase().includes(filter) ||
+      (r['Asal Sekolah'] || '').toLowerCase().includes(filter)
+    );
+
+    if (filtered.length === 0) {
+      cont.innerHTML = '<em>Tidak ada data.</em>';
+      return;
+    }
+
+    filtered.forEach(r => {
+      const div = document.createElement('div');
+      div.style.padding = '6px 10px';
+      div.style.borderBottom = '1px solid #e2e8f0';
+      div.style.cursor = 'pointer';
+      div.style.borderRadius = '6px';
+      div.style.background = '#f9fafb';
+      div.style.marginBottom = '6px';
+      div.innerHTML = `<strong>${r['Nama Peserta']}</strong><br><small>${r['WhatsApp']}</small>`;
+      div.onclick = () => showPopup(r);
+      cont.appendChild(div);
+    });
+  }
+
+  function showPopup(r) {
+    const p = document.getElementById('popup');
+    p.innerHTML = `
+      <h3 style="margin-bottom:12px;">📄 Detail Peserta</h3>
+      <p><strong>Nama Peserta:</strong> ${r['Nama Peserta']}</p>
+      <p><strong>Tinggi Badan:</strong> ${r['Tinggi Badan']} cm</p>
+      <p><strong>Nomor Peserta:</strong> ${r['Nomor Peserta']}</p>
+      <p><strong>WhatsApp:</strong> ${r['WhatsApp']}</p>
+      <p><strong>Nama Pelatih:</strong> ${r['Nama Pelatih']}</p>
+      <p><strong>Angkatan Tahun:</strong> ${r['Angkatan Tahun']}</p>
+      <p><strong>Alamat:</strong> ${r['Alamat']}</p>
+      <p><strong>Asal Sekolah:</strong> ${r['Asal Sekolah']}</p>
+      <p><strong>Tanggal Lahir:</strong> ${r['Tanggal Lahir']}</p>
+      <p><strong>Umur:</strong> ${r['Umur']} tahun</p>
+      <hr>
+      <p style="text-align:right;font-size:0.8em;color:#666;">
+        🕒 Generated: ${new Date().toLocaleString()}
+      </p>
+      <button onclick="closePopup()" style="margin-top:14px;padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;">Tutup</button>
+    `;
+    document.getElementById('overlay').style.display = 'block';
+    p.style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
+  }
+
+
+
+document.getElementById("formPaskib").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const url = "https://script.google.com/macros/s/AKfycbyXxXvqZaqIUmx-jp6gks9by0-3pXBtCaEJWuHWZCkFp9Ckp5MNm0Kvu26ttktVKwt68g/exec"; // Ganti URL ini
+
+  fetch(url, {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.text())
+  .then(result => {
+    showNotif("✅ DATA BERHASIL DIKIRIM,jika sudah, mohon jangan mengisi ulang!",);
+    form.reset();
+  })
+  .catch(error => {
+    showNotif("❌ GAGAL MENGIRIM", "Periksa koneksi atau coba lagi", "error");
+  });
+});
+
+</script>
+
+
+<div id="notif" style="display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);
+background:#4ade80;color:#fff;padding:12px 20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);
+z-index:999;font-weight:500;"></div>
+
+</body>
+</html>
