@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>DATA PASKIB 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+
+    body { margin:0; font-family:'Segoe UI',sans-serif; background:#f3f4f6; color:#333 }
+  
+header {
+  background: linear-gradient(to right, rgb(87, 4, 205));
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+    
+    
+.container {
+  margin: 8px 6px;
+  width: 100%;
+  max-width: 600px; /* batasi agar tidak melar */
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  padding-bottom: 120px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+
+
+
+
+    label{ display:block; margin-top:14px; font-weight:500;}
+    input, select, textarea{ width:100%; padding:10px; margin-top:6px; border:1px solid #cbd5e1;
+                              border-radius:8px; font-size:1rem; box-sizing:border-box; }
+    button.submit{ margin-top:24px; width:100%; padding:12px; font-size:1rem; background:#2563eb;
+                   color:#fff; border:none; border-radius:10px; cursor:pointer; transition:0.2s;}
+    button.submit:hover{ background:#1e40af; }
+nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #2563eb;
+  display: flex;
+  justify-content: space-around;
+  padding: 1px 0;
+  font-size: 12px;
+  height: 60px;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4px 0;
+  transition: transform 0.3s ease, background 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+
+}
+
+.nav-icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px; /* jarak antar gambar dan teks */
+}
+
+.icon-img {
+  width: 28px;
+  height: 28px;
+}
+
+.icon-img {
+  filter: brightness(0) invert(1); /* Jadikan ikon putih */
+}
+
+
+
+    .tab{ display:none; }
+    .tab.active{ display:block;}
+    #msg{ margin-top:12px; color:green;}
+    .overlay{ position:fixed;top:0;left:0;right:0;bottom:0;
+              background:rgba(0,0,0,0.5); display:none; z-index:998;}
+ 
+ .popup {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1001;
+  }
+
+  .tutupBtn {
+    margin-top: 10px;
+    background: #dc2626;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+  }
+
+
+
+
+.announcement-box {
+  margin: 24px auto; /* <-- agar di tengah */
+  background-color: #fff8e1;
+  border-left: 6px solid #f59e0b;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 600px;
+  text-align: center; /* <-- isi teks juga tengah */
+}
+
+
+.announcement-box h4 {
+  margin: 0 0 6px;
+  color: #92400e;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.foto-item {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 12px; /* Tambahkan ini */
+  background: #ffffff;
+}
+
+nav button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(198, 17, 17, 0.3);
+}
+
+
+nav button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 4px 10px rgba(198, 17, 17, 0.3);
+}
+
+nav button:hover .icon-img {
+  transform: rotate(5deg) scale(1.1);
+  transition: transform 0.4s ease;
+}
+
+  .foto-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .foto-item {
+    width: 300px;
+    background: #f9fafb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: translateY(0);
+  }
+
+  .foto-item:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  .foto-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .foto-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .foto-caption {
+    padding: 12px;
+    background-color: white;
+  }
+
+  .foto-caption h5 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #111827;
+    transition: color 0.3s ease;
+  }
+
+  .foto-item:hover .foto-caption h5 {
+    color: #2563eb;
+  }
+
+  .foto-caption p {
+    margin: 0;
+    font-size: 13px;
+    color: #4b5563;
+  }
+
+.icon-box {
+  background: rgb(50, 46, 134);
+  width: 60px;
+  height: 60px;
+  padding: 6px;
+  border-radius: 5px; /* bulat sudut */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+  .foto-item:nth-child(1) { animation-delay: 0.1s; }
+  .foto-item:nth-child(2) { animation-delay: 0.2s; }
+  .foto-item:nth-child(3) { animation-delay: 0.3s; }
+  .foto-item:nth-child(4) { animation-delay: 0.4s; }
+  .foto-item:nth-child(5) { animation-delay: 0.5s; }
+  .foto-item:nth-child(6) { animation-delay: 0.6s; }
+  .foto-item:nth-child(7) { animation-delay: 0.7s; }
+  .foto-item:nth-child(8) { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Bisa juga pakai space-between jika ingin logo di kiri, teks di kanan */
+  gap: 12px; /* Jarak antara logo dan teks */
+}
+
+.logo-header {
+  height: 80px;
+  width: auto;
+  border-radius: 8px;
+}
+
+  .btn-mini {
+    background-color: #2563eb;
+    color: white;
+    padding: 4px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background 0.3s;
+  }
+  .btn-mini:hover {
+    background-color: #1e40af;
+  }
+
+
+
+  .menu-box {
+    width: 72px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .menu-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+    .menu-box i {
+      font-size: 20px;
+      margin-bottom: 4px;
+      color: #007bff;
+    }
+
+    .menu-box span {
+      font-size: 12px;
+      color: #333;
+    }
+    
+  .menu-container {
+  display: flex;
+  justify-content: flex-start; /* rata kiri */
+  gap: 15px;
+  margin-left: 1px;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+
+/* Tombol lihat prestasi */
+.menu-prestasi {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+.btn-prestasi {
+  background: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+  </style>
+</head>
+<body>
+  <div id="notif" style="
+  display:none;
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#4ade80;
+  color:#fff;
+  padding:12px 20px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  z-index:9999;
+  font-weight:500;
+  text-align:center;
+  max-width:90%;
+"></div>
+
+<header>
+  <div class="header-content">
+    <img src="RI.webp" alt="Logo" class="logo-header">
+    <span>FORUM PASKIBRA KECAMATAN PADANG TUALANG</span>
+  </div>
+</header>
+
+
+<!-- Formulir -->
+<div class="tab active" id="form">
+  <div class="container">
+    <form id="formPaskib">
+      <label>Nama Peserta<input type="text" name="namaPeserta" required></label>
+      <label>Tinggi Badan<input type="number" name="tinggiBadan" required></label>
+      <label>Nomor Peserta<input type="text" name="nomorPeserta" required></label>
+      <label>WhatsApp<input type="text" name="whatsapp" required></label>
+      <label>Nama Pelatih
+        <select name="namapelatih" required>
+          <option value="">-- Pilih Pelatih --</option>
+          <option value="SUTRISNO - ELKY FERNANDA">SUTRISNO-ELKY FERNANDA</option>
+        </select>
+      </label>
+      <label>Angkatan Tahun<input type="number" name="angkatanTahun" required></label>
+      <label>Alamat<input type="text" name="alamat" required></label>
+      <label>Asal Sekolah
+        <select name="asalSekolah" required>
+          <option value="">-- Pilih Sekolah --</option>
+          <option value="SMA NEGERI 1 PADANG TUALANG">SMA NEGERI 1 PADANG TUALANG</option>
+          <option value="SMA PERSIAPAN PADANG TUALANG">SMA PERSIAPAN PADANG TUALANG</option>
+          <option value="SMK PERSIAPAN PADANG TUALANG">SMK PERSIAPAN PADANG TUALANG</option>
+          <option value="TAMAN SISWA PADANG TUALANG">TAMAN SISWA PADANG TUALANG</option>
+        </select>
+      </label>
+      <label>Tanggal Lahir<input type="date" name="tanggalLahir" required></label>
+      <label>Umur<input type="number" name="umur" required></label>
+      <button type="submit" class="submit">Kirim Data</button>
+      <div id="loadingData" style="display:none; text-align:center; margin-top:10px; color:#2563eb;">
+      ⏳ Mengirim data, mohon tunggu...
+</div>
+       <!-- 🔔 PENGUMUMAN DI BAWAH -->
+<div class="announcement-box">
+  <h4>📢 PENGUMUMAN</h4>
+  <p>Mohon pastikan data yang dikirim sudah benar dan hanya sekali kirim.</p>
+</div>
+    </form>
+
+<div id="galeri-postingan"></div>
+
+
+<!-- Copyright -->
+<div style="margin-top: 20px; font-size: 13px; color: #6b7280; text-align: center;">
+  © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
+</div>
+  </div>
+</div>
+
+<!-- Navigasi -->
+<nav>
+  <button id="btn-form" class="active" onclick="switchTab('form')">
+    <div class="icon-box">
+    <div class="nav-icon-text">
+      <img src="exam.png" class="icon-img" alt="Form">
+      <span>Form</span>
+    </div> 
+    </div>
+  </button>
+  <button id="btn-user" onclick="switchTab('user')">
+    <div class="icon-box">
+    <div class="nav-icon-text">
+      <img src="user.png" class="icon-img" alt="User">
+      <span>Postingan</span>
+    </div>
+  </button>
+</nav>
+<!-- User List -->
+  <!-- Box Pemberitahuan -->
+   
+<div class="tab" id="user">
+
+  <!-- ⏳ COUNTDOWN MULAI -->
+<div style="margin: 16px; text-align: center;">
+  <div style="
+    font-size: 10px;
+    font-weight: 600;
+    color: #010202;
+    margin-bottom: 8px;">
+    ⏳ Hitung mundur ke 17 Agustus 2025
+  </div>
+  <div id="countdown" style="
+    font-size: 15px;
+    font-weight: bold;
+    color: #006aff;
+    background: #e0f2fe;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow:
+    -6px 0 12px rgba(37, 99, 235, 0.2),  /* kiri */
+     6px 0 12px rgba(37, 99, 235, 0.2);    /* kanan */
+    transition: all 0.3s ease;">
+    border-left: 6px solid #2563eb;
+    display: inline-block;">
+    🕒 Sedang menghitung...
+  </div>
+</div>
+
+<!-- MENU ICON STYLE -->
+<div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; margin-bottom: 30px; flex-wrap: wrap;">
+
+  <div class="menu-box" onclick="showPopup('sponsor')">
+    <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+      <img src="sponsor.png" style=" width: 32px; height: 32px;" />
+    </div>
+    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Sponsor</div>
+  </div>
+
+  <div class="menu-box" onclick="showPopup('jadwal')">
+    <div style="background: #10b981; border-radius: 12px; padding: 10px;">
+      <img src="jadwal.png" style=" width: 32px; height: 32px;" />
+    </div>
+    <div style="font-size: 12px; margin-top: 6px; color: #166534;">Jadwal</div>
+  </div>
+
+ <div class="menu-box" onclick="showPopup('forum')">
+    <div style="background: #10b981; border-radius: 12px; padding: 10px;">
+      <img src="diskusi.png" style=" width: 32px; height: 32px;" />
+    </div>
+    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Diskusi</div>
+  </div>
+
+  
+
+<!-- Tombol Prestasi ala Sponsor -->
+
+<!-- Tombol Buka Popup -->
+  <div class="menu-box" onclick="document.getElementById('popupPrestasi').style.display ='flex'">
+    <div style="background: #10b981; border-radius: 12px; padding: 10px;">
+      <img src="prestasi.png" style="width: 32px; height: 32px;" />
+    </div>
+    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Prestasi</div>
+  </div>
+
+<!-- Popup Prestasi Fullscreen -->
+<div id="popupPrestasi" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; width: 100vw; height: 100vh; border-radius: 0; display: flex; flex-direction: column; overflow: hidden;">
+
+    <!-- Konten Scrollable -->
+    <div style="padding: 20px; overflow-y: auto; flex: 1;">
+      <h3 style="font-size: 22px; text-align: center; margin-bottom: 20px;">🏆 Daftar Prestasi</h3>
+
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <!-- Prestasi 1 -->
+        <div style="width: 200px; background: #f3f4f6; border-radius: 12px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <img src="RI.webp" alt="Prestasi 1" style="width: 100%; border-radius: 8px;" />
+          <h4 style="margin-top: 10px; font-size: 16px;">Lomba Baris Berbaris</h4>
+          <p style="font-size: 14px;">Tingkat Kabupaten</p>
+          <div style="background: red; color: white; padding: 4px 8px; border-radius: 8px; display: inline-block; margin: 6px 0;">Terbaik</div>
+          <p style="font-size: 13px;">Hadiah: Piala + Sertifikat</p>
+        </div>
+
+        <!-- Prestasi 2 -->
+        <div style="width: 200px; background: #f3f4f6; border-radius: 12px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <img src="RI.webp" alt="Prestasi 2" style="width: 100%; border-radius: 8px;" />
+          <h4 style="margin-top: 10px; font-size: 16px;">PBB Tingkat Kecamatan</h4>
+          <div style="background: red; color: white; padding: 4px 8px; border-radius: 8px; display: inline-block; margin: 6px 0;">Baik</div>
+          <p style="font-size: 14px;">Penampilan Terbaik</p>
+          <p style="font-size: 13px;">Hadiah: Uang Pembinaan</p>
+        </div>
+
+        <!-- Prestasi 3 -->
+        <div style="width: 200px; background: #f3f4f6; border-radius: 12px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <img src="RI.webp" alt="Prestasi 3" style="width: 100%; border-radius: 8px;" />
+          <h4 style="margin-top: 10px; font-size: 16px;">Penghargaan Semangat</h4>
+          <div style="background: red; color: white; padding: 4px 8px; border-radius: 8px; display: inline-block; margin: 6px 0;">Baik</div>
+          <p style="font-size: 14px;">Diberikan oleh Dinas Pendidikan</p>
+          <p style="font-size: 13px;">Hadiah: Sertifikat Penghargaan</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol Tutup Sticky -->
+    <div style="position: sticky; bottom: 0; background: white; border-top: 1px solid #ddd;">
+      <button onclick="document.getElementById('popupPrestasi').style.display='none'"
+        style="width: 100%; background: #0501ff; color: white; padding: 16px 0; border: none; font-size: 16px; cursor: pointer;">
+        Tutup
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="popup-sponsor" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 400px;">
+    <h3 style="margin-bottom: 12px; color: #1e3a8a;">Form Sponsor</h3>
+    
+    <label style="font-size: 14px;">Nama Peserta</label>
+    <input type="text" id="namaPeserta" placeholder="Nama Lengkap" style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+
+    <label style="font-size: 14px;">Nomor WhatsApp</label>
+    <input type="text" id="nomorWa" placeholder="08xxxxxxxxxx" style="width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+
+    <label style="font-size: 14px;">Posisi</label>
+    <input type="text" id="posisi" placeholder="Contoh: Pendukung" style="width: 100%; margin-bottom: 16px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+
+    <button onclick="submitSponsor()" style="background-color: #10b981; color: white; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">Kirim</button>
+    <button onclick="closePopup()" style="margin-left: 10px; background-color: #ef4444; color: white; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer;">Tutup</button>
+  </div>
+</div>
+
+
+
+<!-- OVERLAY POPUP -->
+<div id="popupOverlay" onclick="closePopup()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99;"></div>
+
+<!-- POPUP BOX -->
+<div id="popupBox" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:white;padding:20px 24px;border-radius:10px;z-index:100;
+  width:90%;max-width:500px;max-height:90vh;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.2);">
+  
+  <div id="popupTitle" style="font-weight:600;font-size:16px;margin-bottom:12px;text-align:center;"></div>
+  
+  <div id="popupContent" style="font-size:14px;color:#444;text-align:left;
+    max-height:65vh;overflow-y:auto;white-space:pre-line;line-height:1.6;"></div>
+
+  <button onclick="closePopup()" style="margin-top:16px;background:#dc2626;color:white;
+    padding:8px 16px;border:none;border-radius:6px;cursor:pointer;width:100%;">
+    Tutup
+  </button>
+</div>
+  <!-- PROFIL CALON PASKIBRA PADANG TUALANG -->
+<!-- Tombol untuk buka popup -->
+
+<!-- Popup -->
+<div id="calonOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;" onclick="closeCalonPopup()"></div>
+
+<div id="calonPopup" style="display:none;position:fixed;top:10%;left:50%;transform:translateX(-50%);background:white;padding:20px;border-radius:10px;max-height:80vh;overflow-y:auto;width:90%;max-width:400px;z-index:1001;">
+  <h3 style="margin-top:0;">CALON PASKIBRA TAHUN 2025</h3>
+  <div id="calonContent"></div>
+  <button onclick="closeCalonPopup()" style="margin-top:10px;background:#dc2626;color:white;padding:6px 14px;border:none;border-radius:6px;">Tutup</button>
+</div>
+
+
+<!-- Nama pelatih + calon + purna -->
+<!-- Tombol baris -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+  <!-- Kiri -->
+<div>
+  <button onclick="showPelatihPopup()" style="padding: 4px 10px; background-color: #10b981; color: white; border: none; border-radius: 5px; font-size: 14px; display: flex; align-items: center;width: 100px; gap: 6px;">
+    <img src="RI.webp" style="width:28px; height:29px;" alt="Pelatih">
+    Pelatih
+  </button>
+</div>
+  <!-- Tengah -->
+<div>
+  <button onclick="showCalonPopup()" style="padding: 6px 10px; background-color: #2563eb; color: white; border: none; border-radius: 8px; font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <img src="RI.webp" style="width:28px; height:28px; margin-bottom:4px;" alt="Calon">
+    Calon Paskib 2025
+  </button>
+</div>
+  <!-- Kanan -->
+<div>
+  <button onclick="showPurnaPopup()" style="padding: 4px 10px; background-color: #10b981; color: white; border: none; border-radius: 5px; font-size: 14px; display: flex; align-items: center;width: 100px; gap: 6px; flex-direction: row-reverse;">
+    <img src="RI.webp" style="width:28px; height:29px;" alt="Calon">
+    Purna
+  </button>
+</div>
+</div>
+
+<!-- Overlay popup (1 saja untuk semua) -->
+<div id="popupOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;" onclick="closeAllPopup()"></div>
+
+<!-- ✅ Calon Popup -->
+<div id="calonPopup" style="display:none; position:fixed; inset:0; background-color:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div style="max-width:700px; background:white; padding:20px; border-radius:12px; overflow-y:auto; max-height:80vh;">
+    <h3 style="font-size:18px; margin-bottom:14px; color:#1f2937; display:flex; align-items:center; gap:10px;">
+      <img src="RI.webp" style="width:24px; height:24px;">
+      CALON ANGGOTA PASKIBRA PADANG TUALANG TAHUN 2025
+    </h3>
+    <div id="calonContent"></div>
+    <button onclick="closeAllPopup()" style="margin-top:16px; background-color:#ef4444; color:white; border:none; padding:12px 20px; font-size:14px; font-weight:600; border-radius:8px; cursor:pointer; width:100%; transition:background-color 0.3s ease;">Tutup</button>
+  </div>
+</div>
+
+<!-- ✅ Pelatih Popup -->
+<div id="pelatihPopup" style="display:none; position:fixed; inset:0; background-color:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div style="max-width:700px; background:white; padding:20px; border-radius:12px; overflow-y:auto; max-height:80vh;">
+    <h3 style="font-size:18px; margin-bottom:14px; color:#1f2937; display:flex; align-items:center; gap:10px;">
+      <img src="RI.webp" style="width:50px; height:50px;">
+      PELATIH
+    </h3>
+    <div id="pelatihContent"></div>
+    <button onclick="closeAllPopup()" style="margin-top:16px; background-color:#ef4444; color:white; border:none; padding:12px 20px; font-size:14px; font-weight:600; border-radius:8px; cursor:pointer; width:100%; transition:background-color 0.3s ease;">Tutup</button>
+  </div>
+</div>
+
+<!-- ✅ Purna Popup -->
+<div id="purnaPopup" style="display:none; position:fixed; inset:0; background-color:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div style="max-width:700px; background:white; padding:20px; border-radius:12px; overflow-y:auto; max-height:80vh;">
+    <h3 style="font-size:18px; margin-bottom:14px; color:#1f2937; display:flex; align-items:center; gap:10px;">
+      <img src="RI.webp" style="width:50px; height:50px;">
+      PURNA
+    </h3>
+    <div id="purnaContent"></div>
+    <button onclick="closeAllPopup()" style="margin-top:16px; background-color:#ef4444; color:white; border:none; padding:12px 20px; font-size:14px; font-weight:600; border-radius:8px; cursor:pointer; width:100%; transition:background-color 0.3s ease;">Tutup</button>
+  </div>
+</div>
+
+
+  <!-- ⏳ COUNTDOWN SELESAI -->
+
+  <div class="announcement-box">
+    <h4>📢 PENGUMUMAN</h4>
+    <p>Ingin Berdiri Gagah di Depan Umum Membawa Sang Merah Putih?
+Jadilah bagian dari PASKIBRA 2025 dan harumkan nama sekolah & daerahmu!.</p>
+  </div>
+
+
+<!-- Galeri Foto Dokumentasi -->
+<div id="galeri-postingan" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; padding: 20px;"></div>
+<div style="max-width:100%; width:100%; background:#fff;">
+
+<!-- 🔶 Banner Promosi dengan Animasi -->
+<div 
+  onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 24px rgba(0, 0, 0, 0.2)'"
+  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'"
+  style="
+    background: linear-gradient(to right, #3b82f6, #6366f1); 
+    color: #fff; 
+    padding: 14px; 
+    border-radius: 10px; 
+    margin-bottom: 16px; 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  "
+>
+  <strong style="font-size:16px;">🎖️ "Mau Jadi Bagian dari Pengibar Bendera?"</strong>
+  <p style="margin-top:6px; font-size:14px;">Tanya sekarang & dapatkan ilmu eksklusif bersama Paskibra terbaik!</p>
+
+  <a 
+    href="https://wa.me/6285262972716?text=Halo%20saya%20ingin%20Bertanya%20Tentang%20Paskibra" 
+    target="_blank"
+    onmouseover="this.style.background='#e0e7ff'; this.style.color='#1d4ed8'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 14px rgba(59,130,246,0.3)'"
+    onmouseout="this.style.background='#fff'; this.style.color='#3b82f6'; this.style.transform='scale(1)'; this.style.boxShadow='none'"
+    style="
+      display: inline-block; 
+      margin-top: 12px; 
+      background: #fff; 
+      color: #3b82f6; 
+      padding: 10px 16px; 
+      border-radius: 8px; 
+      font-weight: 600; 
+      text-decoration: none;
+      transition: all 0.3s ease;
+    "
+  >
+    💬 Hubungi via WhatsApp
+  </a>
+</div>
+    
+<h4 style="margin: 0 4PX 20px; padding-top: 8px; text-align:center; font-size:20px; font-weight:600; color:#1f2937;">SEMUA INFORMASI</h4>
+    
+    <div class="foto-grid">
+      <!-- Posting ke-1 -->
+      <div class="foto-item" onclick="showPost('profil-paskib.png', 'Apa itu PASKIBRAKA?', 'Berdasarkan Peraturan Presiden Nomor 51 tahun 2022 tentang Program Paskibraka, pembentukan Paskibraka tidak disiapkan sebatas untuk menaikkan dan menurunkan bendera pusaka pada peringatan Hari Ulang Tahun Kemerdekaan Republik Indonesia, tetapi menjadi suatu program pengkaderan calon pemimpin bangsa yang berkarakter Pancasila. Sistem pembinaan dalam pemusatan pendidikan dan pelatihan terdiri dari pembelajaran aktif ideologi Pancasila dan pemantapan nilai wawasan kebangsaan, pelatihan yang terdiri dari pelatihan kepemimpinan dan pelatihan baris-berbaris, serta pengasuhan untuk membentuk generasi yang tangguh, mandiri, dan berkarakter Pancasila. Dengan pola pembinaan di atas diharapkan dapat meningkatkan pengetahuan dan pemahaman mengenai kebangsaan. Dengan demikian, para Paskibraka siap menjadi calon pemimpin bangsa masa depan yang memiliki jiwa nasionalisme dan berjiwa Pancasila.')">
+        <img src="profil-paskib.png" alt="Upacara">
+        <div class="foto-caption">
+          <h5>Apa itu PASKIBRAKA?</h5>
+          <p>Berdasarkan Peraturan Presiden Nomor 51 tahun 2022 tentang Program Paskibraka, pembentukan...</p>
+        </div>
+      </div>
+
+    <div class="foto-item" onclick="showPost('RI.webp', 'Sejarah PASKIBRAKA ?', 'Husein Mutahar, pendiri Paskibraka Gagasan Paskibraka lahir pada tahun 1946, pada saat ibu kota Indonesia dipindahkan ke Yogyakarta. Memperingati HUT Proklamasi Kemerdekaan RI yang ke-1, Presiden Soekarno memerintahkan salah satu ajudannya, Mayor (Laut) Husein Mutahar, untuk menyiapkan pengibaran bendera pusaka di halaman Istana Gedung Agung Yogyakarta. Pada saat itulah, di benak Mutahar terlintas suatu gagasan bahwa sebaiknya pengibaran bendera pusaka dilakukan oleh para pemuda dari seluruh penjuru Tanah Air, karena mereka adalah generasi penerus perjuangan bangsa yang bertugas. Tetapi, karena gagasan itu tidak mungkin terlaksana, maka Mutahar hanya bisa menghadirkan lima orang pemuda (3 putra dan 2 putri) yang berasal dari berbagai daerah dan kebetulan sedang berada di Yogyakarta, salah satunya Siti Dewi Sutan Assin. Lima orang tersebut melambangkan Pancasila. Sejak itu, sampai tahun 1949, pengibaran bendera di Yogyakarta tetap dilaksanakan dengan cara yang sama..')">
+      <img src="jadwal-paskib.png" alt="Latihan">
+      <div class="foto-caption">
+        <h5>Sejarah PASKIBRAKA ?</h5>
+        <p>Husein Mutahar, pendiri Paskibraka Gagasan Paskibraka lahir pada tahun 1946, pada saat...</p>
+      </div>
+    </div>
+<div id="fotoPencipta" class="foto-item">
+  <img src="pencipta.jpeg" alt="Latihan">
+  <div class="foto-caption">
+    <h5>Bapak Paskibraka Indonesia</h5>
+    <p>Jakarta - Bapak Paskibraka Indonesia adalah Husein Mutahar..</p>
+  </div>
+</div>
+
+<div id="fatmawati" class="foto-item">
+  <img src="fatmawati.webp" alt="Latihan">
+  <div class="foto-caption">
+    <h5>Sosok Fatmawati, Penjahit Bendera Merah Putih</h5>
+    <p>Salah satu sosok penting dalam sejarah Proklamasi Kemerdekaan Republik Indonesia adalah Fatmawati...</p>
+  </div>
+</div>
+
+       <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
+      <img src="RI.webp" alt="Latihan">
+      <div class="foto-caption">
+        <h5>Pemeriksaan Kesehatan Calon Anggota Paskibra Padang Tualang 2025</h5>
+        <p><p>Padang Tualang, 14 Juli 2025<p> —
+Hari ini menjadi momen penting dalam proses pembinaan calon anggota Paskibra Kecamatan Padang Tualang. Bertempat di aula kegiatan, seluruh peserta menjalani pemeriksaan kesehatan menyeluruh sebagai bagian dari tahap seleksi dan kesiapan fisik.
+Kegiatan ini dipandu langsung oleh...</p>
+      </div>
+    </div>
+    
+       <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
+      <img src="RI.webp" alt="Latihan">
+      <div class="foto-caption">
+        <h5>Pemeriksaan Kesehatan Calon Anggota Paskibra Padang Tualang 2025</h5>
+        <p><p>Padang Tualang, 14 Juli 2025<p> —
+Hari ini menjadi momen penting dalam proses pembinaan calon anggota Paskibra Kecamatan Padang Tualang. Bertempat di aula kegiatan, seluruh peserta menjalani pemeriksaan kesehatan menyeluruh sebagai bagian dari tahap seleksi dan kesiapan fisik.
+Kegiatan ini dipandu langsung oleh tim tenaga medis dari Puskesmas Tanjung Selamat, yang dipimpin oleh para ibu-ibu petugas kesehatan yang ramah, sigap, dan penuh dedikasi. Pemeriksaan meliputi tekanan darah, tinggi badan, berat badan, kondisi umum fisik, serta evaluasi kebugaran peserta.
+Kami ucapkan terima kasih yang sebesar-besarnya kepada ibu-ibu tim medis dari Puskesmas Tanjung Selamat, yang telah memberikan waktu, tenaga, dan perhatian sepenuh hati kepada generasi muda calon pengibar bendera tahun ini. Semangat dan kepedulian kalian adalah contoh nyata pengabdian tanpa pamrih.
+Tak lupa, kami juga menyampaikan apresiasi dan rasa hormat kepada Bapak Camat Padang Tualang, yang terus mendukung penuh kegiatan pembinaan Paskibra sebagai bagian dari pembentukan karakter pemuda berjiwa nasionalis dan disiplin tinggi.
+
+Semoga semangat kebersamaan dan gotong royong ini terus mengiringi langkah Paskibra Kecamatan Padang Tualang menuju 17 Agustus 2025 dengan penuh kebanggaan dan semangat merah putih.</p>.</p>
+      </div>
+    </div>
+
+       <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
+      <img src="RI.webp" alt="Latihan">
+      <div class="foto-caption">
+        <h5>Latihan Baris</h5>
+        <p>Kegiatan latihan baris-berbaris intensif.</p>
+      </div>
+    </div>
+
+       <div class="foto-item" onclick="showPost('RI.webp', 'Latihan Baris', 'Kegiatan latihan baris-berbaris intensif.')">
+      <img src="RI.webp" alt="Latihan">
+      <div class="foto-caption">
+        <h5>Latihan Baris</h5>
+        <p>Kegiatan latihan baris-berbaris intensif.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Footer Box -->
+<div style="
+  background-color: #f3f4f6;
+  padding: 20px;
+  margin: 30px auto 0;
+  border-top: 2px solid #e5e7eb;
+  border-radius: 12px 12px 0 0;
+  max-width: 600px;
+  text-align: center;
+  font-family: sans-serif;
+">
+
+
+
+
+
+<h4 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827; text-align: center;">
+  📍 Informasi Penting
+</h4>
+<!-- Lokasi Pengibaran Stepper -->
+<div style="margin-top: 30px; text-align: center;">
+
+  <!-- Tombol Lokasi Pengibaran dalam Box -->
+  <div onclick="toggleLokasi()" style="display: inline-block; padding: 12px 20px; border: 2px solid #2563eb; border-radius: 10px; background-color: #eff6ff; cursor: pointer; color: #2563eb; font-size: 15px; font-weight: 500; transition: all 0.3s;">
+    📌 Lokasi Pengibaran <span id="arrowLokasi">▼</span>
+  </div>
+
+  <!-- Daftar Lokasi -->
+  <div id="lokasiList" style="display: none; position: relative; padding-left: 20px; border-left: 3px dashed #cbd5e1; max-width: 300px; margin: 20px auto 0 auto; text-align: left;">
+    <div class="lokasi-step">Lapangan Karang Sari</div>
+    <div class="lokasi-step">Lapangan Parit Rimo</div>
+    <div class="lokasi-step">Lapangan Rumah Sakit</div>
+    <div class="lokasi-step">Lapangan Pondok Bengkok</div>
+    <div class="lokasi-step">Lapangan Sidobangun</div>
+
+    <!-- PRIORITAS -->
+    <button onclick="" 
+    style="display:block; 
+    margin-bottom:8px; 
+    background:#1e40af; 
+    color:white; 
+    border:none; 
+    padding:10px 14px; 
+    border-radius:6px; 
+    width:100%; 
+    text-align:left;">
+      Lapangan Sidomukti
+      <span style="background:gold; color:#111; font-size:12px; padding:2px 6px; border-radius:4px; margin-left:10px; cursor: pointer;">
+        TAHUN 2025
+      </span>
+    </button>
+  </div>
+</div>
+
+
+<div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 8px;">
+  <!-- Kontak -->
+  <div style="flex: 1; height: 100px; min-width: 90px; max-width: 200px; background: #d7dce1; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px;">
+    <h5 style="font-size: 15px; margin-bottom: 8px;">📞 Kontak</h5>
+    <p style="margin: 0; color: #4b5563;">0852-6297-2716</p>
+    <p style="margin: 0; color: #4b5563;">0878-****-3344</p>
+  </div>
+
+  <!-- Email -->
+  <div style="flex: 1; min-width: 250px; max-width: 200px; background: #d7dce1; border: 1px solid #e5e7eb; border-radius: 12px; padding: 8px;">
+    <h5 style="font-size: 15px; margin-bottom: 8px;">✉️ Email</h5>
+    <p style="margin: 0; color: #4b5563;">paskibra2025@</p>
+    <p style="margin: 0; color: #4b5563;">admin@paskibra.id</p>
+  </div>
+</div>
+  <!-- Copyright -->
+  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
+    © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
+  </div>
+</div>
+  <!-- Copyright -->
+  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
+    © 2025 Paskibra Padang Tualang. All rights @ilhamkrt.
+  </div>
+</div>
+
+  <!-- Copyright -->
+  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
+    © 2025
+  </div>
+</div>
+
+
+<!-- Pop Up -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup"></div>
+
+
+<!-- ✅ Pop Up Postingan (tambahkan di sini) -->
+<div class="overlay" id="overlayPost"></div>
+<div class="popup" id="popupPost"></div>
+
+
+<script>
+
+
+  let users = [];
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + tab).classList.add('active');
+
+      // ⏳ Aktifkan countdown hanya kalau tab user dibuka
+  if (tab === 'user') {
+    updateCountdown(); // langsung update
+    if (!window.countdownInterval) {
+      window.countdownInterval = setInterval(updateCountdown, 1000);
+    }
+  }
+}
+
+const calonList = [
+  {
+    nama: "Nur Kus intan sari",
+    sekolah: "SMAS PERSIAPAN 2 PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+  {
+    nama: "Azriel Al Syahputra",
+    sekolah: "SMAN 1 PATUL",
+    foto: "paskib cewek.jpg"
+  },
+  {
+    nama: "keisya amansyah",
+    sekolah: ":SMAN 1 PATUL",
+    foto: "paskib cowok.png.jpg"
+  },
+  {
+    nama: "nazwa asifa",
+    sekolah: "SMAN 1 PATUL",
+    foto: "paskib cewek.jpg"
+  },
+  {
+    nama: "syfa humairoh",
+    sekolah: "SMAS PERSIAPAN 2 PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "leisya danin",
+    sekolah: "SMAN 1 PATUL",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Afira El Abidah",
+    sekolah: "SMAS PERSIAPAN 2 PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "inka setianti br ginting",
+    sekolah: "TAMAN SISWA PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Joeny Kinanti",
+    sekolah: "SMAN 1 PATUL",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: " Jannah Amelya BR Nst",
+    sekolah: "SMAS PERSIAPAN 2 PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Daris elbiansyah putra",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "dedek elma tiana br Tarigan",
+    sekolah: "TAMAN SISWA PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Yencho anandhio",
+    sekolah: "SMAN 1  PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Dinda Agustin",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Muhammad Danu",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Nicky Vertika",
+    sekolah: "SMAN 1  PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Muhammad Zidan",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "zulvira jesicca indri",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Muhammad Khaliq",
+    sekolah: "TAMAN SISWA PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Deni aldino",
+    sekolah: "TAMAN SISWA PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Ferdita Amanda",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Anggi safira",
+    sekolah: "TAMAN SISWA PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Rafi Ardiansyah",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "abdi triya al-huda",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Yuda novrian",
+    sekolah: "TAMANSISWA PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Dona Afrilia",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Annisa Pratiwi",
+    sekolah: "SMAN 1  PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Ardiansyah ramadan ",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Dian Aldo Farel Harianja",
+    sekolah: "TAMANSISWA PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Erik",
+    sekolah: "SMAN 1  PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Nur Hasanah Lubis",
+    sekolah: "SMAN 1 PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Muhammad Fitriawan",
+    sekolah: "SMAN 1 PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: " sunao amalya affrulina",
+    sekolah: "SMAS PERSIAPAN 2 PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "alief amalfi",
+    sekolah: "SMAN 1 PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "Intan Nuraini",
+    sekolah: "SMAN 1 PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Fadly elsendi Ginting",
+    sekolah: "SMK PERSIAPAN PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: "rindi moza Ramadhani",
+    sekolah: "TAMANSISWA PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "Dimas seto",
+    sekolah: "SMAN 1 PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+    {
+    nama: ":Resa Dwi Arumi",
+    sekolah: "TAMANSISWA PADANG TUALANG",
+    foto: "paskib cewek.jpg"
+  },
+    {
+    nama: "M.H.D.FAHRIZA",
+    sekolah: "TAMANSISWA PADANG TUALANG",
+    foto: "paskib cowok.png.jpg"
+  },
+
+  
+];
+
+function showCalonPopup() {
+  document.getElementById("calonOverlay").style.display = "block";
+  document.getElementById("calonPopup").style.display = "block";
+
+const html = calonList.map((item, index) => {
+  const no = index + 1;
+  const isLast = no === 40;
+
+  return `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      
+      <!-- Nomor -->
+      <div style="min-width:34px;padding:6px 10px;background:#e0f2fe;border-radius:6px;font-weight:600;color:#2563eb;text-align:center;">
+        ${no}${isLast ? ' 🔁' : ''}
+      </div>
+
+      <!-- Foto -->
+      <img src="${item.foto}" style="width:48px;height:48px;border-radius:50%;border:2px solid #2563eb;">
+
+      <!-- Box gabungan nama + sekolah -->
+      <div style="background:#f1f5f9;padding:8px 12px;border-radius:8px;flex:1;">
+        <div style="font-weight:600;color:#1e3a8a;font-size:14px;margin-bottom:4px;">${item.nama}</div>
+        <div style="font-size:13px;color:#4b5563;">${item.sekolah}</div>
+      </div>
+
+    </div>
+  `;
+}).join("");
+
+  document.getElementById("calonContent").innerHTML = html;
+}
+
+  function closeCalonPopup() {
+    document.getElementById("calonOverlay").style.display = "none";
+    document.getElementById("calonPopup").style.display = "none";
+  }
+  
+
+
+   // DAFTAR PELATIH (dengan gambar offline)
+const pelatihList = [
+  {
+    nama: "---SUTRISNO---",
+    sekolah: "Pelatih Utama A",
+    prioritas: true,
+    foto: "elky.png"
+  },
+  {
+    nama: "ELKY FERNANDA",
+    sekolah: "Pelatih Utama B",
+    prioritas: true,
+    foto: "elky.png"
+  }
+];
+
+  // DAFTAR PURNA (dengan gambar offline)
+  const purnaList = [
+    { nama: "ILHAM KURNIANTO",
+      prioritas: true, 
+      sekolah: "LAKI-LAKI", 
+      foto: "kami.png" },
+    { nama: "IHSAN MAULANA AZIZI",
+      prioritas: true, 
+      sekolah: "LAKI-LAKI", 
+      foto: "kami.png" },
+    { nama: "MIRA ADELIA",
+      prioritas: true, 
+      sekolah: "PEREMPUAN", 
+      foto: "mira (1).png" },
+  ];
+
+function showPelatihPopup() {
+  document.getElementById("popupOverlay").style.display = "block";
+  document.getElementById("pelatihPopup").style.display = "block";
+
+  const html = pelatihList.map((item, index) => `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <!-- Nomor -->
+      <div style="min-width:34px;padding:6px 10px;background:#dbeafe;border-radius:6px;font-weight:600;color:#2563eb;text-align:center;">
+        ${index + 1}
+      </div>
+
+      <!-- Foto -->
+      <img src="${item.foto}" style="width:48px;height:48px;border-radius:50%;border:2px solid #2563eb;">
+
+      <!-- Box gabungan nama + sekolah -->
+      <div style="background:#f1f5f9;padding:8px 12px;border-radius:8px;flex:1;">
+        <div style="font-weight:600;color:#1e3a8a;font-size:14px;margin-bottom:4px;">
+          ${item.nama}
+          ${item.prioritas ? '<span style="background:#ef4444;color:white;font-size:12px;padding:2px 6px;border-radius:4px;margin-left:6px;">Prioritas</span>' : ''}
+        </div>
+        <div style="font-size:13px;color:#4b5563;">${item.sekolah}</div>
+      </div>
+    </div>
+  `).join("");
+
+  document.getElementById("pelatihContent").innerHTML = html;
+}
+
+function showPurnaPopup() {
+  document.getElementById("popupOverlay").style.display = "block";
+  document.getElementById("purnaPopup").style.display = "block";
+
+  const html = purnaList.map((item, index) => `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <!-- Nomor -->
+      <div style="min-width:34px;padding:6px 10px;background:#fef3c7;border-radius:6px;font-weight:600;color:#92400e;text-align:center;">
+        ${index + 1}
+      </div>
+
+      <!-- Foto -->
+      <img src="${item.foto}" style="width:48px;height:48px;border-radius:50%;border:2px solid #f59e0b;">
+
+      <!-- Box gabungan nama + sekolah -->
+      <div style="background:#4b5f6c;padding:8px 12px;border-radius:8px;flex:1;">
+        <div style="font-weight:600;color:#ffffff;font-size:14px;margin-bottom:4px;">
+          ${item.nama}
+          ${item.prioritas ? '<span style="background:#FFD700;color:#000;padding:2px 6px;margin-left:6px;font-size:12px;border-radius:4px;">Prioritas</span>' : ''}
+        </div>
+        <div style="font-size:13px;color:#ffffff;">${item.sekolah}</div>
+      </div>
+    </div>
+  `).join("");
+
+  document.getElementById("purnaContent").innerHTML = html;
+}
+
+function closeAllPopup() {
+  document.getElementById("popupOverlay").style.display = "none";
+  document.getElementById("calonPopup").style.display = "none";
+  document.getElementById("pelatihPopup").style.display = "none";
+  document.getElementById("purnaPopup").style.display = "none";
+}
+  
+
+    function showPost(img, judul, deskripsi) {
+    const popup = document.getElementById('popupPost');
+    popup.innerHTML = `
+      <h3 style="margin-bottom:12px;">(KRT) ${judul}</h3>
+      <img src="${img}" style="width:100%;border-radius:10px;object-fit:cover;margin-bottom:12px;" />
+      <p style="font-size:14px;color:#444;">${deskripsi}</p>
+      <button onclick="closePost()" style="margin-top:14px;padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;">Tutup</button>
+    `;
+    document.getElementById('overlayPost').style.display = 'block';
+    popup.style.display = 'block';
+  }
+
+  function closePost() {
+    document.getElementById('overlayPost').style.display = 'none';
+    document.getElementById('popupPost').style.display = 'none';
+  }
+
+function showNotif(judul, deskripsi = "") {
+  const notif = document.getElementById("notif");
+  const isFormActive = document.getElementById("form").classList.contains("active");
+
+  if (!notif || !isFormActive) return;
+
+  notif.innerHTML = `
+    <div style="font-size:16px; font-weight:600;">${judul}</div>
+    <div style="font-size:14px; margin-top:4px;">${deskripsi}</div>
+  `;
+  notif.style.display = "block";
+
+  setTimeout(() => {
+    notif.style.display = "none";
+  }, 10000);
+}
+
+
+  function loadUsers() {
+    google.script.run.withSuccessHandler(data => {
+      if (!Array.isArray(data)) {
+        console.error('Data yang diterima bukan array:', data);
+        document.getElementById('userList').innerHTML = "❌ Kalau Udah isi jangan di isi lagi!!!";
+        return;
+      }
+      users = data;
+      renderList('');
+    }).getAllData();
+  }
+
+
+// ← DATTTTAAA BASEE SHEETTT------------------------------------------DATABASE SHEET----------------------
+
+  function showPopup(r) {
+    const p = document.getElementById('popup');
+    p.innerHTML = `
+      <h3 style="margin-bottom:12px;">📄 Detail Peserta</h3>
+      <p><strong>Nama Peserta:</strong> ${r['Nama Peserta']}</p>
+      <p><strong>Tinggi Badan:</strong> ${r['Tinggi Badan']} cm</p>
+      <p><strong>Nomor Peserta:</strong> ${r['Nomor Peserta']}</p>
+      <p><strong>WhatsApp:</strong> ${r['WhatsApp']}</p>
+      <p><strong>Nama Pelatih:</strong> ${r['Nama Pelatih']}</p>
+      <p><strong>Angkatan Tahun:</strong> ${r['Angkatan Tahun']}</p>
+      <p><strong>Alamat:</strong> ${r['Alamat']}</p>
+      <p><strong>Asal Sekolah:</strong> ${r['Asal Sekolah']}</p>
+      <p><strong>Tanggal Lahir:</strong> ${r['Tanggal Lahir']}</p>
+      <p><strong>Umur:</strong> ${r['Umur']} tahun</p>
+      <hr>
+      <p style="text-align:right;font-size:0.8em;color:#666;">
+        🕒 Generated: ${new Date().toLocaleString()}
+      </p>
+      <button onclick="closePopup()" style="margin-top:14px;padding:10px 18px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer;">Tutup</button>
+    `;
+    document.getElementById('overlay').style.display = 'block';
+    p.style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
+  }
+
+
+
+document.getElementById("formPaskib").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const url = "https://script.google.com/macros/s/AKfycbyXxXvqZaqIUmx-jp6gks9by0-3pXBtCaEJWuHWZCkFp9Ckp5MNm0Kvu26ttktVKwt68g/exec"; // Ganti URL ini
+
+loadingData.style.display = "block"; // Tampilkan loading
+
+  fetch(url, {
+    method: "POST",
+    body: formData
+  })
+.then(response => response.text())
+.then(result => {
+   loadingData.style.display = "none"; // Sembunyikan loading
+  showNotif("✅ DATA BERHASIL DIKIRIM", "Jika sudah, mohon jangan mengisi ulang.");
+  form.reset();
+})
+.catch(error => {
+   loadingData.style.display = "none"; // Sembunyikan loading
+  showNotif("❌ GAGAL MENGIRIM", "Periksa koneksi atau coba lagi.");
+});
+});
+
+// ← DATTTTAAA BASEE SHEETTT------------------------------------------DATABASE SHEET----------------------
+
+
+
+
+  // pencipta postingan ke 3
+  document.getElementById('fotoPencipta').onclick = function() {
+    const deskripsi = `
+Jakarta - Bapak Paskibraka Indonesia adalah Husein Mutahar. Beliau merupakan sosok di balik sejarah berdirinya Pasukan Pengibar Bendera Pusaka (Paskibraka) di Indonesia. Sosoknya juga banyak menciptakan lagu bertemakan perjuangan dan kemerdekaan.
+Berikut informasi terkait sosok Husein Mutahar dan sejarahnya hingga dikenal sebagai sosok Bapak Paskibraka di Indonesia:
+
+Sosok Bapak Paskibraka
+Mengutip dari laman resmi Paskibraka BPIP, Husein Mutahar merupakan seorang ajudan kepercayaan Presiden Soekarno yang saat itu berpangkat Mayor (Laut). Mutahar menyampaikan gagasannya untuk mengadakan pengibaran bendera pusaka oleh para pemuda/i dari seluruh penjuru Tanah Air.
+
+Gagasan tersebut disampaikan Mutahar saat ditugaskan untuk mempersiapkan peringatan detik-detik proklamasi yang pertama pada tahun 1947. Mengutip dari laman resmi Portal Informasi Indonesia, kala itu, kota Yogyakarta dijadikan sebagai lokasi pelaksanaan upacara bendera 17 Agustus, karena situasi Jakarta masih belum aman <p>Sejarah Paskibraka Indonesia
+Pada saat itu, Presiden Soekarno memerintahkan Husein Mutahar untuk menyusun rangkaian upacara pengibaran bendera peringatan Hari Kemerdekaan Indonesia pada tanggal 17 Agustus 1946. Mutahar pun menyampaikan gagasan bahwa sebaiknya pengibaran bendera pusaka dilakukan oleh para pemuda dan pemudi dari seluruh Indonesia.
+Namun, karena situasi yang tidak ideal kala itu, membuat gagasannya tersebut sulit untuk diwujudkan. Sebagai gantinya, Mutahar menunjuk 5 anak muda di Yogyakarta, yang terdiri dari 2 pemuda dan 3 pemudi sebagai petugas pengibaran bendera merah putih.
+Menurut Mutahar, kelima anak muda yang bertugas sebagai pengibar bendera pusaka itu merepresentasikan 5 sila dalam Pancasila. Mutahar juga mendesain sendiri seragam upacara yang terinspirasi dari pakaian Presiden Soekarno yang kerap mengenakan jas bergaya militer.
+Kesuksesan upacara pengibaran bendera pun mengantarkan Husein Mutahar menjadi sosok yang dikenal sebagai Bapak Paskibraka. Sejak itu sampai tahun 1949, pengibaran bendera di Yogyakarta tetap dilaksanakan dengan cara yang sama
+Kemudian pada tahun 1967, Husein Mutahar dipanggil oleh Presiden Soeharto untuk menangani pengibaran bendera pusaka dalam rangka memperingati Hari Kemerdekaan. Mutahar pun mengembangkan kembali formasi pasukan pengibaran bendera menjadi 3 kelompok yang dinamai sesuai jumlah anggotanya, yaitu:
+Pasukan 17: Pengiring (pemandu)
+Pasukan 8: Pembawa bendera (inti)
+Pasukan 45 : Pengawal
+Jumlah pasukan tersebut merepresentasikan tanggal Proklamasi Kemerdekaan RI, 17 Agustus 1945 (17-8-45). Pada saat itu dengan situasi kondisi yang ada, Mutahar hanya melibatkan pemuda di Jakarta yang menjadi anggota Pandu/Pramuka untuk melaksanakan tugas pengibaran bendera pusaka.
+Baca juga Sosok Pencipta Lagu 17 Agustus 'Hari Merdeka' dan Sejarah Lagunya
+Biografi Husein Mutaha Husein Mutahar sendiri merupakan pria kelahiran Semarang pada tanggal 5 Agustus 1916. Mengutip dari laman resmi Dinas Kebudayaan Jakarta, Mutahar mengenyam pendidikan di Fakultas Hukum Universitas Gadjah Mada (1946-1947), setelah tamat MULO B (1934) dan AMS A I (1938).
+Pada tahun 1945, Mutahar bekerja sebagai Sekretaris Panglima Angkatan Laut RI di Yogyakarta. Kemudian menjadi pegawai tinggi Sekretariat Negara di Yogyakarta (1947). Jabatan terakhirnya adalah sebagai Penjabat Sekretaris Jenderal Departemen Luar Negeri (1974), setelah dipercaya sebagai Duta Besar RI di Vatikan (1969-1973).
+Sebagai pemuda pejuang, Husein Mutahar juga pernah terlibat dalam pasukan "Pertempuran Lima Hari" di Semarang. Ketika pindah ke Yogyakarta, Mutahar diajak Laksamana Muda Mohammad Nazir. Kemudian Mutahar mendapat kesempatan untuk dijadikan sebagai ajudan Presiden Soekarno, dengan pangkat mayor.
+Sebagai pencipta lagu, Husein Mutahar menciptakan lagu Syukur pada tahun 1944. Kemudian ada juga lagu Hari Merdeka yang hingga kini masih dikumandangkan pada Hari Kemerdekaan. Lagu-lagu ciptaannya hampir mencapai seratus. Karya-karya terakhirnya, antara lain, adalah Dirgahayu Indonesia, Himne Universitas Indonesia, dan beberapa himne yang lahir dari keprihatinannya atas kehancuran alam Indonesia.
+Husein Mutahar juga pernah menerima tanda jasa Bintang Gerilya dan Bintang Mahaputra, serta tanda kemahiran Pramuka sebagai pembina bertaraf internasional. (wia/imk)<p>.”.
+    `;
+    
+    showPost('pencipta.jpeg', 'Bapak Paskibraka Indonesia', deskripsi);
+  };
+
+    // pencipta postingan ke 4
+  document.getElementById('fatmawati').onclick = function() {
+    const deskripsi = `
+Salah satu sosok penting dalam sejarah Proklamasi Kemerdekaan Republik Indonesia adalah Fatmawati. Berkat keuletan tangannya, Merah Putih berkibar di Jalan Pegangsaan Timur No. 56, Jakarta
+Di tengah kondisi yang sedang hamil tua, Fatmawati dengan penuh keikhlasan menjahit bendera merah putih. Tidak jarang, di tengah aktifitas menjahit itu, ia menitikkan air mata.
+Pada saat itu, Fatmwati tengah mengandung putra sulungnya, Guntur Soekarnoputra.
+“Menjelang kelahiran Guntur, ketika usia kandungan telah mencukupi bulannya, saya paksakan diri menjahit bendera Merah Putih, saya jahit berangsur-angsur dengan mesin jahit Singer yang dijalankan dengan tangan saja, sebab Dokter melarang saya menggunakan kaki untuk menggerakkan mesin jahit,” Fatmawati sebagaimana yang ditulis oleh Bondan Winarno dalam buku Berkibarlah Benderaku Tradisi Pengibaran Bendera Pusaka.
+Kehidupan Awal
+Fatmawati lahir pada 5 Februari 1923 di Bengkulu. Ayahnya Bernama Hasan Din, merupakan salah seorang pengusaha dan tokoh Muhammadiyah di Bengkulu. Sementara ibunya Bernama Siti Chadijah merupakan keturunan Kerajaan Indrapura.
+Mengutip dari Kompas.com, Hasan Din sebenarnya menyiapkan dua nama untuk Fatmawati. Nama pertama, Fatmawati, artinya bunga teratai yang harum. Sementara nama kedua adalah Siti Zubaidah.
+Pada akhirnya, Fatmawati dipilih untuk nama anak pertama Hassan Din.
+Pada usia enam tahun Fatmawati belajar di Sekolah Rakyat, kemudian melanjutkan ke sekolah dasar berbahasa Belanda, Hollandsch – Inlandsche School (HIS).
+Status ayahnya yang pernah menjadi pegawai pemerintah kolonial, memungkinkan Fatmawati melanjutkan sekolah di HIS.
+Sedari kecil, Fatmawati hidup dengan tradisi keagamaan yang kuat. Selain belajar agama dan mengaji, ia juga aktif di Nasyiatul Aisyiyah, sebuah organisasi remaja putri yang berada di bawah naungan Muhammadiyah.
+<h3>Pertemuan dengan Sukarano<h3>
+
+<p><h7>Dijelaskan oleh Agus Setiyanto, Sejarawan dari Universitas Bengkulu, pertemuan Fatmawati dengan Sukarno terjadi saat sang Putra Fajar diasingkan di Bengkulu pada tahun 1938-1942.
+Saat itu, Sukarno tidak sendiri, tetapi Bersama Inggit Garnasih, anak angkatnya, Ratna Djuami, dan orang kepercayaan Bung Karno saat diasingkan di Ende, Nusa Tenggara Timur, (1934-1938), yakni Dirham dan Riwu.
+
+Menurut Agus, Sukarno tertarik kepada Fatmawai karena kecerdasannya.
+
+”Walau masih muda, Fatmawati dapat mengimbangi pembicaraan dari Soekarno,” kata Agus.
+
+Fatmawati menikah dengan Sukarno pada tanggal 1 Juni 1943. Dari pernikahan itu, ia dikaruniai lima orang putra dan putri, yaitu Guntur Soekarnoputra, Megawati Soekarnoputri, Rachmawati Soekarnoputri, Sukmawati Soekarnoputri, dan Guruh Soekarnoputra..<h7><p>”.
+    `;
+    showPost('fatmawati.webp', 'jduul', deskripsi);
+  };
+
+// ← SETINGAN HITUNG ------------------------------------------HITUNG MUNDUR-----------------------
+
+function updateCountdown() {
+  console.log("Countdown aktif!"); // ← Tambahan ini untuk cek apakah fungsi jalan
+
+  const countdownEl = document.getElementById("countdown");
+  const eventDate = new Date("2025-08-17T00:00:00+07:00"); // Waktu 17 Agustus WIB
+  const now = new Date();
+
+  const diff = eventDate - now;
+
+  if (diff <= 0) {
+    countdownEl.innerHTML = "🎉 Selamat Hari Kemerdekaan Indonesia!";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+countdownEl.innerHTML = `🕒 ${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+}
+
+  // Jalankan saat halaman dimuat
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+ 
+// ← SETINGAN HITUNG ------------------------------------------HITUNG MUNDUR-----------------------
+
+
+
+
+
+
+
+  function toggleLokasi() {
+    const lokasiList = document.getElementById('lokasiList');
+    const arrow = document.getElementById('arrowLokasi');
+    if (lokasiList.style.display === 'none') {
+      lokasiList.style.display = 'block';
+      arrow.textContent = '▲';
+    } else {
+      lokasiList.style.display = 'none';
+      arrow.textContent = '▼';
+    }
+  }
+
+    function showPopup() {
+    document.getElementById('popupModal').style.display = 'flex';
+  }
+
+
+  function closePopup() {
+    document.getElementById('popupModal').style.display = 'none';
+  }
+
+
+function showPopup(type) {
+  document.getElementById("popupOverlay").style.display = "block";
+  document.getElementById("popupBox").style.display = "block";
+  let title = "Lapangan Sidomukti";
+  let content = `Lapangan Sidomukti merupakan lokasi utama upacara pengibaran bendera tahun 2025. Terletak di kawasan Jalan Tanjung Selamat, Desa Sidomukti,
+lapangan ini dikenal sebagai salah satu fasilitas olahraga yang luas dan strategis 
+di wilayah tersebut.Dikelilingi oleh pemukiman warga dan akses jalan utama,
+ lapangan ini kerap digunakan untuk kegiatan olahraga, upacara sekolah, dan acara kenegaraan. Kondisi lapangan yang datar, terbuka, dan mudah dijangkau menjadikannya pilihan ideal untuk pelaksanaan upacara bendera yang melibatkan peserta dari berbagai sekolah dan instansi.
+
+𝗙𝗮𝘀𝗶𝗹𝗶𝘁𝗮𝘀 𝗣𝗲𝗻𝗱𝘂𝗸𝘂𝗻𝗴:
+Akses jalan kendaraan roda dua & empat
+Area parkir terbuka
+Lokasi dekat dengan fasilitas kesehatan & posko P3K
+Daya tampung lapangan mencapai ±500 peserta
+rapi kan.`;
+
+  if (type === "sponsor") {
+    title = "Langkah Tegap Menuju Masa Depan Gemilang";
+    content = "Bergabunglah bersama PASKIBRA Padang Tualang – tempat lahirnya para pemimpin muda yang berkarakter, berwibawa, dan berprestasi!\n\n" +
+"Kami bukan sekadar barisan tegap dengan seragam merah putih. Kami adalah keluarga besar yang dipenuhi semangat, disiplin, kekompakan, dan jiwa nasionalisme yang tinggi. Setiap langkah kaki dan ayunan tangan adalah cermin dari latihan keras, dedikasi tinggi, dan rasa cinta tanah air yang mendalam.\n\n" +
+"Di sini, kamu akan dibina menjadi pribadi yang lebih tangguh – secara fisik, mental, dan emosional. Pelatihan kami bukan hanya tentang baris-berbaris, tetapi juga tentang kepemimpinan, kerja sama tim, ketepatan waktu, dan loyalitas. Kamu akan belajar menjadi teladan – di sekolah, di lingkungan, bahkan di masa depan.\n\n" +
+"PASKIBRA bukan hanya tentang upacara 17 Agustus. Ini tentang bagaimana kita mempersiapkan generasi muda untuk menjadi sosok yang bertanggung jawab dan bisa diandalkan. Kami hadir untuk membentuk karakter – bukan dengan paksaan, tetapi dengan hati dan keteladanan.\n\n" +
+"Ayo daftarkan dirimu sekarang dan jadilah bagian dari sejarah. Tunjukkan semangatmu, dedikasimu, dan cintamu pada Indonesia lewat barisan yang gagah, langkah yang pasti, dan jiwa yang membara.\n\n" +
+"Bersama PASKIBRA Padang Tualang, mari kita tunjukkan bahwa generasi muda mampu membawa perubahan. Tegap langkahmu, teguh jiwamu, harum namamu.\n\n" +
+"#PASKIBRA2025 #PadangTualang #Disiplin #Semangat #PemimpinMuda";
+  } else if (type === "jadwal") {
+    title = "JADWAL LATIHAN PASKIBRA PADANG TUALANG";
+    content = "HARIAN (Senin – Jumat)\n" +
+"Waktu                | Kegiatan Latihan                 | Keterangan\n" +
+"---------------------|----------------------------------|--------------------------------------------\n" +
+"06.30 – 07.00        | Pemanasan & Senam Pagi           | Latihan kelenturan & kekuatan otot\n" +
+"07.00 – 08.00        | Baris-Berbaris Dasar             | Posisi siaga, hormat, jalan di tempat\n" +
+"08.00 – 08.15        | Istirahat                        | Air minum & snack ringan\n" +
+"08.15 – 09.30        | Latihan Formasi Pengibaran       | Formasi 17-8-45, sinkronisasi gerak\n" +
+"09.30 – 10.30        | Latihan Fisik & Ketahanan Mental | Lari, push-up, sit-up, meditasi fokus\n" +
+"10.30 – 11.00        | Evaluasi & Briefing Harian       | Catatan pelatih & refleksi pribadi\n\n" +
+
+"KHUSUS SABTU (Penguatan Mental & Kepemimpinan)\n" +
+"Waktu                  Kegiatan\n" +
+"---------------------|----------------------------------------\n" +
+"07.00 – 08.30        | Diskusi Kepemimpinan & Disiplin\n" +
+"08.30 – 10.00        | Sharing Alumni & Motivasi\n" +
+"10.00 – 11.30        | Simulasi Pengibaran Bendera";
+  } else if (type === "forum") {
+    title = "FORUM DISKUSI NASIONAL: PASKIBRA & 17 AGUSTUS – JIWA NASIONALISME, DARI MASA KE MASA";
+    content = `TOPIK UTAMA 1: SEJARAH 17 AGUSTUS DAN MAKNA KEMERDEKAAN
+- Bagaimana proses kemerdekaan Indonesia sebenarnya terjadi?
+- Peran Ir. Soekarno dan Drs. Mohammad Hatta dalam pembacaan Proklamasi.
+- Apa yang terjadi setelah proklamasi: Perjuangan mempertahankan kemerdekaan (1945–1949)?
+- Kenapa tanggal 17 Agustus dipilih dan dimuliakan secara nasional?
+- Bagaimana masyarakat dulu memperingati Hari Kemerdekaan?
+
+TOPIK UTAMA 2: LAHIRNYA PASKIBRA DAN PASKIBRAKA
+- Siapa Husein Mutahar dan apa kontribusinya dalam pembentukan Paskibraka?
+- Bagaimana formasi pengibaran bendera dibentuk dan kenapa ada Pasukan 17, 8, dan 45?
+- Apa perbedaan Paskibra, Paskibraka, dan Pasukan Kehormatan lainnya?
+- Evolusi Paskibraka dari awal dibentuk hingga sekarang.
+- Bagaimana perubahan sistem seleksi dan pembinaan Paskibraka dari zaman ke zaman?
+
+TOPIK UTAMA 3: NILAI-NILAI YANG DIJUNJUNG PASKIBRA
+- Disiplin dan kepemimpinan dalam pelatihan Paskibra.
+- Nasionalisme dan cinta tanah air melalui kegiatan Paskibra.
+- Bagaimana Paskibra membentuk karakter generasi muda?
+- Apakah semangat Paskibra masih relevan di era digital sekarang?
+
+TOPIK UTAMA 4: PERINGATAN 17 AGUSTUS DI MASA MODERN
+- Perubahan cara memperingati 17 Agustus dari masa ke masa.
+- Tradisi perlombaan, upacara, dan kegiatan sosial: mana yang paling berdampak?
+- Digitalisasi perayaan kemerdekaan: dari livestream hingga tantangan media sosial – apakah masih bermakna?
+- Bagaimana generasi muda memaknai 17 Agustus dibandingkan generasi sebelumnya?
+
+TOPIK UTAMA 5: TANTANGAN DAN MASA DEPAN PASKIBRA
+- Apa saja tantangan dalam perekrutan dan pelatihan Paskibra saat ini?
+- Bagaimana pemerintah daerah dan sekolah bisa mendukung lebih baik?
+- Perlu atau tidak pembaruan sistem Paskibraka nasional?
+- Masa depan Paskibra: Hanya seremoni atau menjadi agen perubahan sosial?
+
+TOPIK UTAMA 6: CERITA PRIBADI DAN PENGALAMAN
+- Cerita alumni Paskibra: dari latihan keras hingga hari pengibaran.
+- Pengalaman unik saat upacara 17-an di desa, kota, atau luar negeri.
+- Apa arti menjadi bagian dari upacara pengibaran bagi kamu secara pribadi?
+
+TOPIK UTAMA 7: PERAN MEDIA, SEKOLAH DAN KELUARGA
+- Peran sekolah dalam membina Paskibra dan semangat nasionalisme.
+- Perlukah keluarga ikut dilibatkan dalam pendidikan karakter seperti ini?
+- Bagaimana media bisa membingkai kegiatan Paskibra secara lebih positif?
+
+TOPIK UTAMA 8: PENGARUH GLOBALISASI TERHADAP NASIONALISME
+- Apakah semangat nasionalisme makin menurun di era global?
+- Bagaimana menjaga identitas bangsa di tengah arus budaya asing?
+- Apakah kegiatan seperti Paskibra masih menjadi solusi?
+
+TOPIK UTAMA 9: SIMBOL-SIMBOL KEBANGSAAN DAN MAKNA BENDERA
+- Kenapa merah putih menjadi warna bendera kita?
+- Apa makna filosofis pengibaran bendera di tanggal 17 Agustus?
+- Bagaimana cara kita menghormati simbol negara secara benar?
+
+TOPIK UTAMA 10: USUL DAN INOVASI UNTUK GENERASI BARU
+- Inovasi pelatihan Paskibra berbasis teknologi.
+- Ide kreatif untuk merayakan kemerdekaan secara modern tapi tetap bermakna.
+- Apakah kita perlu membentuk komunitas alumni Paskibra aktif?
+
+FORMAT FORUM
+Setiap peserta forum dapat memilih topik yang ingin didiskusikan secara mendalam, kemudian:
+1. Membagikan pendapat pribadi.
+2. Memberikan referensi sejarah atau fakta.
+3. Menanggapi pendapat peserta lain.
+4. Boleh menyisipkan dokumentasi kegiatan atau pengalaman.
+5. Bisa dilakukan secara offline (diskusi kelompok) atau online (Google Meet, Zoom, grup WhatsApp/Telegram).`;
+  }
+
+  document.getElementById("popupTitle").innerText = title;
+  document.getElementById("popupContent").innerText = content;
+  document.getElementById("popupOverlay").style.display = "block";
+  document.getElementById("popupBox").style.display = "block";
+  
+}
+
+function closePopup() {
+  document.getElementById("popupOverlay").style.display = "none";
+  document.getElementById("popupBox").style.display = "none";
+}
+
+
+///POST HALAMAN ADMIN ----------------------------POSS ADMIN---------
+
+ window.onload = function() {
+    fetch("https://script.google.com/macros/s/AKfycbyC0yd30ExJU56N6HgNPKB0RgX_5l9-EugXVW_t13Q2euHnQjJLq_A_RImYap4nZJZ8mw/exec")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("galeri-postingan");
+        data.reverse().forEach(post => {
+          const card = document.createElement("div");
+          card.style.border = "1px solid #ccc";
+          card.style.borderRadius = "8px";
+          card.style.overflow = "hidden";
+          card.style.background = "#fff";
+          card.innerHTML = `
+            <img src="${post.Gambar}" style="width: 100%; height: 200px; object-fit: cover;" />
+            <div style="padding: 10px;">
+              <h4 style="margin: 0 0 8px; font-size: 16px;">${post.Judul}</h4>
+              <p style="margin: 0; font-size: 14px; color: #555;">${post.Deskripsi}</p>
+              <p style="margin: 8px 0 0; font-size: 12px; color: #999;">📅 ${post.Tanggal}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error("Gagal menampilkan postingan:", err);
+        document.getElementById("galeri-postingan").innerHTML = "<p>❌ Gagal memuat postingan</p>";
+      });
+  };
+
+///POST HALAMAN ADMIN ----------------------------POSS ADMIN---------
+
+
+
+
+</script>
+
+
+</body>
+</html>
