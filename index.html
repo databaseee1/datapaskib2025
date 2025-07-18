@@ -8,7 +8,28 @@
   <style>
 
     body { margin:0; font-family:'Segoe UI',sans-serif; background:#f3f4f6; color:#333 }
-  
+ 
+ 
+ 
+ /*-----------------------------------------------------------------------------------*/
+    /* iOS: mencegah popup salin */
+ * {
+    user-select: none;       /* Mencegah seleksi teks */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  body {
+    -webkit-touch-callout: none; /* iOS: mencegah popup salin */
+  }
+/*-----------------------------------------------------------------------------------*/
+
+
+
+
+
+
 
 html, body {
   margin: 0;
@@ -357,6 +378,106 @@ nav button:hover .icon-img {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.menu-kiri, .menu-kanan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.menu-box {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  width: 100px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Responsive untuk mobile */
+  @media (max-width: 600px) {
+    .menu-box {
+      width: 30%;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .menu-box {
+      width: 48%; /* 2 kolom per baris di tablet */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .menu-box {
+      width: 30%; /* 3 kolom per baris di mobile */
+    }
+  }
+
+  .menu-kiri, .menu-kanan {
+    justify-content: center;
+  }
+
+/* BRAND SPON BRAND SPON */ /* BRAND SPON BRAND SPON */ /* BRAND SPON BRAND SPON */
+
+.brandspon-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 150px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.sponsor-item {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #10b981;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: all 0.6s ease;
+  font-weight: bold;
+}
+
+.sponsor1-animate { left: 10px; opacity: 1; }
+.sponsor2-animate { left: 130px; opacity: 1; }
+.sponsor3-animate { left: 250px; opacity: 1; }
+
+.sponsor-final {
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  background-color: transparent;
+  transition: all 0.8s ease-in-out;
+  overflow: hidden;
+}
+
+.sponsor-final-animate {
+  top: 10px;
+  width: 90%;
+  height: 130px;
+  opacity: 1;
+}
+
+
   </style>
 </head>
 <body>
@@ -501,6 +622,7 @@ nav button:hover .icon-img {
 </div>
 
 <!-- MENU ICON STYLE -->
+<div class="menu-grid">
 <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; margin-bottom: 30px; flex-wrap: wrap;">
 
 <!-- Tombol Brand Sponsor -->
@@ -544,15 +666,22 @@ nav button:hover .icon-img {
   </div>
 </div>
 
-
- <div class="menu-box" onclick="showPopup('forum')">
-    <div style="background: #10b981; border-radius: 12px; padding: 10px;">
-      <img src="diskusi.png" style=" width: 32px; height: 32px;" />
-    </div>
-    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Diskusi</div>
+<!--gambar semua orang-->
+ <div class="menu-box" onclick="showPopup('cenditbro')">
+  <div style="background: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="diskusi.png" style="width: 32px; height: 32px;" />
   </div>
-
-  
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Diskusi</div>
+</div>
+<!-- popup gambar semua-->
+<div id="popupCenditbro" style="display: none; position: fixed; top: 0; left: 0; 
+  width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; padding: 20px; border-radius: 12px; position: relative;">
+    <button onclick="closePopupCenditbro()" style="position:absolute; top:10px; right:10px; background:#ef4444; color:white; border:none; padding:5px 10px; border-radius:6px;">Tutup</button>
+    <h3 style="text-align: center; color: #1e40af; margin-bottom: 16px;">Galeri Diskusi</h3>
+    <div id="popupCenditbroContent" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;"></div>
+  </div>
+</div>
 
 
 
@@ -612,7 +741,7 @@ nav button:hover .icon-img {
 
   </div>
 </div>
-
+</div>
 
 
 <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; margin-bottom: 30px; flex-wrap: wrap;">
@@ -633,20 +762,20 @@ nav button:hover .icon-img {
   <div style="font-size: 12px; margin-top: 6px; color: #007651;">Lokasi 17</div>
 </div>
 
-  <!-- Motor -->
-  <div class="menu-box" onclick="showPopup('motor')">
-    <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
-      <img src="logo langkat.png" style="width: 32px; height: 32px;" />
-    </div>
-    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Camat</div>
+<!-- Camat -->
+<div class="menu-box" onclick="showPopupRajacamat()">
+  <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="logo langkat.png" style="width: 32px; height: 32px;" />
   </div>
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Camat</div>
+</div>
 
-<!-- Popup motor -->
-<!-- Popup motor -->
-<div id="popupMotor" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
-  <div style="background:white; border-radius:12px; padding:20px; max-width:400px; width:90%; text-align:center; position:relative;">
-    <span onclick="closePopupMotor()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
-    <div id="popupMotorContent"></div>
+<!-- Popup Rajacamat -->
+<div id="popupRajacamat" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+background: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; z-index: 999;">
+  <div style="background: #fff; padding: 20px; border-radius: 12px; max-width: 90%; max-height: 90%; overflow-y: auto;">
+    <span onclick="closePopupRajacamat()" style="cursor:pointer; float:right; font-size:20px; font-weight:bold;">&times;</span>
+    <div id="popupRajacamatContent"></div>
   </div>
 </div>
 
@@ -655,16 +784,29 @@ nav button:hover .icon-img {
 
 
 
-  <!-- Coffee -->
-  <div class="menu-box" onclick="showPopup('coffee')">
-    <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
-      <img src="fingerprint.png" style="width: 32px; height: 32px;" />
-    </div>
-    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Coffee</div>
+<!-- TOMBOL MENU LIVE CHAT -->
+<div class="menu-box" onclick="showLiveChatPopup()">
+  <div style="background-color: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="cs.png" style="width: 32px; height: 32px;" />
   </div>
-
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Live Chat</div>
 </div>
 
+<!-- POPUP Live Chat -->
+<div id="popup-livechat" class="popup-overlay" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:999; justify-content: center; align-items: center;">
+  <div class="popup-box" style="background: white; padding: 20px; border-radius: 12px; max-width: 320px; width: 90%; box-shadow: 0 8px 20px rgba(0,0,0,0.2); text-align: left; position: relative;">
+    <button onclick="closeLiveChatPopup()" style="position:absolute; top:8px; right:12px; background:none; border:none; font-size:16px;">✖</button>
+
+    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+      <img src="cs.png" alt="Live Chat Icon" style="width: 24px; height: 24px; margin-right: 8px;">
+      <h3 style="font-size: 16px; font-weight: bold; margin: 0;">Live Chat</h3>
+    </div>
+
+    <input type="text" id="liveChatName" placeholder="Nama Kamu" style="width:100%; padding:8px; margin-bottom: 10px; border-radius:6px; border:1px solid #ccc;">
+    <textarea id="liveChatMessage" placeholder="Tulis pesan kamu..." style="width:100%; padding:8px; height:80px; border-radius:6px; border:1px solid #ccc;"></textarea>
+    <button onclick="sendLiveChatToWhatsApp()" style="margin-top:10px; background:#10b981; color:white; padding:10px 16px; border:none; border-radius:6px; width:100%;">Kirim ke WhatsApp</button>
+  </div>
+</div>
 
 <!-- OVERLAY POPUP -->
 <div id="popupOverlay" onclick="closePopup()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99;"></div>
@@ -771,6 +913,16 @@ nav button:hover .icon-img {
 Jadilah bagian dari PASKIBRA 2025 dan harumkan nama sekolah & daerahmu!.</p>
   </div>
 
+  <!-- brand sponsor --> <!-- brand sponsor --> <!-- brand sponsor --> <!-- brand sponsor --> <!-- brand sponsor -->
+<div id="brandspon" class="brandspon-box">
+  <div id="sponsor1" class="sponsor-item">RUMAH</div>
+  <div id="sponsor2" class="sponsor-item">PISANG</div>
+  <div id="sponsor3" class="sponsor-item">AFKAR</div>
+  <div id="sponsor4" class="sponsor-item sponsor-final">
+    
+    <img src="banner80.png" alt="Sponsor Utama" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;" />
+  </div>
+</div>
 
 <!-- Galeri Foto Dokumentasi -->
 <div id="galeri-postingan" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; padding: 20px;"></div>
@@ -1002,6 +1154,21 @@ Keputusan ini bersifat final dan menjadi dasar pelaksanaan seluruh rangkaian keg
 <!-- Footer -->
 <div style="margin-top: 40px; text-align: center; color: #6b7280; font-size: 13px;">
 
+<div style="max-width: 400px; margin: 40px auto; background-color: #f9f9f9; padding: 20px; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
+  <h3 style="margin-bottom: 16px;">📊 Statistik</h3>
+  <div style="display: flex; justify-content: space-around;">
+    <div>
+      <h4 style="margin-bottom: 4px;">👥 Pengunjung</h4>
+      <span id="pengunjung" style="font-size: 20px; font-weight: bold;">0</span>
+    </div>
+    <div>
+      <h4 style="margin-bottom: 4px;">❤️ Suka</h4>
+      <span id="suka" style="font-size: 20px; font-weight: bold;">0</span>
+    </div>
+  </div>
+</div>
+
+
   <!-- Social Media Icons -->
   <div style="margin-bottom: 10px;">
     <a href="https://blank" target="_blank" style="margin: 0 8px;">
@@ -1050,20 +1217,37 @@ Keputusan ini bersifat final dan menjadi dasar pelaksanaan seluruh rangkaian keg
 <script>
 
 
+
+
+
+
+
+
+
+
   let users = [];
 
-  function switchTab(tab) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(tab).classList.add('active');
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-    document.getElementById('btn-' + tab).classList.add('active');
+function switchTab(tabId) {
+  // Sembunyikan semua tab
+  document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
 
-      // ⏳ Aktifkan countdown hanya kalau tab user dibuka
-  if (tab === 'user') {
-    updateCountdown(); // langsung update
-    if (!window.countdownInterval) {
-      window.countdownInterval = setInterval(updateCountdown, 1000);
+  // Tampilkan tab yang dipilih
+  document.getElementById(tabId).classList.add("active");
+
+  // Tandai tombol aktif
+  document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+
+  if (tabId === "form") {
+    document.getElementById("btn-form").classList.add("active");
+    // Scroll ke bagian formulir
+    const formSection = document.querySelector("#form .container");
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" });
     }
+  } else if (tabId === "user") {
+    document.getElementById("btn-user").classList.add("active");
+    // Scroll ke paling atas halaman (misal countdown ada di atas)
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
@@ -1825,38 +2009,35 @@ document.getElementById("preview").innerHTML = `
   }
 }
   ///POP UP CAMAT ----------------------------POP UP camat--------
-  function showPopup(type) {
-    if (type === 'motor') {
-      const content = `
-        <h3 style="margin-bottom: 10px; color: #1e40af;">BAPAK CAMAT & WAKIL CAMAT</h3>
-        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-          <div style="text-align:center;">
-            <img src="camat.jpeg"
-             style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
-            <div style="font-weight:600; margin-top:5px;font-size:10px;">MUHAMMAD IZWANDA SE.Kp.M.SP(PNS)</div>
-            <div style="font-size:6px; color:#1e3a8a;">(Camat)</div>
-          </div>
-          <div style="text-align:center;">
-            <img src="ZUL.jpeg"
-             style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
-            <div style="font-weight:600;font-size:10px; margin-top:5px;">ZULKARNAIN,SE (PNS)</div>
-            <div style="font-size:6px; color:#1e3a8a;">(Wakil Camat</div>
-          </div>
+ function showPopupRajacamat() {
+    const content = `
+      <h3 style="margin-bottom: 10px; color: #1e40af;">BAPAK CAMAT & WAKIL CAMAT</h3>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <img src="camat.jpeg" style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
+          <div style="font-weight:600; margin-top:5px;font-size:10px;">MUHAMMAD IZWANDA SE.Kp.M.SP (PNS)</div>
+          <div style="font-size:6px; color:#1e3a8a;">(Camat)</div>
         </div>
-        <p style="margin-top:15px; font-size:14px; color:#333;">
-          Padang Tualang,
-Sebagai bagian dari upaya memastikan keselamatan dan kelancaran kegiatan, tim motor pengawal disiapkan untuk mengawal perjalanan peserta dari titik kumpul hingga lokasi pengibaran bendera. Tim ini terdiri dari anggota pilihan yang telah melalui proses seleksi ketat, memiliki pengalaman lapangan, serta kendaraan yang aman dan terverifikasi.
-Kami menyampaikan apresiasi setinggi-tingginya kepada Bapak Camat Padang Tualang, yang telah memberikan perhatian penuh terhadap kelancaran kegiatan ini. Dukungan beliau dalam penyediaan dan pengawasan tim pengawal lapangan menjadi bagian penting dari suksesnya rangkaian pelatihan dan pengibaran yang tertib dan aman..
-        </p>
-      `;
-      document.getElementById("popupMotorContent").innerHTML = content;
-      document.getElementById("popupMotor").style.display = "flex";
-    }
+        <div style="text-align:center;">
+          <img src="camat.jpeg" style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
+          <div style="font-weight:600;font-size:10px; margin-top:5px;">ZULKARNAIN,SE (PNS)</div>
+          <div style="font-size:6px; color:#1e3a8a;">(Wakil Camat)</div>
+        </div>
+      </div>
+      <p style="margin-top:15px; font-size:14px; color:#333;">
+        Padang Tualang,<br><br>
+        Sebagai bagian dari upaya memastikan keselamatan dan kelancaran kegiatan, tim motor pengawal disiapkan untuk mengawal perjalanan peserta dari titik kumpul hingga lokasi pengibaran bendera. Tim ini terdiri dari anggota pilihan yang telah melalui proses seleksi ketat, memiliki pengalaman lapangan, serta kendaraan yang aman dan terverifikasi.<br><br>
+        Kami menyampaikan apresiasi setinggi-tingginya kepada Bapak Camat Padang Tualang, yang telah memberikan perhatian penuh terhadap kelancaran kegiatan ini. Dukungan beliau dalam penyediaan dan pengawasan tim pengawal lapangan menjadi bagian penting dari suksesnya rangkaian pelatihan dan pengibaran yang tertib dan aman.
+      </p>
+    `;
+    document.getElementById("popupRajacamatContent").innerHTML = content;
+    document.getElementById("popupRajacamat").style.display = "flex";
   }
 
-  function closePopupMotor() {
-    document.getElementById("popupMotor").style.display = "none";
+  function closePopupRajacamat() {
+    document.getElementById("popupRajacamat").style.display = "none";
   }
+
 
 //// POP UP BRAND SPONSOR ----------------------------POP UP BRAND SPONSOR--------
   function showPopupBrandSponsor() {
@@ -1922,6 +2103,147 @@ Dinyanyikan secara luas setiap peringatan 17 Agustus dan menggugah semangat patr
   function closePopupJadwal2() {
     document.getElementById("popupJadwal2").style.display = "none";
   }
+
+//// JUMLAH SUKA PENGUNJUNG ----------------------------JUMLAH SUKA PENGUNJUNG--------
+  function animateCounter(id, target, duration) {
+    const element = document.getElementById(id);
+    const steps = 50; // Jumlah langkah naik
+    const stepValue = Math.ceil(target / steps); // Nilai naik per langkah
+    const stepTime = Math.floor(duration / steps); // Waktu antar langkah
+
+    let count = 0;
+    const timer = setInterval(() => {
+      count += stepValue;
+      if (count >= target) {
+        count = target;
+        clearInterval(timer);
+      }
+      element.textContent = count.toLocaleString();
+    }, stepTime);
+  }
+
+  // Jumlah target
+  const totalPengunjung = 17000;
+  const totalSuka = 13000;
+
+  // Durasi total (dalam ms)
+  const duration = 4000;
+
+  // Jalankan animasi
+  animateCounter("pengunjung", totalPengunjung, duration);
+  animateCounter("suka", totalSuka, duration);
+
+//// BRAND SPON ----------------------------BRAN SPON--------//// BRAND SPON ----------------------------BRAN SPON--------
+
+  function showBrandspon() {
+    setTimeout(() => {
+      document.getElementById('sponsor1').classList.add('sponsor1-animate');
+    }, 3000);
+
+    setTimeout(() => {
+      document.getElementById('sponsor2').classList.add('sponsor2-animate');
+    }, 4000);
+
+    setTimeout(() => {
+      document.getElementById('sponsor3').classList.add('sponsor3-animate');
+    }, 5000);
+
+    setTimeout(() => {
+      document.getElementById('sponsor1').style.opacity = 0;
+      document.getElementById('sponsor2').style.opacity = 0;
+      document.getElementById('sponsor3').style.opacity = 0;
+    }, 6000);
+
+    setTimeout(() => {
+      document.getElementById('sponsor4').classList.add('sponsor-final-animate');
+    }, 6500); // Harus setelah yang lain hilang
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('brandspon')) {
+      showBrandspon();
+    }
+  });
+
+
+  //// POPUP LIVE CHAT ----------------------------POPUP LIVE CHAT --------//// POPUP LIVE CHAT  ----------------------------POPUP LIVE CHAT --------
+    function showLiveChatPopup() {
+    document.getElementById("popup-livechat").style.display = "flex";
+  }
+
+  function closeLiveChatPopup() {
+    document.getElementById("popup-livechat").style.display = "none";
+  }
+
+  function sendLiveChatToWhatsApp() {
+    const name = document.getElementById("liveChatName").value.trim();
+    const message = document.getElementById("liveChatMessage").value.trim();
+
+    if (name === "" || message === "") {
+      alert("Harap isi nama dan pesan!");
+      return;
+    }
+
+    const phoneNumber = "6285262972716";
+    const encodedMsg = encodeURIComponent(`Halo, saya ${name},\n\n${message}`);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
+
+    window.open(whatsappURL, "_blank");
+    closeLiveChatPopup();
+  }
+
+
+//// POPUP SEMUA FOTO ----------------------------POPUP SEMUA FOTO --------//// POPUP SEMUA FOTO ----------------------------POPUP SEMUA FOTO --------
+function showPopup(type) {
+  if (type === 'cenditbro') {
+    const container = document.getElementById("popupCenditbroContent");
+    container.innerHTML = ""; // Kosongkan dulu
+
+    for (let i = 1; i <= 30; i++) {
+      const img = document.createElement("img");
+      img.src = `foto${i}.jpg`; // Pastikan file seperti foto1.jpg, foto2.jpg, dst ada di folder yang sama
+      img.style.width = "100px";
+      img.style.height = "100px";
+      img.style.objectFit = "cover";
+      img.style.borderRadius = "8px";
+      container.appendChild(img);
+    }
+
+    document.getElementById("popupCenditbro").style.display = "flex";
+  }
+}
+
+function closePopupCenditbro() {
+  document.getElementById("popupCenditbro").style.display = "none";
+}
+
+
+
+
+
+
+
+
+//// TIDAK IZINKAN AMBIL GAMBAR ----------------------------TIDAK IZINKAN AMBIL GAMBAR --------//// TIDAK IZINKAN AMBIL GAMBAR ----------------------------TIDAK IZINKAN AMBIL GAMBAR --------
+  document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+  });
+
+  document.addEventListener("mousedown", function(e) {
+    if (e.target.tagName === "IMG") {
+      e.preventDefault();
+    }
+  });
+
+//// TIDAK IZINKAN COPPY TEKS ---------------------------- TIDAK IZINKAN COPPY TEKS --------////  TIDAK IZINKAN COPPY TEKS---------------------------- TIDAK IZINKAN COPPY TEKS --------
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('paste', e => e.preventDefault());
+
+//// MENCEGA KLIK KANAN ---------------------------- MENCEGA KLIK KANAN---------------------------- MENCEGA KLIK KANAN--------
+ document.addEventListener('contextmenu', event => event.preventDefault());
+
+
 
 
 </script>
