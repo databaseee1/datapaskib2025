@@ -478,6 +478,24 @@ nav button:hover .icon-img {
 }
 
 
+
+/* SYTLE HALAMAN AKUNNNNNN */ /* SYTLE HALAMAN AKUNNNNNN  */ /* SYTLE HALAMAN AKUNNNNNN  */
+
+  .active {
+    background-color: #e5e7eb; /* warna abu muda saat aktif */
+    border-radius: 10px;
+  }
+
+
+
+
+
+
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -507,7 +525,10 @@ nav button:hover .icon-img {
 
 
 <!-- Formulir -->
-<div class="tab active" id="form">
+<div id="notif" style="display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);
+background:#4ade80;color:#fff;padding:12px 20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);
+z-index:999;font-weight:500;"></div>
+<div id="form" class="tab-content" style="display: block;">
   <div class="container">
     <form id="formPaskib">
       <label>Nama Peserta<input type="text" name="namaPeserta" required></label>
@@ -544,7 +565,7 @@ nav button:hover .icon-img {
 </div>
     </form>
 
-<div id="galeri-postingan"></div>
+
 
 
 <!-- Copyright -->
@@ -573,27 +594,76 @@ nav button:hover .icon-img {
 </div>
 
 <!-- Navigasi -->
-<nav>
-  <button id="btn-form" class="active" onclick="switchTab('form')">
-    <div class="icon-box">
+<!-- Navigasi -->
+<nav style="display: flex; justify-content: center; gap: 24px; padding: 10px 0;">
+<button id="btn-form" class="active" onclick="switchTab('form'); scrollToForm();">
+  <div class="icon-box">
     <div class="nav-icon-text">
       <img src="exam.png" class="icon-img" alt="Form">
       <span>Form</span>
-    </div> 
     </div>
-  </button>
-  <button id="btn-user" onclick="switchTab('user')">
-    <div class="icon-box">
+  </div>
+</button>
+<button id="btn-user" onclick="switchTab('user'); scrollToCountdown();">
+  <div class="icon-box">
     <div class="nav-icon-text">
-      <img src="user.png" class="icon-img" alt="User">
+      <img src="aktivitas.png" class="icon-img" alt="User">
       <span>Postingan</span>
+    </div>
+  </div>
+</button>
+  <button id="btn-akun" onclick="switchTab('akun')">
+    <div class="icon-box">
+      <div class="nav-icon-text">
+        <img src="user.png" class="icon-img" alt="Akun">
+        <span>Akun</span>
+      </div>
     </div>
   </button>
 </nav>
+
+<!----HALAMAN AKUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN HALAMAN AKUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+
+<div id="akun" class="tab-content" style="display: none;">
+  <h2 style="text-align: center; margin-bottom: 16px;">Halaman ini sedang dalam penambahan</h2>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- User List -->
   <!-- Box Pemberitahuan -->
    
-<div class="tab" id="user">
+<div id="user" class="tab-content" style="display: none;">
 
   <!-- ⏳ COUNTDOWN MULAI -->
 <div style="margin: 16px; text-align: center;">
@@ -671,14 +741,14 @@ nav button:hover .icon-img {
   <div style="background: #10b981; border-radius: 12px; padding: 10px;">
     <img src="diskusi.png" style="width: 32px; height: 32px;" />
   </div>
-  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Diskusi</div>
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Galeri Paskibra</div>
 </div>
 <!-- popup gambar semua-->
 <div id="popupCenditbro" style="display: none; position: fixed; top: 0; left: 0; 
   width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
   <div style="background: white; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; padding: 20px; border-radius: 12px; position: relative;">
     <button onclick="closePopupCenditbro()" style="position:absolute; top:10px; right:10px; background:#ef4444; color:white; border:none; padding:5px 10px; border-radius:6px;">Tutup</button>
-    <h3 style="text-align: center; color: #1e40af; margin-bottom: 16px;">Galeri Diskusi</h3>
+    <h3 style="text-align: center; color: #1e40af; margin-bottom: 16px;">Galeri Paskibra</h3>
     <div id="popupCenditbroContent" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;"></div>
   </div>
 </div>
@@ -1619,22 +1689,31 @@ function closeAllPopup() {
     document.getElementById('popupPost').style.display = 'none';
   }
 
-function showNotif(judul, deskripsi = "") {
+function showNotif(judul, isi) {
   const notif = document.getElementById("notif");
-  const isFormActive = document.getElementById("form").classList.contains("active");
-
-  if (!notif || !isFormActive) return;
-
   notif.innerHTML = `
-    <div style="font-size:16px; font-weight:600;">${judul}</div>
-    <div style="font-size:14px; margin-top:4px;">${deskripsi}</div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="text-align: left;">
+        <strong>${judul}</strong><br/>
+        <small>${isi}</small>
+      </div>
+      <button onclick="hideNotif()" style="
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 12px;
+      ">&times;</button>
+    </div>
   `;
   notif.style.display = "block";
-
-  setTimeout(() => {
-    notif.style.display = "none";
-  }, 10000);
 }
+
+function hideNotif() {
+  document.getElementById("notif").style.display = "none";
+}
+
 
 
   function loadUsers() {
@@ -1875,37 +1954,12 @@ countdownEl.innerHTML = `🕒 ${days} Hari ${hours} Jam ${minutes} Menit ${secon
       arrow.textContent = '▼';
     }
   }
+///ABSEN HALAMAN ----------------------------ABSEN HALAMAN---------
 
 
-///ABSEN HALAMAN ----------------------------POSTINGAN HALAMAN---------
 
- window.onload = function() {
-    fetch("https://script.google.com/macros/s/AKfycbyC0yd30ExJU56N6HgNPKB0RgX_5l9-EugXVW_t13Q2euHnQjJLq_A_RImYap4nZJZ8mw/exec")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("galeri-postingan");
-        data.reverse().forEach(post => {
-          const card = document.createElement("div");
-          card.style.border = "1px solid #ccc";
-          card.style.borderRadius = "8px";
-          card.style.overflow = "hidden";
-          card.style.background = "#fff";
-          card.innerHTML = `
-            <img src="${post.Gambar}" style="width: 100%; height: 200px; object-fit: cover;" />
-            <div style="padding: 10px;">
-              <h4 style="margin: 0 0 8px; font-size: 16px;">${post.Judul}</h4>
-              <p style="margin: 0; font-size: 14px; color: #555;">${post.Deskripsi}</p>
-              <p style="margin: 8px 0 0; font-size: 12px; color: #999;">📅 ${post.Tanggal}</p>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-      })
-      .catch(err => {
-        console.error("Gagal menampilkan postingan:", err);
-        document.getElementById("galeri-postingan").innerHTML = "<p>❌Fitur ini Sedang Maintenance</p>";
-      });
-  };
+
+
 
 ///POST HALAMAN ADMIN ----------------------------POSS ADMIN---------
 
@@ -1985,7 +2039,7 @@ document.getElementById("preview").innerHTML = `
 
     reader.readAsDataURL(gambarInput.files[0]);
   });
-///ABSEN HALAMAN ----------------------------POSTINGAN HALAMAN---------
+///ABSEN HALAMAN ----------------------------ABSEN HALAMAN---------
 
 
 
@@ -1997,9 +2051,31 @@ document.getElementById("preview").innerHTML = `
     }
   }
 
+///auto scrol Atas postingan ----------------------------auto scrol Atas postingan--------
+  function scrollToCountdown() {
+    const countdownEl = document.getElementById('countdown');
+    if (countdownEl) {
+      countdownEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+
+///auto scrol Atas formulir ----------------------------auto scrol Atas formulir--------
+    function scrollToForm() {
+    // Tunggu sebentar jika form muncul setelah switchTab
+    setTimeout(() => {
+      const formElement = document.getElementById('formPaskib');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 3); // sesuaikan delay jika perlu
+  }
+
 
   ///auto scrol lokasi ----------------------------auto--------
  function scrollToRekreasi() {
+
+
   // Scroll ke elemen "Informasi Penting"
   const info = document.getElementById("infoPenting");
   info.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -2016,7 +2092,7 @@ document.getElementById("preview").innerHTML = `
     setTimeout(() => {
       lokasiList.style.display = "none";
       arrow.textContent = "▼";
-    }, 50000);
+    }, 4000);
   }
 }
   ///POP UP CAMAT ----------------------------POP UP camat--------
@@ -2229,7 +2305,10 @@ function closePopupCenditbro() {
 }
 
 
-
+//// TIDAK IZINKAN COPPY TEKS ---------------------------- TIDAK IZINKAN COPPY TEKS --------////  TIDAK IZINKAN COPPY TEKS---------------------------- TIDAK IZINKAN COPPY TEKS --------
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('paste', e => e.preventDefault());
 
 
 
@@ -2256,11 +2335,67 @@ function closePopupCenditbro() {
 
 
 
+//// HALAMAN AKUNNNNNNNNNNNNNN---------------------------- HALAMAN AKUNNNNNN---------------------------- HALAMAN AKUNNNNNN--------
+
+  function switchTab(tabName) {
+    const tabs = ['form', 'user', 'akun'];
+
+    tabs.forEach(tab => {
+      document.getElementById(tab).style.display = (tab === tabName) ? 'block' : 'none';
+      document.getElementById('btn-' + tab).classList.toggle('active', tab === tabName);
+    });
+
+    // Khusus jika buka halaman Akun
+    if (tabName === 'akun') {
+      loadAkunList();
+    }
+  }
+
+  function loadAkunList() {
+    const akunList = document.getElementById('akun-list');
+    akunList.innerHTML = '🔄 Sedang memuat data akun...';
+
+    fetch('https://script.google.com/macros/s/AKfycbyXxXvqZaqIUmx-jp6gks9by0-3pXBtCaEJWuHWZCkFp9Ckp5MNm0Kvu26ttktVKwt68g/exec?sheet=akun')
+      .then(res => res.json())
+      .then(data => {
+        if (!data || data.length === 0) {
+          akunList.innerHTML = '❌ Belum ada data akun.';
+          return;
+        }
+
+        akunList.innerHTML = '';
+        data.forEach((akun, index) => {
+          const div = document.createElement('div');
+          div.style.padding = '12px';
+          div.style.border = '1px solid #ccc';
+          div.style.borderRadius = '8px';
+          div.style.marginBottom = '10px';
+          div.innerHTML = `
+            <strong>${akun['Nama Akun']}</strong><br/>
+            Sekolah: ${akun['Sekolah']}<br/>
+            WhatsApp: ${akun['No WA']}<br/>
+            Posisi: ${akun['Posisi Barisan']}
+          `;
+          akunList.appendChild(div);
+        });
+      })
+      .catch(err => {
+        akunList.innerHTML = '⚠️ Gagal memuat data.';
+        console.error(err);
+      });
+  }
+
+
+
+
+
+
+
+
+
 
 </script>
-<div id="notif" style="display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);
-background:#4ade80;color:#fff;padding:12px 20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);
-z-index:999;font-weight:500;"></div>
+
 
 </body>
 </html>
