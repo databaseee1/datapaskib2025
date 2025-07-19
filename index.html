@@ -48,7 +48,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(to right, rgb(3, 128, 217));
+  background: linear-gradient(to right, #0380d9);
   color: #ffffff;
   padding: 5px;
   text-align: center;
@@ -282,6 +282,25 @@ nav button:hover .icon-img {
   transition: transform 0.3s ease;
 }
 
+
+  .icon-box {
+    background-color: #2b267a; /* default warna */
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  /* Efek aktif (putih) */
+  .icon-box.active {
+    box-shadow: 0 0 0 3px rgb(255, 255, 255) inset;
+  }
+
+  .icon-box.active .nav-icon-text span,
+  .icon-box.active .nav-icon-text img {
+    filter: invert(20%); /* agar icon/text tetap terlihat saat background putih */
+  }
+
   .foto-item:nth-child(1) { animation-delay: 0.1s; }
   .foto-item:nth-child(2) { animation-delay: 0.2s; }
   .foto-item:nth-child(3) { animation-delay: 0.3s; }
@@ -487,6 +506,251 @@ nav button:hover .icon-img {
   }
 
 
+/* SYTLE HALAMAN MAINTENANCE BERKEDIP */ /* MAINTENANCE  */ /* MAINTENANCE  */
+   .blink {
+    animation: blink-animation 1s steps(2, start) infinite;
+  }
+
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  #maintenance-message a {
+    margin-top: 16px;
+    text-decoration: none;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #maintenance-message a img {
+    width: 20px;
+    height: 20px;
+  }
+
+#maintenance-message {
+  filter: none;
+}
+
+
+
+
+/* SYTLE HALAMAN PILIHAN MENU */ 
+  #akun-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 50vh;
+    background: #b1aeae;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -4px 3px rgba(138, 130, 130, 0.15);
+    padding: 16px;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideUp 0.1s ease-out;
+  }
+
+
+
+  #akun-menu button {
+    background-color: #73acf6;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    text-align: left;
+    transition: background-color 0.2s;
+  }
+
+  #akun-menu button:hover {
+    background-color: #0b4392;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 0;
+    }
+  }
+
+
+/* SYTLE HALAMAN STATUS SELEKSI PASKIB */ 
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-box {
+  background: #c8cccd;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 90%;
+  width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeInUp 0.4s ease;
+}
+
+.popup-box h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #1353ad;
+}
+
+.status-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 16px;
+  color: #0b62d4;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.status-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.status-section li {
+  background: #f9fafb;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  font-size: 14px;
+  color: #374151;
+}
+
+.status-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.item-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.status-section ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.status-icon,
+.item-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.btn-status {
+  padding: 10px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-status:hover {
+  background: #081e58;
+}
+
+.close-btn {
+  background: #003cff; /* Warna default */
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  margin-top: 12px;
+  transition: background 0.3s ease; /* Smooth hover */
+}
+
+.status-section ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* Animasi kedip */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Hanya elemen dengan class blinking yang berkedip */
+.blinking {
+  animation: blink 1s infinite;
+}
+
+
+.name-danger {
+  background-color: #dc2626; /* merah */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+
+.name-success {
+  background-color: #10b981; /* hijau emerald */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+
+
+
+/* POPUP MENU PENTING*//* POPUP MENU PENTING*//* POPUP MENU PENTING*//* POPUP MENU PENTING*/
+ .popup-penting {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+  }
+
 
 
 
@@ -568,6 +832,22 @@ z-index:999;font-weight:500;"></div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Copyright -->
   <!-- Social Media Icons -->
    
@@ -612,49 +892,148 @@ z-index:999;font-weight:500;"></div>
     </div>
   </div>
 </button>
-  <button id="btn-akun" onclick="switchTab('akun')">
-    <div class="icon-box">
-      <div class="nav-icon-text">
-        <img src="user.png" class="icon-img" alt="Akun">
-        <span>Akun</span>
-      </div>
+<!-- Tombol Akun -->
+<button id="btn-akun" onclick="toggleAkunMenu()" style="position: relative; z-index: 1000;">
+  <div class="icon-box">
+    <div class="nav-icon-text">
+      <img src="Navigasi icon.png" class="icon-img" alt="Akun">
+      <span>Menu</span>
     </div>
-  </button>
+  </div>
+</button>
 </nav>
 
-<!----HALAMAN AKUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN HALAMAN AKUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+<!-- Menu Akun sebagai dropdown mengambang -->
 
-<div id="akun" class="tab-content" style="display: none;">
-  <h2 style="text-align: center; margin-bottom: 16px;">Halaman ini sedang dalam penambahan</h2>
+<div id="akun-menu" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; display:flex; align-items:center; justify-content:center;">
+  
+  <div style="width:90%; max-width:400px; height:50vh; background:white; border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); overflow-y:auto; position:relative;">
+    <!-- Tombol Tutup -->
+    <button onclick="toggleAkunMenu()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px;">✖</button>
+
+    <!-- Isi Menu -->
+<h2 style="text-align:center; margin-bottom:16px;">Menu Lainnya</h2>
+<ul style="list-style:none; padding:0; font-size:16px;">
+  <li style="margin-bottom:10px;">
+
+  
+
+<!-- Tombol Ucapan Terima Kasih -->
+<button onclick="showUcapan()" style="display: flex; align-items: center;">
+  <img src="terimakasih.png" style="width: 20px; height: 20px; margin-right: 8px;" />
+  Ucapan Terima Kasih
+</button>
+
+<!-- Popup Fullscreen -->
+<div id="popup-ucapan" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color: rgba(0,0,0,0.9); z-index:9999; overflow-y:auto; padding:20px;">
+  <button onclick="closeUcapan()" style="position:absolute; top:10px; right:10px; background:red; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;">Tutup</button>
+
+  <h2 style="color:white; text-align:center; margin-bottom:20px;">Ucapan Terima Kasih Paskibra</h2>
+
+  <!-- Video Galeri -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
+    <!-- Contoh 2 video pertama -->
+    <video controls autoplay muted style="width:100%; border-radius:12px;">
+      <source src="video1.mp4" type="video/mp4" />
+      Browser tidak mendukung video.
+    </video>
+
+    <video controls autoplay muted style="width:100%; border-radius:12px;">
+      <source src="video2.mp4" type="video/mp4" />
+      Browser tidak mendukung video.
+    </video>
+
+    <!-- Tambahkan hingga 40 video -->
+    <!--
+    <video controls autoplay muted style="width:100%; border-radius:12px;">
+      <source src="video3.mp4" type="video/mp4" />
+    </video>
+    ...
+    -->
+  </div>
+</div>
+
+<!-- === POPUP VIDEO FULLSCREEN === -->
+<div id="popupVideo" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
+  <video id="videoPlayer" controls autoplay style="max-width:100%; max-height:100%;"></video>
+  <button onclick="closeVideo()" style="margin-top:10px; padding:8px 16px; background:red; color:white; border:none; border-radius:5px;">Tutup</button>
+</div>
+</li>
+
+
+
+
+
+<li style="margin-bottom:10px;">
+  <button onclick="showKontenUnik()" style="display: flex; align-items: center;">
+    <img src="conten unik.png" style="width: 20px; height: 20px; margin-right: 8px;" />
+    Konten Unik
+  </button>
+</li>
+<div id="popupKontenUnik" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:20px; border-radius:10px; max-width:90%; text-align:center;">
+    <h3>🎉 Konten Unik</h3>
+    <p>Fitur ini akan menampilkan berbagai konten menarik dan eksklusif.</p>
+    <button onclick="tutupKontenUnik()" style="margin-top:10px;">Tutup</button>
+  </div>
 </div>
 
 
 
 
+<li style="margin-bottom:10px;">
+  <button onclick="bukaPopupPenting()" style="display: flex; align-items: center;">
+    <img src="penting.png" style="width: 20px; height: 20px; margin-right: 8px;" />
+    Penting
+  </button>
+</li>
 
+<div id="popupPenting" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:20px; border-radius:10px; max-width:90%; text-align:center;">
+    <h3>⚙️ Fitur Dalam Pengembangan</h3>
+    <p>Lagi dalam penambahan fitur lain.</p>
+    <button onclick="tutupPopupPenting()" style="margin-top:10px;">Tutup</button>
+  </div>
+</div>
 
+        
+      <button onclick="toggleStatusPopup()" class="btn-status" style="display: flex; align-items: center; gap: 8px;">
+      <img src="status.png" alt="Status" style="width:20px; height:20px;" />
+      Lihat Status Seleksi
+    </button>
+      </ul>
+    </ul>
+  </div>
+  <div id="status-popup" class="popup-overlay" style="display: none;">
+  <div class="popup-box">
+    <h3>Status Seleksi Paskibra 2025</h3>
+<div class="status-section">
+  <h4 class="section-title">
+    <img src="RI.webp" alt="Diterima" class="status-icon" />
+    DITERIMA
+  </h4>
+  <ul>
+        <li><span class="name-success">Dino Pratama - SMAN 1</span></li>
+        <li><span class="name-success">Rika Anggraini - SMAN 2</span></li>
+        <li><span class="name-success">Alvin Saputra - SMK 1</span></li>
+  </ul>
+</div>
 
+<div class="status-section">
+  <h4 class="section-title">
+<img src="Logo Maintenance.png" alt="Belum Diterima" class="status-icon blinking" />
+    BELUM DITERIMA
+  </h4>
+  <ul>
+     <li><span class="name-danger">Fadil Rahman - SMAN 3</span></li>
+     <li><span class="name-danger">Nadia Zulfiani - SMKN 2</span></li>
+  </ul>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <button onclick="toggleStatusPopup()" class="close-btn">Tutup</button>
+  </div>
+</div>
+</div>   <!-- Akhir menu status seleksiiii  -->
 
 
 
@@ -975,6 +1354,7 @@ background: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; z-
 </div>
 
 
+
   <!-- ⏳ COUNTDOWN SELESAI -->
 
   <div class="announcement-box">
@@ -1136,9 +1516,6 @@ Kami percaya, mereka yang terpilih bukan hanya mengibarkan bendera—mereka meng
 ">
 
 
-
-
-
 <h4 id="infoPenting" style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827; text-align: center;">
   📍 Informasi Penting
 </h4>
@@ -1284,6 +1661,12 @@ Kami percaya, mereka yang terpilih bukan hanya mengibarkan bendera—mereka meng
   </div>
 </div>
 
+  <!-- Copyright3 -->
+  <div style="margin-top: 20px; font-size: 13px; color: #6b7280;">
+    © 2025
+  </div>
+</div>
+
 
 <!-- Pop Up -->
 <div class="overlay" id="overlay"></div>
@@ -1295,13 +1678,11 @@ Kami percaya, mereka yang terpilih bukan hanya mengibarkan bendera—mereka meng
 <div class="popup" id="popupPost"></div>
 
 
+
+
+
+
 <script>
-
-
-
-
-
-
 
 
 
@@ -2386,6 +2767,89 @@ function closePopupCenditbro() {
   }
 
 
+
+
+
+
+
+
+//// HALAMAN MENU NAVIGASI-------//// HALAMAN MENU NAVIGASI-------//// HALAMAN MENU NAVIGASI-------
+
+  function toggleAkunMenu() {
+    const menu = document.getElementById('akun-menu');
+    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'flex' : 'none';
+  }
+
+  function togglePenting() {
+    const sub = document.getElementById('menu-penting');
+    sub.style.display = (sub.style.display === 'none' || sub.style.display === '') ? 'block' : 'none';
+  }
+
+  function showUcapan() {
+    alert("Tampil halaman ucapan"); // Ganti nanti ke fungsi aslimu
+  }
+
+  function showKontenUnik() {
+    alert("Tampil konten unik");
+  }
+
+  function loadStatusSeleksi() {
+    alert("Tampil status seleksi");
+  }
+
+    window.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("akun-menu").style.display = "none";
+  });
+
+
+
+
+//// HALAMAN POP UP STATUS SELEKSI PASKIBRA 2025-------
+
+  function toggleStatusPopup() {
+    const popup = document.getElementById('status-popup');
+    popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
+  }
+  //// warna huper tomnol close pada status seleksi paskibra 2025 -------
+document.querySelector('.close-btn').style.background = '#0380d9';
+//// warna huper tomnol close pada status seleksi paskibra 2025 -------
+
+
+//// POP UP UCAPAN TERIMAKASIH-------//// POP UP UCAPAN TERIMAKASIH-------//// POP UP UCAPAN TERIMAKASIH-------
+  function showUcapan() {
+    document.getElementById('popup-ucapan').style.display = 'block';
+  }
+
+  function closeUcapan() {
+    document.getElementById('popup-ucapan').style.display = 'none';
+  }
+
+
+
+
+
+
+
+
+//// POP UP PENTING-------//// POP UP PENTING-------//// POP UP PENTING-------
+ function bukaPopupPenting() {
+    document.getElementById('popupPenting').style.display = 'flex';
+  }
+
+  function tutupPopupPenting() {
+    document.getElementById('popupPenting').style.display = 'none';
+  }
+
+
+
+//// POP UP KONTEN UNIK------//// POP UP KONTEN UNIK--------////POP UP KONTEN UNIK-------
+ function showKontenUnik() {
+    document.getElementById('popupKontenUnik').style.display = 'flex';
+  }
+
+  function tutupKontenUnik() {
+    document.getElementById('popupKontenUnik').style.display = 'none';
+  }
 
 
 
