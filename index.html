@@ -834,6 +834,14 @@ z-index:999;font-weight:500;"></div>
 
 
 
+<!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE -->
+<div id="maintenance-message" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:white; z-index:9999; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:20px;">
+  <img src="Logo Maintenance.png" alt="Maintenance" style="width: 120px; margin-bottom: 16px;" class="blink" />
+  <h2 style="font-size: 24px; margin-bottom: 10px;">Absen Ku Tutup!</h2>
+  <p style="font-size: 16px;">Telat Aja Terus, Gausa kau ikuti Aturan Kami Bro!</p>
+  <p style="font-size: 16px;"><strong>Wajib Absen kau nanti jam 08:00 WIB.</strong></p>
+  <p style="font-size: 14px; background: #66b1e3;">@admin:ilhamkrt</p>
+</div>
 
 
 
@@ -2260,6 +2268,74 @@ countdownEl.innerHTML = `🕒 ${days} Hari ${hours} Jam ${minutes} Menit ${secon
   updateCountdown();
  
 // ← SETINGAN HITUNG ------------------------------------------HITUNG MUNDUR-----------------------
+
+
+
+
+
+// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------
+// Ubah jam mulai dan akhir maintenance di bawah ini
+  // Atur jam mulai dan akhir maintenance (format 24 jam WIB)
+
+ // Waktu Maintenance (WIB)
+  const jamMulaiMaintenance = "07:31";
+  const jamAkhirMaintenance = "07:54";
+
+  function cekMaintenance() {
+    const now = new Date();
+    const wibJam = (now.getUTCHours() + 7) % 24;
+    const wibMenit = now.getUTCMinutes();
+    const sekarang = `${wibJam.toString().padStart(2, '0')}:${wibMenit.toString().padStart(2, '0')}`;
+
+    function waktuKeMenit(waktu) {
+      const [jam, menit] = waktu.split(":").map(Number);
+      return jam * 60 + menit;
+    }
+
+    const menitSekarang = waktuKeMenit(sekarang);
+    const menitMulai = waktuKeMenit(jamMulaiMaintenance);
+    const menitAkhir = waktuKeMenit(jamAkhirMaintenance);
+
+    const isMaintenance = menitSekarang >= menitMulai && menitSekarang <= menitAkhir;
+
+    const maintenanceDiv = document.getElementById('maintenance-message');
+
+    if (isMaintenance) {
+      maintenanceDiv.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      document.querySelectorAll('a, button, input, form, textarea, select').forEach(el => {
+        el.disabled = true;
+        el.style.pointerEvents = 'none';
+        el.style.opacity = 0.2;
+      });
+    } else {
+      maintenanceDiv.style.display = 'none';
+      document.body.style.overflow = '';
+      document.querySelectorAll('a, button, input, form, textarea, select').forEach(el => {
+        el.disabled = false;
+        el.style.pointerEvents = 'auto';
+        el.style.opacity = 1;
+      });
+    }
+  }
+
+  cekMaintenance();
+  setInterval(cekMaintenance, 15000);
+
+
+
+// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
