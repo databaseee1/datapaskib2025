@@ -2,7 +2,7 @@
 <html>
 <head>
   <base target="_top">
-  <title>DATA PASKIB 2025</title>
+  <title>PASKIBRA PADANG TUALANG 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -96,6 +96,12 @@ nav {
   z-index: 999;
 }
 
+
+/*menghilangkan tombol Navigasi FORM*/
+  #btn-form {
+    display: none;
+  }
+
 nav button {
   background: none;
   border: none;
@@ -118,6 +124,9 @@ nav button {
   align-items: center;
   gap: 2px; /* jarak antar gambar dan teks */
 }
+
+
+
 
 .icon-img {
   width: 28px;
@@ -497,6 +506,84 @@ nav button:hover .icon-img {
 }
 
 
+  .berita-container-gogbrit {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 16px;
+  }
+
+  .berita-item-gogbrit {
+    display: flex;
+    gap: 12px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+
+  .berita-thumb-gogbrit {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .berita-info-gogbrit {
+    flex: 1;
+  }
+
+  .berita-info-gogbrit h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .berita-info-gogbrit p {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0 0;
+  }
+
+  #popup-gogbrit {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup-content-gogbrit {
+    background: white;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 12px;
+    white-space: pre-wrap;
+  }
+
+  .popup-content-gogbrit h3 {
+    margin-top: 0;
+  }
+
+  .popup-close-gogbrit {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+
+
+
+
 
 /* SYTLE HALAMAN AKUNNNNNN */ /* SYTLE HALAMAN AKUNNNNNN  */ /* SYTLE HALAMAN AKUNNNNNN  */
 
@@ -752,10 +839,114 @@ nav button:hover .icon-img {
   }
 
 
+/* POPUP sandi sebelum isi form d*/
+  #overlay, #popup-sandi {
+    display: none;
+    position: fixed;
+    z-index: 999;
+  }
+
+  #overlay {
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  #popup-sandi {
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    width: 300px;
+    text-align: center;
+  }
+
+/*BOS LAYANAN*//* BOS LAYANAN*//* BOS LAYANAN*//* BOS LAYANAN*/
 
 
+#menu-box-yayan {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24%;
+  margin: 8px;
+  padding: 6px;
+}
+
+.menu-box-yayan {
+  flex: 0 0 20%;
+  max-width: 24%;
+  background: linear-gradient(to bottom, rgb(255, 0, 0) 50%, #ffffff 50%);
+  border-radius: 16px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.menu-box-yayan:hover {
+  transform: translateY(-8px);
+}
+
+.menu-box-yayan img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  object-fit: contain;
+}
+
+.menu-box-yayan div {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .menu-box-yayan {
+    flex: 0 0 24%;
+    max-width: 24%;
+  }
+}
 
 
+.berita-box {
+  width: calc(50% - 12px); /* Dua kolom */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.berita-box:hover {
+  transform: scale(1.02);
+}
+.berita-box img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.berita-box h4 {
+  padding: 10px;
+  font-size: 14px;
+  margin: 0;
+}
+@media (max-width: 300px) {
+  .berita-box {
+    width: 500%;
+  }
+}
+
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 
 
 
@@ -789,6 +980,21 @@ nav button:hover .icon-img {
 
 
 <!-- Formulir -->
+
+
+<div id="popupKodeSandi" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:20px; border-radius:10px; text-align:center; width:300px;">
+    <h3>Masukkan Kode Sandi</h3>
+    <input type="password" id="kodeSandiInput" placeholder="Kode Rahasia" style="width:100%; padding:10px; margin:10px 0;">
+    <div>
+      <button onclick="cekKodeSandi()" style="background:#2563eb; color:white; padding:8px 16px; border:none; border-radius:5px;">Kirim</button>
+      <button onclick="tutupPopupSandi()" style="margin-left:10px; padding:8px 16px;">Batal</button>
+    </div>
+    <p id="pesanSalah" style="color:red; display:none; margin-top:10px;">Kode salah, coba lagi.</p>
+  </div>
+</div>
+
+
 <div id="notif" style="display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);
 background:#4ade80;color:#fff;padding:12px 20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);
 z-index:999;font-weight:500;"></div>
@@ -884,43 +1090,57 @@ z-index:999;font-weight:500;"></div>
 <!-- Navigasi -->
 <!-- Navigasi -->
 <nav style="display: flex; justify-content: center; gap: 24px; padding: 10px 0;">
-<button id="btn-form" class="active" onclick="switchTab('form'); scrollToForm();">
-  <div class="icon-box">
-    <div class="nav-icon-text">
-      <img src="exam.png" class="icon-img" alt="Form">
-      <span>Form</span>
+  <!-- Tombol Form -->
+  <button id="btn-form" class="active" onclick="switchTab('form'); scrollToForm();">
+    <div class="icon-box">
+      <div class="nav-icon-text">
+        <img src="exam.png" class="icon-img" alt="Form">
+        <span>Form</span>
+      </div>
     </div>
-  </div>
-</button>
-<button id="btn-user" onclick="switchTab('user'); scrollToCountdown();">
-  <div class="icon-box">
-    <div class="nav-icon-text">
-      <img src="aktivitas.png" class="icon-img" alt="User">
-      <span>Postingan</span>
+  </button>
+
+  <!-- Tombol Postingan -->
+  <button id="btn-user" onclick="switchTab('user'); scrollToCountdown();">
+    <div class="icon-box">
+      <div class="nav-icon-text">
+        <img src="aktivitas.png" class="icon-img" alt="User">
+        <span>Postingan</span>
+      </div>
     </div>
-  </div>
-</button>
-<!-- Tombol Akun -->
-<button id="btn-akun" onclick="toggleAkunMenu()" style="position: relative; z-index: 1000;">
-  <div class="icon-box">
-    <div class="nav-icon-text">
-      <img src="Navigasi icon.png" class="icon-img" alt="Akun">
-      <span>Menu</span>
+  </button>
+
+  <!-- Tombol Pendi -->
+  <button id="btn-pendi" onclick="switchTab('pendi');">
+    <div class="icon-box">
+      <div class="nav-icon-text">
+        <img src="TENGAH.png" class="icon-img" alt="Pendi">
+        <span>Lainnya</span>
+      </div>
     </div>
-  </div>
-</button>
+  </button>
+
+  <!-- Tombol Akun -->
+  <button id="btn-akun" onclick="toggleAkunMenu()" style="position: relative; z-index: 1000;">
+    <div class="icon-box">
+      <div class="nav-icon-text">
+        <img src="Navigasi icon.png" class="icon-img" alt="Akun">
+        <span>Menu</span>
+      </div>
+    </div>
+  </button>
 </nav>
 
 <!-- Menu Akun sebagai dropdown mengambang -->
 
-<div id="akun-menu" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; display:flex; align-items:center; justify-content:center;">
+<div id="akun-menu" style="display:none; position:fixed; top:0; left:-30; width:100%; height:100%; background:rgb(195, 195, 195); z-index:9999; display:flex; align-items:center; justify-content:center;">
   
-  <div style="width:90%; max-width:400px; height:50vh; background:white; border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3); overflow-y:auto; position:relative;">
+  <div style="width:90%; max-width:400px; height:50vh; overflow-y:auto; position:relative;">
     <!-- Tombol Tutup -->
     <button onclick="toggleAkunMenu()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:20px;">✖</button>
 
     <!-- Isi Menu -->
-<h2 style="text-align:center; margin-bottom:16px;">Menu Lainnya</h2>
+<h2 style="text-align:center;  margin-bottom:16px;">Menu Lainnya</h2>
 <ul style="list-style:none; padding:0; font-size:16px;">
   <li style="margin-bottom:10px;">
 
@@ -936,7 +1156,7 @@ z-index:999;font-weight:500;"></div>
 <div id="popup-ucapan" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color: rgba(0,0,0,0.9); z-index:9999; overflow-y:auto; padding:20px;">
   <button onclick="closeUcapan()" style="position:absolute; top:10px; right:10px; background:red; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;">Tutup</button>
 
-  <h2 style="color:white; text-align:center; margin-bottom:20px;">Ucapan Terima Kasih Paskibra</h2>
+  <h2 style="color:rgb(248, 248, 248); text-align:center; margin-bottom:20px;">Ucapan Terima Kasih Paskibra</h2>
 
   <!-- Video Galeri -->
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
@@ -1045,6 +1265,94 @@ z-index:999;font-weight:500;"></div>
 
 
 
+<!---SEMUA--- MENU----PENDI -->
+<div id="pendi" style="display:none; padding: 20px;">
+  <!-- BOX GAMBAR -->
+  <div style="
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  ">
+
+  <!-- TEKS BERJALAN -->
+<div style="overflow:hidden; white-space:nowrap; background:#ffeaea; padding:10px; border-radius:8px; margin:16px 0;">
+  <div id="marquee-text" style="display:inline-block; padding-left:100%; animation: scroll-left 15s linear infinite; font-weight:bold; color:#b30000;">
+    📢Semangat Paskibra Kecamatan Padang Tualang Tahun 2025 terus berkobar! Di bawah arahan Bapak SUTRISNO dan Abangda ELKY FERNANDA serta didampingi purna aktif ILHAM KRT, MIRA ADELIA, dan ICUN, para peserta terus menunjukkan disiplin, kekompakan, dan dedikasi tinggi menuju pengibaran bendera yang membanggakan.
+  </div>
+</div>
+    <img src="bannerlangkah.png" alt="Pendi Gambar" style="width: 100%; height: auto; display: block;">
+  </div>
+
+  <!-- KONTEN LAINNYA -->
+<!-- MENU BOX KHUSUS -->
+ <div id="menu-box-wrapper">
+<div id="menu-box-yayan" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 24px;">
+  <div class="menu-box-yayan">
+    <img src="RI.webp" alt="Layanan">
+    <div id="yayan">LAYANAN</div>
+  </div>
+  <div class="menu-box-yayan">
+    <img src="RI.webp" alt="Berita">
+    <div id="britta">BERITA</div>
+  </div>
+  <div class="menu-box-yayan">
+    <img src="RI.webp" alt="Satu Data">
+    <div id="satda">SATU DATA</div>
+  </div>
+  <div class="menu-box-yayan">
+    <img src="RI.webp" alt="Informasi">
+    <div id="nfirmasi">INFORMASI</div>
+  </div>
+</div>
+</div>
+
+<div style="border: 2px solid #cd0000; border-radius: 12px; padding: 16px; margin: 20px; background: #ffffff;">
+
+  <!-- Kolom pencarian -->
+<input type="text" id="searchBerita" placeholder="Cari berita..." style="width: 100%; padding: 8px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 6px;">
+
+<h2 style="text-align:center; margin-bottom:16px;">Berita Terbaru</h2>
+<ul id="gogbrit-list" style="list-style:none; padding:0;"></ul>
+
+<ul id="gogbrit-list" style="list-style: none; padding: 0;"></ul>
+<div id="gogbrit-empty" style="display:none; text-align:center; color:#999;">Gadak Hasil,Kosong barang!</div>
+
+
+
+<div style="border: 2px solid #ccc; border-radius: 12px; padding: 16px; margin: 20px;">
+  <div id="berita-container" style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+
+
+    
+<h7>Padang tualang 2025</h7>
+    </div>
+  </div>
+</div>
+
+<h3>seputaran paskibra</h3>
+</div>
+
+
+
+<!-- isi Popup Detail Berita -->
+<div id="gogbrit" style="display:none; padding: 16px; border: 1px solid #ccc; margin-top: 20px; border-radius: 10px; background: #fff;">
+  <button onclick="document.getElementById('gogbrit').style.display='none'" style="float:right; margin-bottom:10px;">❌ Tutup</button>
+  <h2 id="judulDetail"></h2>
+  <small id="tanggalDetail" style="color: gray;"></small>
+  <img id="gambarDetail" src="" style="width:100%; max-height:300px; object-fit:cover; border-radius:10px; margin:10px 0;">
+  <pre id="deskripsiDetail" style="white-space:pre-wrap; font-family:inherit;"></pre>
+</div>
+
+
+
+
+
+</div>
+
 
 
 <!-- User List -->
@@ -1143,62 +1451,14 @@ z-index:999;font-weight:500;"></div>
 
 
 <!-- Tombol Buka Popup prestasi-->
-  <div class="menu-box" onclick="document.getElementById('popupPrestasi').style.display ='flex'">
-    <div style="background: #10b981; border-radius: 12px; padding: 10px;">
-      <img src="prestasi.png" style="width: 32px; height: 32px;" />
-    </div>
-    <div style="font-size: 12px; margin-top: 6px; color: #007651;">Prestasi</div>
+<div class="menu-box" onclick="showPage('form')">
+  <div style="background: #10b981; border-radius: 12px; padding: 10px;">
+    <img src="prestasi.png" style="width: 32px; height: 32px;" />
   </div>
-
-<!-- Popup Prestasi Fullscreen -->
-<div id="popupPrestasi" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
-  <div style="background: white; width: 100vw; height: 100vh; border-radius: 0; display: flex; flex-direction: column; overflow: hidden;">
-
-    <!-- Konten Scrollable -->
-    <div style="padding: 20px; overflow-y: auto; flex: 1;">
-      <h3 style="font-size: 22px; text-align: center; margin-bottom: 20px;">🏆 Daftar Prestasi</h3>
-
-      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <!-- Prestasi 1 -->
-        <div style="width: 200px; background: #f3f4f6; border-radius: 12px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <img src="RI.webp" alt="Prestasi 1" style="width: 100%; border-radius: 8px;" />
-          <h4 style="margin-top: 10px; font-size: 16px;">Lomba Baris Berbaris</h4>
-          <p style="font-size: 14px;">Tingkat Kabupaten</p>
-          <div style="background: red; color: white; padding: 4px 8px; border-radius: 8px; display: inline-block; margin: 6px 0;">Terbaik</div>
-          <p style="font-size: 13px;">Hadiah: Piala + Sertifikat</p>
-        </div>
-
-        <!-- Prestasi 2 -->
-        <div style="width: 200px; background: #f3f4f6; border-radius: 12px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <img src="RI.webp" alt="Prestasi 2" style="width: 100%; border-radius: 8px;" />
-          <h4 style="margin-top: 10px; font-size: 16px;">PBB Tingkat Kecamatan</h4>
-          <div style="background: red; color: white; padding: 4px 8px; border-radius: 8px; display: inline-block; margin: 6px 0;">Baik</div>
-          <p style="font-size: 14px;">Penampilan Terbaik</p>
-          <p style="font-size: 13px;">Hadiah: Uang Pembinaan</p>
-        </div>
-
-        <!-- Prestasi 3 -->
-        <div style="width: 200px; background: #f3f4f6; border-radius: 12px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <img src="RI.webp" alt="Prestasi 3" style="width: 100%; border-radius: 8px;" />
-          <h4 style="margin-top: 10px; font-size: 16px;">Penghargaan Semangat</h4>
-          <div style="background: red; color: white; padding: 4px 8px; border-radius: 8px; display: inline-block; margin: 6px 0;">Baik</div>
-          <p style="font-size: 14px;">Diberikan oleh Dinas Pendidikan</p>
-          <p style="font-size: 13px;">Hadiah: Sertifikat Penghargaan</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tombol Tutup Sticky -->
-    <div style="position: sticky; bottom: 0; background: white; border-top: 1px solid #ddd;">
-      <button onclick="document.getElementById('popupPrestasi').style.display='none'"
-        style="width: 100%; background: #0501ff; color: white; padding: 16px 0; border: none; font-size: 16px; cursor: pointer;">
-        Tutup
-      </button>
-    </div>
-
-  </div>
+  <div style="font-size: 12px; margin-top: 6px; color: #007651;">Pendaftaran Paskibra</div>
 </div>
-</div>
+
+
 
 
 <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; margin-bottom: 30px; flex-wrap: wrap;">
@@ -2120,7 +2380,7 @@ function hideNotif() {
 
 // ← DATTTTAAA BASEE SHEETTT------------------------------------------DATABASE SHEET----------------------
 
-  function showPopup(r) {
+   function showPopup(r) {
     const p = document.getElementById('popup');
     p.innerHTML = `
       <h3 style="margin-bottom:12px;">📄 Detail Peserta</h3>
@@ -2149,32 +2409,38 @@ function hideNotif() {
     document.getElementById('popup').style.display = 'none';
   }
 
+  document.getElementById("formPaskib").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const form = e.target;
 
+    // Hanya minta kode sandi sekali dan langsung validasi
+    const kodeBenar = "paskibra2025"; // ganti sesuai kebutuhan
+    const kodeSandi = prompt("🔒 Masukkan Kode Daftar Anda:");
+    if (kodeSandi !== kodeBenar) {
+     showNotif("❌ KODE SALAH", "Data tidak dikirim karena kode sandi salah.", true);
+     return;
+    }
 
-document.getElementById("formPaskib").addEventListener("submit", function(e) {
-  e.preventDefault();
+    const formData = new FormData(form);
+    const url = "https://script.google.com/macros/s/AKfycbyXxXvqZaqIUmx-jp6gks9by0-3pXBtCaEJWuHWZCkFp9Ckp5MNm0Kvu26ttktVKwt68g/exec";
 
-  const form = e.target;
-  const formData = new FormData(form);
-  const url = "https://script.google.com/macros/s/AKfycbyXxXvqZaqIUmx-jp6gks9by0-3pXBtCaEJWuHWZCkFp9Ckp5MNm0Kvu26ttktVKwt68g/exec"; // Ganti URL ini
+    loadingData.style.display = "block";
 
-loadingData.style.display = "block"; // Tampilkan loading
-
-  fetch(url, {
-    method: "POST",
-    body: formData
-  })
-.then(response => response.text())
-.then(result => {
-   loadingData.style.display = "none"; // Sembunyikan loading
-  showNotif("✅ DATA BERHASIL DIKIRIM", "Jika sudah, mohon jangan mengisi ulang.");
-  form.reset();
-})
-.catch(error => {
-   loadingData.style.display = "none"; // Sembunyikan loading
-  showNotif("❌ GAGAL MENGIRIM", "Periksa koneksi atau coba lagi.");
-});
-});
+    fetch(url, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+      loadingData.style.display = "none";
+      showNotif("✅ DATA BERHASIL DIKIRIM", "Jika sudah, mohon jangan mengisi ulang.");
+      form.reset();
+    })
+    .catch(error => {
+      loadingData.style.display = "none";
+      showNotif("❌ GAGAL MENGIRIM", "Periksa koneksi atau coba lagi.");
+    });
+  });
 
 // ← DATTTTAAA BASEE SHEETTT------------------------------------------DATABASE SHEET----------------------
 
@@ -2569,9 +2835,8 @@ document.getElementById("preview").innerHTML = `
         </div>
       </div>
       <p style="margin-top:15px; font-size:14px; color:#333;">
-        Padang Tualang,<br><br>
-        Sebagai bagian dari upaya memastikan keselamatan dan kelancaran kegiatan, tim motor pengawal disiapkan untuk mengawal perjalanan peserta dari titik kumpul hingga lokasi pengibaran bendera. Tim ini terdiri dari anggota pilihan yang telah melalui proses seleksi ketat, memiliki pengalaman lapangan, serta kendaraan yang aman dan terverifikasi.<br><br>
-        Kami menyampaikan apresiasi setinggi-tingginya kepada Bapak Camat Padang Tualang, yang telah memberikan perhatian penuh terhadap kelancaran kegiatan ini. Dukungan beliau dalam penyediaan dan pengawasan tim pengawal lapangan menjadi bagian penting dari suksesnya rangkaian pelatihan dan pengibaran yang tertib dan aman.
+        Padang Tualang,<br><br>Sebagai bagian dari upaya memastikan kelancaran dan kesuksesan kegiatan Paskibra Kecamatan Padang Tualang tahun 2025, dukungan dari berbagai pihak menjadi pondasi penting dalam setiap langkah. Salah satu sosok yang memiliki peran besar adalah Bapak Camat Padang Tualang, MUHAMMAD IZWANDA, SE.Kp.M.SP (PNS), yang telah menunjukkan komitmen dan perhatian luar biasa terhadap proses pembinaan dan pelatihan calon paskibraka. 
+        <br><br>Kami menyampaikan apresiasi setinggi-tingginya atas dukungan beliau, baik secara moril maupun dalam pengawasan langsung terhadap kegiatan di lapangan. Kehadiran dan perhatian beliau tidak hanya memberi semangat bagi para peserta, tetapi juga menjadi bukti nyata bahwa Paskibra adalah tanggung jawab bersama dalam membentuk generasi muda yang disiplin, tangguh, dan cinta tanah air.
       </p>
     `;
     document.getElementById("popupRajacamatContent").innerHTML = content;
@@ -2788,7 +3053,7 @@ function closePopupCenditbro() {
   document.addEventListener('paste', e => e.preventDefault());
 
 //// MENCEGA KLIK KANAN ---------------------------- MENCEGA KLIK KANAN---------------------------- MENCEGA KLIK KANAN--------
- document.addEventListener('contextmenu', event => event.preventDefault());
+ 
 
 
 
@@ -2930,10 +3195,157 @@ document.querySelector('.close-btn').style.background = '#0380d9';
 
 
 
+ // semua ID halaman-----semua ID halaman-----semua ID halaman-----semua ID halaman-----
+  function switchTab(tabId) {
+    const allTabs = ['form', 'user', 'pendi']; // semua ID halaman
+    allTabs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    document.getElementById(tabId).style.display = 'block';
+
+    // Ganti status tombol aktif
+    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+    const btnId = 'btn-' + tabId;
+    const activeBtn = document.getElementById(btnId);
+    if (activeBtn) activeBtn.classList.add('active');
+  }
+//--------------------------------------------------------------------------------
+
+
+// SEMBUNYIKAN TOMBOL FORM--
+
+  function showPage(pageId) {
+    // Sembunyikan semua konten tab lainnya
+    const pages = ['form',]; // tambahkan semua id konten di sini
+    pages.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+
+     // Tampilkan konten yang diklik
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+      targetPage.style.display = 'block';
+
+      // Scroll ke elemen jika page adalah 'form'
+      if (pageId === 'form') {
+        setTimeout(() => {
+          targetPage.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // delay agar sempat tampil dulu baru scroll
+      }
+    }
+  }
+
+
+// BERITA-BERITA-BERITA--
+
+  const data = [
+    {
+      judul: "👕 Pembagian Baju Lapangan Merah Hitam: Semangat Baru untuk Paskibra Padang Tualang 2025",
+      tanggal: "2025-07-21",
+      deskripsi: `Padang Tualang, Juli 2025 — Semangat latihan Paskibra Kecamatan Padang Tualang tahun 2025 semakin membara dengan hadirnya pembagian baju lapangan berwarna merah dan hitam. Seragam ini dibagikan secara langsung oleh Bapak Camat Padang Tualang, MUHAMMAD IZWANDA, SE.Kp.M.SP (PNS) sebagai bentuk dukungan dan perhatian nyata terhadap seluruh calon paskibraka yang sedang menjalani pembinaan.
+
+Pembagian seragam ini bukan sekadar pemberian perlengkapan, namun menjadi simbol penyatuan visi, semangat, dan identitas bagi para peserta latihan. Warna merah melambangkan keberanian, dan hitam mencerminkan keteguhan — dua nilai yang melekat erat dalam jiwa seorang paskibraka sejati.
+
+🙏 Ucapan Terima Kasih
+Kami menyampaikan terima kasih dan apresiasi yang setinggi-tingginya kepada Bapak Camat Padang Tualang atas kepedulian dan kontribusi beliau. Kehadiran dan dukungan beliau memberikan motivasi luar biasa bagi para peserta, menjadikan latihan terasa lebih bermakna dan profesional.
+
+💪 Dipimpin oleh Sosok Inspiratif
+Kegiatan pelatihan ini dipimpin langsung oleh pelatih berpengalaman, Bapak SUTRISNO dan Abangda ELKY FERNANDA, serta dibimbing penuh semangat oleh para purna aktif yaitu ILHAMKRT, MIRA ADELIA, dan ICUN, yang terus hadir memberikan arahan, semangat, dan contoh teladan bagi para calon paskibraka.`,
+      gambar: "bagi baju.jpeg"
+    },
+       {
+      judul: "🩺 Cek Kesehatan Kedua Paskibra padang tualang tahun 2025: Komitmen Jaga Fisik & Mental Menuju Hari Kemerdekaan",
+      tanggal: "2025-07-21",
+      deskripsi: `Padang Tualang, 21 Juli 2025 — Sebagai bagian dari persiapan intens menyambut Upacara Hari Kemerdekaan 17 Agustus 2025, Paskibra Kecamatan Padang Tualang kembali melaksanakan cek kesehatan tahap kedua. Kegiatan ini berlangsung lancar dan penuh antusias di lokasi latihan, bekerja sama langsung dengan tenaga medis dari Puskesmas Tanjung Selamat.
+Pelaksanaan cek kesehatan ini bertujuan untuk memastikan bahwa seluruh anggota Paskibra berada dalam kondisi fisik yang prima, sehat, dan siap menjalankan tugas negara di momen sakral peringatan kemerdekaan.
+
+👨‍⚕️ Apresiasi untuk Tim Medis Puskesmas Tanjung Selamat
+
+Kami menyampaikan rasa terima kasih yang sebesar-besarnya kepada Ibu & Bapak Tenaga Kesehatan dari Puskesmas Tanjung Selamat, yang telah bersedia hadir untuk melakukan pemeriksaan mulai dari:
+
+Tekanan darah
+Suhu tubuh
+Detak jantung
+Pemeriksaan umum lainnya
+
+Langkah ini sangat penting dalam menjaga kondisi ideal para anggota Paskibra selama masa latihan yang padat dan cukup melelahkan.
+
+🙏 Terima Kasih untuk Bapak Camat Padang Tualang
+Ucapan terima kasih dan apresiasi setinggi-tingginya juga kami sampaikan kepada Bapak Camat Padang Tualang, MUHAMMAD IZWANDA, SE.Kp.M.SP (PNS) atas dukungan nyata dan penuh semangat beliau terhadap seluruh proses kegiatan Paskibra tahun ini. Kehadiran, arahan, dan perhatian Bapak Camat menjadi motivasi tersendiri bagi seluruh anggota untuk terus disiplin dan semangat dalam menjalani masa penggemblengan ini.`,
+      gambar: "foto26.jpeg"
+    },
+
+          {
+      judul: "Tradisi 'Makan Bebek Kec.Padang Tualang",
+      tanggal: "2025-07-20",
+      deskripsi: `Sidomukti, 20 Juli 2025 – Kegiatan Paskibra Kecamatan Padang Tualang tak hanya dikenal dengan latihan keras dan disiplin tinggi, tetapi juga dengan tradisi kebersamaan yang kental. Salah satunya adalah tradisi yang dikenal dengan sebutan "Makan Bebek", yang kembali dilaksanakan pada hari Minggu, 20 Juli 2025, bertempat di Lapangan Sepakbola Sidomukti.
+
+Dipimpin langsung oleh pelatih senior SUTRISNO dan ELKY PERNANDA, serta didampingi oleh para purna aktif seperti ILHAMKRT, ICAN, dan MIRA ADELIA, kegiatan ini menjadi simbol keakraban dan rasa syukur setelah serangkaian latihan intens menjelang peringatan Hari Kemerdekaan Republik Indonesia.
+🐤 Apa Itu "Makan Bebek"?
+Meski terdengar unik, "Makan Bebek" bukan sekadar menyantap lauk bebek goreng, tetapi merupakan tradisi internal Paskibra yang bermakna mendalam. Diadakan sebagai bentuk penghargaan terhadap perjuangan anggota selama latihan, kegiatan ini juga menjadi ajang mempererat silaturahmi antar sesama anggota, pelatih, dan para purna.
+“Kami ingin menunjukkan bahwa Paskibra bukan hanya soal baris-berbaris. Ini soal kekeluargaan, disiplin, dan kebanggaan. Makan bebek ini hanyalah salah satu cara kami merayakannya,” ujar Pelatih Sutrisno.
+🍽️ Suasana Penuh Tawa dan Kekeluargaan
+Di bawah teduhnya pohon di pinggir lapangan, para anggota Paskibra, pelatih, dan purna berkumpul dengan suasana hangat. Tawa dan cerita mengalir ringan di sela-sela makanan sederhana namun penuh makna. Momen ini menjadi waktu berharga bagi para peserta untuk menyatu dalam satu keluarga besar Paskibra Padang Tualang.
+🙌 Lebih dari Sekadar Makan
+Kegiatan ini juga sekaligus menjadi penyemangat baru menjelang latihan-latihan terakhir menuju Upacara 17 Agustus 2025. Tradisi ini mengajarkan bahwa di balik kerja keras, selalu ada ruang untuk kebersamaan dan apresiasi.`,
+      gambar: "foto24.jpg"
+    },
 
 
 
 
+
+
+    // Tambahkan berita lainnya
+  ];
+
+   const list = document.getElementById("gogbrit-list");
+  const empty = document.getElementById("gogbrit-empty");
+
+  function renderList(filteredData) {
+    list.innerHTML = "";
+    if (filteredData.length === 0) {
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+
+    filteredData.forEach((item) => {
+      const li = document.createElement("li");
+      li.style.marginBottom = "16px";
+
+      li.innerHTML = `
+        <div style="border:1px solid #ccc; padding:12px; border-radius:8px; cursor:pointer;" onclick="togglePopupDetailGog(this)">
+          <img src="${item.gambar}" alt="thumb" style="width:100%; max-height:160px; object-fit:cover; border-radius:6px;">
+          <h3 style="margin:8px 0 4px;">${item.judul}</h3>
+          <small>${item.tanggal}</small>
+          <div class="popup-detail-gog" style="display:none; margin-top:10px; white-space:pre-wrap;">${item.deskripsi}</div>
+        </div>
+      `;
+      list.insertBefore(li, list.firstChild);
+    });
+  }
+
+  function togglePopupDetailGog(el) {
+    const detail = el.querySelector(".popup-detail-gog");
+    const allDetails = document.querySelectorAll(".popup-detail-gog");
+    allDetails.forEach(d => {
+      if (d !== detail) d.style.display = "none";
+    });
+    detail.style.display = detail.style.display === "none" ? "block" : "none";
+  }
+
+  // Tampilkan semua saat pertama kali
+  renderList(data);
+
+  // Fitur pencarian
+  document.getElementById("searchBerita").addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
+    const filtered = data.filter(item => item.judul.toLowerCase().includes(keyword));
+    renderList(filtered);
+  });
 </script>
 
 
