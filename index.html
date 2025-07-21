@@ -1284,17 +1284,112 @@ z-index:999;font-weight:500;"></div>
     📢Semangat Paskibra Kecamatan Padang Tualang Tahun 2025 terus berkobar! Di bawah arahan Bapak SUTRISNO dan Abangda ELKY FERNANDA serta didampingi purna aktif ILHAM KRT, MIRA ADELIA, dan ICUN, para peserta terus menunjukkan disiplin, kekompakan, dan dedikasi tinggi menuju pengibaran bendera yang membanggakan.
   </div>
 </div>
-    <img src="bannerlangkah.png" alt="Pendi Gambar" style="width: 100%; height: auto; display: block;">
+    <div id="slideshow-container" style="position: relative; width: 100%; overflow: hidden;">
+  <img class="slide-banner" src="colleb2.png" alt="Banner 1" style="width: 100%; height: auto; display: block;">
+  <img class="slide-banner" src="banner80.png" alt="Banner 2" style="width: 100%; height: auto; display: none;">
+  <img class="slide-banner" src="lapanganback.png" alt="Banner 3" style="width: 100%; height: auto; display: none;">
+</div>
+
   </div>
 
   <!-- KONTEN LAINNYA -->
 <!-- MENU BOX KHUSUS -->
  <div id="menu-box-wrapper">
 <div id="menu-box-yayan" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 24px;">
-  <div class="menu-box-yayan">
-    <img src="RI.webp" alt="Layanan">
-    <div id="yayan">LAYANAN</div>
+<!-- Tombol buka popup -->
+<div class="menu-box-yayan" onclick="openLayananPopup()">
+  <img src="RI.webp" alt="layanan">
+  <div id="layanan-btn">LAYANAN 2025</div>
+</div>
+
+<!-- Popup full screen -->
+<div id="popup-layanan" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999; overflow-y:auto;">
+  <div style="padding: 16px; max-width: 960px; margin:auto; position: relative;">
+
+    <!-- Tombol tutup -->
+    <button onclick="closeLayananPopup()" style="position:absolute; top:16px; right:16px; background:red; color:white; border:none; padding:8px 12px; border-radius:8px;">Tutup</button>
+
+    <h2 style="margin-top: 40px; font-size: 20px; color:#111827;">📋 Daftar Layanan</h2>
+
+    <h3 style="margin-top: 20px; font-size: 18px;">🔴 Layanan Paskibra</h3>
+    <ul style="padding-left: 20px;">
+      <li>Pendaftaran Calon Paskibra</li>
+      <li>Pelatihan & Pendidikan Karakter</li>
+      <li>Jadwal Latihan Harian</li>
+      <li>Penerbitan Sertifikat Anggota</li>
+      <li>Data Alumni & Purna Paskibra</li>
+    </ul>
+
+    <h3 style="margin-top: 20px; font-size: 18px;">🟢 Layanan Keamanan Kecamatan Padang Tualang</h3>
+    <ul style="padding-left: 20px;">
+      <li>Pelaporan Kejadian Darurat</li>
+      <li>Pemantauan Kegiatan Umum</li>
+      <li>Koordinasi dengan Babinsa & Polsek</li>
+      <li>Layanan Pengamanan Acara</li>
+      <li>Laporan Kehilangan & Penemuan</li>
+    </ul>
+
+    <hr style="margin: 24px 0;">
+
+    <h3 style="font-size: 18px; margin-bottom: 12px;">📞 Kontak Layanan</h3>
+
+    <!-- Kolom pencarian -->
+    <input type="text" placeholder="Cari kontak..." onkeyup="filterKontak(this.value)" style="width:100%; padding:8px; margin-bottom:16px; border:1px solid #ccc; border-radius:8px;">
+
+<div id="kontak-container" style="
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  max-width: 960px;
+  margin: auto;
+">
+
+  <!-- Kontak 1 -->
+  <div class="kontak-card" style="text-align:center; border: 1px solid #e5e7eb; border-radius: 12px; background: #145ba2; color: #fff; padding: 16px;">
+    <img src="RI.webp" alt="Sutrisno" style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
+    <strong>👤 Ketua Paskibra</strong><br>
+    Sutrisno<br>
+    <a href="https://wa.me/6282281640103" target="_blank" style="display:inline-block; margin-top:8px; background:#25D366; color:white; padding:6px 12px; border-radius:6px; text-decoration:none;">Chat WhatsApp</a>
   </div>
+
+  <!-- Kontak 2 -->
+  <div class="kontak-card" style="text-align:center; border: 1px solid #e5e7eb; border-radius: 12px; background: #145ba2; color: #fff; padding: 16px;">
+    <img src="RI.webp" alt="Yuliadi" style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
+    <strong>👮‍♂️ Polsek Padang Tualang</strong><br>
+    Yuliadi<br>
+    <a href="https://wa.me/6281264966606" target="_blank" style="display:inline-block; margin-top:8px; background:#25D366; color:white; padding:6px 12px; border-radius:6px; text-decoration:none;">Chat WhatsApp</a>
+  </div>
+
+  <!-- Kontak 3 -->
+  <div class="kontak-card" style="text-align:center; border: 1px solid #e5e7eb; border-radius: 12px; background: #145ba2; color: #fff; padding: 16px;">
+    <img src="RI.webp" alt="Yayan" style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
+    <strong>💂 Danramil Padang Tualang</strong><br>
+    Yayan<br>
+    <a href="https://wa.me/6285271740205" target="_blank" style="display:inline-block; margin-top:8px; background:#25D366; color:white; padding:6px 12px; border-radius:6px; text-decoration:none;">Chat WhatsApp</a>
+  </div>
+
+  <!-- Kontak 4 -->
+  <div class="kontak-card" style="text-align:center; border: 1px solid #e5e7eb; border-radius: 12px; background: #145ba2; color: #fff; padding: 16px;">
+    <img src="RI.webp" alt="Muslim" style="width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
+    <strong>📢 Kasi Trantib</strong><br>
+    Muslim<br>
+    <a href="https://wa.me/6282267886882" target="_blank" style="display:inline-block; margin-top:8px; background:#25D366; color:white; padding:6px 12px; border-radius:6px; text-decoration:none;">Chat WhatsApp</a>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div style="margin-top: 40px; font-size: 14px; color: #6b7280; text-align:center;">
+  © 2025 Paskibra Padang Tualang
+</div>
+  </div>
+
+
+</div>
+    
+
+
   <div class="menu-box-yayan">
     <img src="RI.webp" alt="Berita">
     <div id="britta">BERITA</div>
@@ -1305,10 +1400,24 @@ z-index:999;font-weight:500;"></div>
   </div>
   <div class="menu-box-yayan">
     <img src="RI.webp" alt="Informasi">
-    <div id="nfirmasi">INFORMASI</div>
+    <div id="nfirmasi">Kantor Camat</div>
   </div>
+<div class="menu-box-yayan">
+  <img src="RI.webp" alt="selow">
+  <div id="selow">12 Desa</div>
+</div>
+<div class="menu-box-yayan">
+  <img src="RI.webp" alt="gegol">
+  <div id="gegol">Polsek</div>
+</div>
+
+
 </div>
 </div>
+
+
+
+
 
 <div style="border: 2px solid #cd0000; border-radius: 12px; padding: 16px; margin: 20px; background: #ffffff;">
 
@@ -3346,6 +3455,48 @@ Kegiatan ini juga sekaligus menjadi penyemangat baru menjelang latihan-latihan t
     const filtered = data.filter(item => item.judul.toLowerCase().includes(keyword));
     renderList(filtered);
   });
+
+
+
+
+
+
+
+
+
+
+
+ // popup layanan
+    function openLayananPopup() {
+    document.getElementById("popup-layanan").style.display = "block";
+  }
+
+  function closeLayananPopup() {
+    document.getElementById("popup-layanan").style.display = "none";
+  }
+
+  function filterKontak(keyword) {
+  const cards = document.querySelectorAll('.kontak-card');
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(keyword.toLowerCase()) ? 'block' : 'none';
+  });
+}
+
+
+
+
+
+
+ // ganti ganti banner pendi
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide-banner');
+
+  setInterval(() => {
+    slides[currentSlide].style.display = 'none'; // Sembunyikan slide sekarang
+    currentSlide = (currentSlide + 1) % slides.length; // Lanjut ke slide berikutnya
+    slides[currentSlide].style.display = 'block'; // Tampilkan slide berikutnya
+  }, 3000); // Ganti setiap 3 detik
 </script>
 
 
