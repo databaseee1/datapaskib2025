@@ -950,6 +950,12 @@ nav button:hover .icon-img {
 
 
 
+/*promosi load*/
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 
   </style>
 </head>
@@ -1036,6 +1042,47 @@ z-index:999;font-weight:500;"></div>
     </form>
 
 
+
+
+
+<!-- Link pop up awal -->
+<!-- Popup Promosi -->
+<div id="menggantung" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.11);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+">
+  <div style="
+    background: rgb(41, 93, 198);
+    padding: 24px;
+    border-radius: 16px;
+    max-width: 90%;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    position: relative;
+    animation: pop 0.4s ease;
+  ">
+    <button onclick="tutupMenggantung()" style="
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    ">&times;</button>
+
+    <img src="lapanganback.png" alt="Promo" style="width: 100%; border-radius: 12px; margin-bottom: 12px;" />
+    <h3 style="margin-bottom: 8px; color: #ffffff;">PASKIBRA PADANG TUALANG!</h3>
+    <p style="font-size: 14px; color: #ffffff;">Kami mengajak generasi muda terbaik untuk bergabung bersama kami dalam barisan kehormatan.
+Jadilah bagian dari perjalanan menuju disiplin, tanggung jawab, dan semangat kebangsaan.!</p>
+  </div>
+</div>
 
 
 
@@ -1149,36 +1196,33 @@ z-index:999;font-weight:500;"></div>
 <!-- Tombol Ucapan Terima Kasih -->
 <button onclick="showUcapan()" style="display: flex; align-items: center;">
   <img src="terimakasih.png" style="width: 20px; height: 20px; margin-right: 8px;" />
-  Ucapan Terima Kasih
+  Album Video
 </button>
 
 <!-- Popup Fullscreen -->
 <div id="popup-ucapan" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color: rgba(0,0,0,0.9); z-index:9999; overflow-y:auto; padding:20px;">
   <button onclick="closeUcapan()" style="position:absolute; top:10px; right:10px; background:red; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;">Tutup</button>
 
-  <h2 style="color:rgb(248, 248, 248); text-align:center; margin-bottom:20px;">Ucapan Terima Kasih Paskibra</h2>
+  <h2 style="color:rgb(248, 248, 248); text-align:center; margin-bottom:20px;">Video Album</h2>
 
   <!-- Video Galeri -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
-    <!-- Contoh 2 video pertama -->
-    <video controls autoplay muted style="width:100%; border-radius:12px;">
-      <source src="video1.mp4" type="video/mp4" />
-      Browser tidak mendukung video.
-    </video>
+ <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
+  <!-- Contoh 3 video -->
+  <video controls muted style="width:100%; border-radius:12px;">
+    <source src="video1.mp4" type="video/mp4" />
+    Browser tidak mendukung video.
+  </video>
 
-    <video controls autoplay muted style="width:100%; border-radius:12px;">
-      <source src="video2.mp4" type="video/mp4" />
-      Browser tidak mendukung video.
-    </video>
+  <video controls muted style="width:100%; border-radius:12px;">
+    <source src="video2.mp4" type="video/mp4" />
+    Browser tidak mendukung video.
+  </video>
 
-    <!-- Tambahkan hingga 40 video -->
-    <!--
-    <video controls autoplay muted style="width:100%; border-radius:12px;">
-      <source src="video3.mp4" type="video/mp4" />
-    </video>
-    ...
-    -->
-  </div>
+  <video controls muted style="width:100%; border-radius:12px;">
+    <source src="video3.mp4" type="video/mp4" />
+    Browser tidak mendukung video.
+  </video>
+</div>
 </div>
 
 <!-- === POPUP VIDEO FULLSCREEN === -->
@@ -2939,7 +2983,7 @@ document.getElementById("preview").innerHTML = `
         </div>
         <div style="text-align:center;">
           <img src="camat.jpeg" style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
-          <div style="font-weight:600;font-size:10px; margin-top:5px;">ZULKARNAIN,SE (PNS)</div>
+          <div style="font-weight:600;font-size:10px; margin-top:5px;">******,SE (PNS)</div>
           <div style="font-size:6px; color:#1e3a8a;">(Wakil Camat)</div>
         </div>
       </div>
@@ -3362,7 +3406,7 @@ Kami menyampaikan terima kasih dan apresiasi yang setinggi-tingginya kepada Bapa
 
 💪 Dipimpin oleh Sosok Inspiratif
 Kegiatan pelatihan ini dipimpin langsung oleh pelatih berpengalaman, Bapak SUTRISNO dan Abangda ELKY FERNANDA, serta dibimbing penuh semangat oleh para purna aktif yaitu ILHAMKRT, MIRA ADELIA, dan ICUN, yang terus hadir memberikan arahan, semangat, dan contoh teladan bagi para calon paskibraka.`,
-      gambar: "bagi baju.jpeg"
+      gambar: "foto28.jpg"
     },
        {
       judul: "🩺 Cek Kesehatan Kedua Paskibra padang tualang tahun 2025: Komitmen Jaga Fisik & Mental Menuju Hari Kemerdekaan",
@@ -3402,7 +3446,22 @@ Kegiatan ini juga sekaligus menjadi penyemangat baru menjelang latihan-latihan t
       gambar: "foto24.jpg"
     },
 
+          {
+      judul: "🔰Pemakaian Perdana Baju Lapangan Paskibra Padang Tualang 2025",
+      tanggal: "2025-07-22",
+      deskripsi: `Padang Tualang, 22 Juli 2025 – Sebuah momen bersejarah tercipta bagi calon anggota Paskibra Padang Tualang tahun ini. Untuk pertama kalinya, seluruh anggota mengenakan baju lapangan resmi yang menjadi identitas baru dalam pelatihan dan kegiatan lapangan.
 
+Dengan balutan seragam bernuansa merah marun dan hitam, dilengkapi emblem khusus serta logo kecamatan, penampilan para anggota tampak gagah dan penuh wibawa. Baju ini dirancang khusus untuk mencerminkan semangat disiplin, kekompakan, dan dedikasi tinggi dalam menjalankan tugas sebagai pasukan pengibar bendera.
+
+Menurut salah satu pelatih senior, Bapak Sutrisno, pemakaian baju lapangan ini bukan sekadar ganti pakaian, tetapi menjadi simbol keseriusan para peserta dalam mengikuti setiap tahapan latihan menuju pengibaran bendera pada 17 Agustus mendatang.
+
+“Hari ini bukan hanya tentang seragam baru, tapi tentang semangat baru. Baju ini harus dibarengi dengan tanggung jawab yang besar,” ujar beliau saat memberi arahan pagi tadi.
+
+Momen ini juga menjadi ajang kebanggaan tersendiri bagi para peserta, karena setiap individu merasa semakin menyatu sebagai bagian dari keluarga besar Paskibra Padang Tualang.
+
+Kegiatan hari itu ditutup dengan sesi foto bersama dan pemantapan materi baris-berbaris, dengan tetap menjunjung tinggi semangat nasionalisme, kebersamaan, dan kedisiplinan.`,
+      gambar: "bajupertama.jpg"
+    },
 
 
 
@@ -3483,8 +3542,17 @@ Kegiatan ini juga sekaligus menjadi penyemangat baru menjelang latihan-latihan t
   });
 }
 
+// promosi awal----
+  // Munculkan otomatis saat halaman load
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('menggantung').style.display = 'flex';
+    }, 700); // Delay 1 detik (bisa diubah)
+  });
 
-
+  function tutupMenggantung() {
+    document.getElementById('menggantung').style.display = 'none';
+  }
 
 
 
