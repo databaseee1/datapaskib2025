@@ -3670,29 +3670,10 @@ Kegiatan hari itu ditutup dengan sesi foto bersama dan pemantapan materi baris-b
   }, 3000); // Ganti setiap 3 detik
 
 
- //ganti jalur file biar rapi---- //ganti jalur file biar rapi----
-
+// Nonaktifkan karena semua file ada di luar, tidak di dalam folder images/videos
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('img').forEach(img => {
-    if (!img.src.includes('/images/')) {
-      let filename = img.src.split('/').pop();
-      img.src = '../images/' + filename;
-    }
-  });
-
-  document.querySelectorAll('video source').forEach(src => {
-    if (!src.src.includes('/videos/')) {
-      let filename = src.src.split('/').pop();
-      src.src = '../videos/' + filename;
-    }
-  });
-
-  document.querySelectorAll('video').forEach(video => {
-    video.load(); // refresh sumber video
-  });
+  // Tidak mengubah path gambar dan video
 });
-
-
 
  //iklan iklan iklan----
 
