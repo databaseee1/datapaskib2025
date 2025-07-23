@@ -593,40 +593,6 @@ nav button:hover .icon-img {
   }
 
 
-/* SYTLE HALAMAN MAINTENANCE BERKEDIP */ /* MAINTENANCE  */ /* MAINTENANCE  */
-   .blink {
-    animation: blink-animation 1s steps(2, start) infinite;
-  }
-
-  @keyframes blink-animation {
-    to {
-      visibility: hidden;
-    }
-  }
-
-  #maintenance-message a {
-    margin-top: 16px;
-    text-decoration: none;
-    background-color: #25D366;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  #maintenance-message a img {
-    width: 20px;
-    height: 20px;
-  }
-
-#maintenance-message {
-  filter: none;
-}
-
-
 
 
 /* SYTLE HALAMAN PILIHAN MENU */ 
@@ -1118,16 +1084,6 @@ Jadilah bagian dari perjalanan menuju disiplin, tanggung jawab, dan semangat keb
 
 
 
-<!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE --><!-- INI   MODE MAINTENANCE -->
-<div id="maintenance-message" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:white; z-index:9999; display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:20px;">
-  <img src="Logo Maintenance.png" alt="Maintenance" style="width: 120px; margin-bottom: 16px;" class="blink" />
-  <h2 style="font-size: 24px; margin-bottom: 10px;">Absen Ku Tutup!</h2>
-  <p style="font-size: 16px;">Telat Aja Terus, Gausa kau ikuti Aturan Kami Bro!</p>
-  <p style="font-size: 16px;"><strong>Wajib Absen kau nanti jam 08:00 WIB.</strong></p>
-  <p style="font-size: 14px; background: #66b1e3;">@admin:ilhamkrt</p>
-</div>
-
-
 
 
 
@@ -1463,48 +1419,122 @@ Jadilah bagian dari perjalanan menuju disiplin, tanggung jawab, dan semangat keb
 
 </div>
     
-
-
-<!-- MENU TOKO -->
-<div id="menuToko" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:white; z-index:9999; overflow-y:auto; padding:16px;">
-  <h2 style="text-align:center; margin-bottom:16px;">SEMUA TOKO</h2>
-
-  <!-- Daftar Produk -->
-  <div id="produkList" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px;">
-    <div style="border:1px solid #ddd; padding:10px; border-radius:8px; text-align:center;">
-      <img src="RI.webp" alt="Produk 1" style="width:100%; border-radius:6px;">
-      <h4>Bordir Logo Paskibra</h4>
-      <p>Rp 50000</p>
-      <button onclick="tambahKeKeranjang('Kaos Paskibra', 50000)" style="background:#007bff; color:white; border:none; padding:6px 12px; border-radius:6px;">Masukkan Keranjang</button>
-    </div>
-    <div style="border:1px solid #ddd; padding:10px; border-radius:8px; text-align:center;">
-      <img src="RI.webp" alt="Produk 2" style="width:100%; border-radius:6px;">
-      <h4>Logo Bordir Paskibra</h4>
-      <p>Rp 30000</p>
-      <button onclick="tambahKeKeranjang('Topi Paskibra', 30000)" style="background:#007bff; color:white; border:none; padding:6px 12px; border-radius:6px;">Masukkan Keranjang</button>
-    </div>
-    <!-- Tambah produk lainnya di sini -->
-  </div>
-
-  <hr style="margin:20px 0;">
-
-  <!-- Keranjang Belanja -->
-  <h3>Keranjang Belanja</h3>
-  <div id="keranjang" style="margin-bottom:12px;"></div>
-  <div id="total" style="font-weight:bold; margin-bottom:12px;">Total: Rp 0</div>
-  <button onclick="bayarSekarang()" style="background:green; color:white; padding:10px 16px; border:none; border-radius:6px;">Bayar Sekarang</button>
-
-  <!-- Tombol Tutup -->
-  <br><br>
-  <button onclick="tutupToko()" style="background:#999; color:white; padding:8px 16px; border:none; border-radius:6px;">Tutup Toko</button>
-</div>
-
 <!-- Tombol Buka TOKO -->
-<div class="menu-box-yayan" onclick="bukaToko()" style="cursor:pointer;">
+ <div class="menu-box-yayan" onclick="bukaToko()" style="cursor:pointer;">
   <img src="RI.webp" alt="Berita">
   <div id="britta">TOKO</div>
 </div>
 
+
+<!-- === MENU TOKO === -->
+<!-- === MENU UTAMA TOKO === -->
+<div id="menuToko" style="display:none; position:fixed; inset:0; background:white; z-index:9999; overflow-y:auto; padding:16px;">
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+    <button onclick="bukaFormPenjual()" style="background:#2196F3; color:white;">🧑‍💼 Daftar Penjual</button>
+    <button onclick="bukaFormPembeli()" style="background:#4CAF50; color:white;">👤 Daftar Pembeli</button>
+    <button onclick="bukaLoginPenjual()" style="background:#FF9800; color:white;">🔐 Login Penjual</button>
+  </div>
+
+  <!-- FORM LOGIN PENJUAL (POPUP) -->
+  <div id="loginPenjualPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc; z-index:9999; justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:8px; width:90%; max-width:360px; text-align:center;">
+      <h3>Login Penjual</h3>
+      <input type="text" id="loginNamaToko" placeholder="Nama Toko" style="width:100%; padding:10px; margin:10px 0;"><br>
+      <input type="text" id="loginWA" placeholder="Nomor WhatsApp" style="width:100%; padding:10px; margin:10px 0;"><br>
+      <button onclick="prosesLoginPenjual()" style="background:#FF9800; color:white; padding:10px 20px; border:none;">Login</button><br>
+      <button onclick="tutupLoginPenjual()" style="margin-top:12px;">Tutup</button>
+    </div>
+  </div>
+
+
+
+
+<div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom: 12px;">
+  <h2 style="margin:0;">🛍️ Marketplace Toko</h2>
+  <button onclick="scrollKeKeranjang()" style="background:none; border:none; cursor:pointer; font-size:20px; position:relative;">
+    🛒<span id="jumlahKeranjang" style="position:absolute; top:-8px; right:-10px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:12px;">0</span>
+  </button>
+</div>
+
+<input type="text" id="searchInput" onkeyup="cariProduk()" placeholder="Cari toko/produk..." style="width:100%; padding:8px;">
+<div id="produkList" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:12px; margin-top: 12px;"></div>
+
+<!-- Keranjang Tersembunyi (scrollTo akan aktif) -->
+<div id="keranjangArea" style="display:none; margin-top:24px; background:#f9f9f9; padding:10px; border-radius:8px;">
+  <h3>🛒 Keranjang</h3>
+  <div id="keranjangList"></div>
+  <p><strong>Total:</strong> <span id="totalKeranjang">Rp0</span></p>
+</div>
+
+<div style="text-align:center; margin-top:24px;">
+  <button onclick="tutupToko()" style="background:#444; color:#fff;">Tutup</button>
+</div>
+</div>
+
+
+
+<!-- === FORM PENJUAL === -->
+<div id="formPenjual" style="display:none; position:fixed; inset:0; background:white; padding:20px; z-index:10000;">
+  <h3>🧑‍💼 Formulir Pendaftaran Penjual</h3>
+  <input id="tokoNama" placeholder="Nama Toko" style="width:100%; margin:5px 0;">
+  <input id="pemilikNama" placeholder="Nama Pemilik" style="width:100%; margin:5px 0;">
+  <input id="wa" placeholder="WhatsApp" style="width:100%; margin:5px 0;">
+  <input id="email" placeholder="Email" style="width:100%; margin:5px 0;">
+  <input id="rekening" placeholder="No. Rekening" style="width:100%; margin:5px 0;">
+  <input id="bank" placeholder="Bank" style="width:100%; margin:5px 0;">
+  <input id="namaRekening" placeholder="Nama Rekening" style="width:100%; margin:5px 0;">
+  <button onclick="submitPenjual()" style="background:green; color:white; padding:10px 20px; margin-top:10px;">Daftar</button>
+  <button onclick="tutupForm('formPenjual')" style="background:#999; color:white; padding:10px 20px; margin-left:10px;">Tutup</button>
+</div>
+
+<!-- === DASHBOARD PENJUAL === -->
+<div id="dashboard-penjual" style="display:none; position:fixed; inset:0; background:white; padding:16px; z-index:10000; overflow-y:auto;">
+  <h2>📦 Dashboard Toko</h2>
+  <p><strong>Nama Toko:</strong> <span id="namaToko">-</span></p>
+  <p><strong>Nama Pemilik:</strong> <span id="namaPemilik">-</span></p>
+
+  <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+    <button onclick="tampilkanUploadProduk()">🆕 Upload Produk</button>
+    <button onclick="lihatProdukSaya()">📋 Produk Saya</button>
+    <button onclick="lihatPesananMasuk()">📥 Pesanan Masuk</button>
+    <button onclick="bukaPengaturan()">⚙️ Pengaturan Toko</button>
+    <button onclick="bukaTopUp()">💰 Top Up Saldo</button>
+
+
+<div id="tokoGlobal" style="display:none; margin-top: 24px; padding:16px;">
+  <h3>🌐 Toko Global</h3>
+  
+  <input type="text" id="cariGlobal" placeholder="Cari produk/toko..." oninput="cariProdukGlobal()" style="width:100%;padding:8px;">
+  <div id="produkGlobalContainer" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:12px; margin-top: 12px;"></div>
+
+  <hr style="margin: 24px 0;">
+
+<div id="keranjangArea" style="display:none; margin-top: 24px; background:#f9f9f9; padding:10px; border-radius:8px;">
+  <h3>🛒 Keranjang</h3>
+  <div id="keranjangList"></div>
+  <p><strong>Total:</strong> <span id="totalKeranjang">Rp0</span></p>
+</div>
+</div>
+
+
+    <button onclick="bukaWithdraw()">🏧 Withdraw</button>
+    <button onclick="logoutPenjual()">🚪 Logout</button>
+  </div>
+
+  <hr style="margin:20px 0;">
+  <div id="konten-dashboard"></div>
+</div>
+
+<!-- === FORM PEMBELI === -->
+<div id="formPembeli" style="display:none; position:fixed; inset:0; background:white; padding:20px; z-index:10000;">
+  <h3>👤 Formulir Pendaftaran Pembeli</h3>
+  <input id="namaPembeli" placeholder="Nama Lengkap">
+  <input id="emailPembeli" placeholder="Email">
+  <input id="waPembeli" placeholder="No HP / WhatsApp">
+  <input id="alamatPembeli" placeholder="Alamat">
+  <button onclick="submitPembeli()" style="background:#4CAF50; color:white;">Daftar</button>
+  <button onclick="tutupForm('formPembeli')" style="background:#999; color:white;">Tutup</button>
+</div>
 
 
 
@@ -2764,75 +2794,6 @@ countdownEl.innerHTML = `🕒 ${days} Hari ${hours} Jam ${minutes} Menit ${secon
 
 
 
-// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------
-// Ubah jam mulai dan akhir maintenance di bawah ini
-  // Atur jam mulai dan akhir maintenance (format 24 jam WIB)
-
- // Waktu Maintenance (WIB)
-  const jamMulaiMaintenance = "07:31";
-  const jamAkhirMaintenance = "07:54";
-
-  function cekMaintenance() {
-    const now = new Date();
-    const wibJam = (now.getUTCHours() + 7) % 24;
-    const wibMenit = now.getUTCMinutes();
-    const sekarang = `${wibJam.toString().padStart(2, '0')}:${wibMenit.toString().padStart(2, '0')}`;
-
-    function waktuKeMenit(waktu) {
-      const [jam, menit] = waktu.split(":").map(Number);
-      return jam * 60 + menit;
-    }
-
-    const menitSekarang = waktuKeMenit(sekarang);
-    const menitMulai = waktuKeMenit(jamMulaiMaintenance);
-    const menitAkhir = waktuKeMenit(jamAkhirMaintenance);
-
-    const isMaintenance = menitSekarang >= menitMulai && menitSekarang <= menitAkhir;
-
-    const maintenanceDiv = document.getElementById('maintenance-message');
-
-    if (isMaintenance) {
-      maintenanceDiv.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      document.querySelectorAll('a, button, input, form, textarea, select').forEach(el => {
-        el.disabled = true;
-        el.style.pointerEvents = 'none';
-        el.style.opacity = 0.2;
-      });
-    } else {
-      maintenanceDiv.style.display = 'none';
-      document.body.style.overflow = '';
-      document.querySelectorAll('a, button, input, form, textarea, select').forEach(el => {
-        el.disabled = false;
-        el.style.pointerEvents = 'auto';
-        el.style.opacity = 1;
-      });
-    }
-  }
-
-  cekMaintenance();
-  setInterval(cekMaintenance, 15000);
-
-
-
-// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------// MODE MAINTENANCE ---------------------------- MODE MAINTENANCE --------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ← ABSEN BARU ------------------------------------------ABSEN BARU----------------------
     const scriptURL = "https://script.google.com/macros/s/AKfycbyC0yd30ExJU56N6HgNPKB0RgX_5l9-EugXVW_t13Q2euHnQjJLq_A_RImYap4nZJZ8mw/exec";
 
@@ -3694,50 +3655,312 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
  //HALAMAN TOKO----
-  const produk = [
-    { nama: "Pisang Goreng", harga: 5000 },
-    { nama: "Teh Manis", harga: 3000 },
-    { nama: "Es Jeruk", harga: 4000 }
-  ];
+ 
+const endpoint = "https://script.google.com/macros/s/AKfycbwh6N48ftoKTxfuCGqCI2DQEbRk3ke3Q52afg_7GGCJDvsZwn6WGRPdphXfqaCWFj57/exec";
 
-  let total = 0;
-
-  function bukaToko() {
-    document.getElementById("menuToko").style.display = "block";
+const produkData = [
+  {
+    nama: "Kaos Paskibra",
+    harga: 50000,
+    toko: "Toko Andi",
+    deskripsi: "Kaos merah bahan adem",
+    gambar: "kaos.webp",
+    rekening: { nama: "Andi Saputra", nomor: "1234567890", bank: "BRI" }
+  },
+  {
+    nama: "Pin Logo",
+    harga: 15000,
+    toko: "Toko Sari",
+    deskripsi: "Pin logam enamel",
+    gambar: "pin.webp",
+    rekening: { nama: "Sari Wulandari", nomor: "9876543210", bank: "BCA" }
+  },
+  {
+    nama: "Topi Paskibra",
+    harga: 30000,
+    toko: "Toko Budi",
+    deskripsi: "Topi putih dengan logo Paskibra",
+    gambar: "topi.webp",
+    rekening: { nama: "Budi Santoso", nomor: "1122334455", bank: "Mandiri" }
+  },
+  {
+    nama: "Sepatu Latihan",
+    harga: 200000,
+    toko: "Toko Sepatu Jaya",
+    deskripsi: "Sepatu olahraga nyaman untuk latihan",
+    gambar: "sepatu.webp",
+    rekening: { nama: "Jaya Pratama", nomor: "5566778899", bank: "BNI" }
+  },
+  {
+    nama: "Pin Logo",
+    harga: 15000,
+    toko: "Toko Sari",
+    deskripsi: "Pin logam enamel",
+    gambar: "pin.webp",
+    rekening: { nama: "Sari Wulandari", nomor: "9876543210", bank: "BCA" }
   }
+];
 
-  function tutupToko() {
-    document.getElementById("menuToko").style.display = "none";
-  }
+let keranjang = [];
 
-  function tambahKeKeranjang(nama, harga) {
-    const item = document.createElement("div");
-    item.className = "item-keranjang";
-    item.innerHTML = `
-      <span>${nama} - Rp ${harga}</span>
-      <button onclick="hapusItem(this)" style="margin-left:10px; background:red; color:white; border:none; padding:4px 8px; border-radius:4px;">Hapus</button>
+function bukaToko() {
+  document.getElementById("menuToko").style.display = "block";
+  tampilkanProduk(produkData);
+  tampilkanKeranjang();
+}
+
+function tutupToko() {
+  document.getElementById("menuToko").style.display = "none";
+}
+
+function bukaFormPenjual() {
+  document.getElementById("formPenjual").style.display = "block";
+  document.getElementById("formPembeli").style.display = "none";
+}
+
+function bukaFormPembeli() {
+  document.getElementById("formPembeli").style.display = "block";
+  document.getElementById("formPenjual").style.display = "none";
+}
+
+function tutupForm(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+function tampilkanProduk(data) {
+  const list = document.getElementById("produkList") || document.getElementById("produkGlobalContainer");
+  if (!list) return;
+  list.innerHTML = "";
+  data.forEach((p, i) => {
+    const card = document.createElement("div");
+    card.style = "border:1px solid #ccc;padding:10px;border-radius:8px;text-align:center;background:white;";
+    card.innerHTML = `
+      <img src="${p.gambar}" style="width:100%; height:120px; object-fit:cover; border-radius:6px;">
+      <h4>${p.nama}</h4>
+      <p style="color:green;font-weight:bold;">Rp ${p.harga.toLocaleString()}</p>
+      <p style="font-size:12px;color:#555;">${p.toko}</p>
+      <button onclick='tambahKeKeranjang(${JSON.stringify(i)})'>🛒 + Keranjang</button>
     `;
-    document.getElementById("keranjang").appendChild(item);
-    total += harga;
-    updateTotal();
+    list.appendChild(card);
+  });
+}
+
+function tambahKeKeranjang(index) {
+  const item = produkData[index];
+  keranjang.push(item);
+  alert(`✅ ${item.nama} dimasukkan ke keranjang.`);
+  tampilkanKeranjang();
+}
+
+function tampilkanKeranjang() {
+  const list = document.getElementById("keranjangList");
+  const totalEl = document.getElementById("totalKeranjang");
+  if (!list || !totalEl) return;
+
+  list.innerHTML = "";
+
+  if (keranjang.length === 0) {
+    list.innerHTML = "<p>Keranjang masih kosong.</p>";
+    totalEl.textContent = "Rp0";
+    return;
   }
 
-  function hapusItem(button) {
-    const item = button.parentElement;
-    const text = item.textContent;
-    const harga = parseInt(text.match(/Rp (\d+)/)[1]);
-    item.remove();
-    total -= harga;
-    updateTotal();
+
+let total = 0;
+  keranjang.forEach((item) => {
+    total += item.harga;
+    const row = document.createElement("div");
+    row.style = "display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #ddd;";
+    row.innerHTML = `
+      <span>${item.nama}</span>
+      <span>Rp ${item.harga.toLocaleString()}</span>
+    `;
+    list.appendChild(row);
+  });
+
+  totalEl.textContent = "Rp " + total.toLocaleString();
+}
+
+function cariProduk() {
+  const q = document.getElementById("searchInput")?.value.toLowerCase() || "";
+  const hasil = produkData.filter(p =>
+    p.nama.toLowerCase().includes(q) || p.toko.toLowerCase().includes(q)
+  );
+  tampilkanProduk(hasil);
+}
+
+function cariProdukGlobal() {
+  const q = document.getElementById("cariGlobal")?.value.toLowerCase() || "";
+  const hasil = produkData.filter(p =>
+    p.nama.toLowerCase().includes(q) || p.toko.toLowerCase().includes(q)
+  );
+  tampilkanProduk(hasil);
+}
+
+
+
+function submitPenjual() {
+  const data = new FormData();
+  data.append("action", "submitPenjual");
+  data.append("namaToko", document.getElementById('tokoNama').value.trim());
+  data.append("namaPemilik", document.getElementById('pemilikNama').value.trim());
+  data.append("whatsapp", document.getElementById('wa').value.trim());
+  data.append("email", document.getElementById('email').value.trim());
+  data.append("noRek", document.getElementById('rekening').value.trim());
+  data.append("bank", document.getElementById('bank').value.trim());
+  data.append("namaRek", document.getElementById('namaRekening').value.trim());
+
+  fetch(endpoint, { method: "POST", body: data })
+    .then(r => r.json())
+    .then(res => {
+      if (res.success) {
+        alert("Berhasil mendaftar sebagai penjual! Tunggu verifikasi.");
+        tutupForm("formPenjual");
+      } else {
+        alert("Gagal menyimpan data penjual.");
+      }
+    })
+    .catch(() => alert("Gagal mengirim data. Periksa koneksi internet."));
+}
+
+function submitPembeli() {
+  const data = new FormData();
+  data.append("action", "submitPembeli");
+  data.append("namaPembeli", document.getElementById('namaPembeli').value.trim());
+  data.append("whatsapp", document.getElementById('waPembeli').value.trim());
+  data.append("email", document.getElementById('emailPembeli').value.trim());
+  data.append("alamat", document.getElementById('alamatPembeli').value.trim());
+
+  fetch(endpoint, { method: "POST", body: data })
+    .then(r => r.json())
+    .then(res => {
+      if (res.success) {
+        alert("Berhasil mendaftar sebagai pembeli!");
+        tutupForm("formPembeli");
+      } else {
+        alert("Gagal menyimpan data pembeli.");
+      }
+    })
+    .catch(() => alert("Gagal mengirim data. Periksa koneksi internet."));
+}
+
+
+
+//LOGIN AKUN PENJUAL---
+
+
+
+const URL_LOGIN_PENJUAL = "https://script.google.com/macros/s/AKfycbwh6N48ftoKTxfuCGqCI2DQEbRk3ke3Q52afg_7GGCJDvsZwn6WGRPdphXfqaCWFj57/exec";
+
+function bukaLoginPenjual() {
+  document.getElementById("loginPenjualPopup").style.display = "flex";
+}
+
+function tutupLoginPenjual() {
+  document.getElementById("loginPenjualPopup").style.display = "none";
+}
+
+function prosesLoginPenjual() {
+  const namaTokoInput = document.getElementById("loginNamaToko").value.trim().toLowerCase();
+  const waInput = document.getElementById("loginWA").value.trim();
+
+  if (!namaTokoInput || !waInput) {
+    alert("❗ Harap isi semua kolom.");
+    return;
   }
 
-  function updateTotal() {
-    document.getElementById("total").innerText = `Total: Rp ${total}`;
+  fetch(`${URL_LOGIN_PENJUAL}?mode=getData`)
+    .then(res => res.json())
+    .then(data => {
+      const akun = data.find(row =>
+        String(row["Nama Toko"] || "").trim().toLowerCase() === namaTokoInput &&
+        String(row["WhatsApp"] || "").trim() === waInput &&
+        String(row["Status"] || "").toLowerCase() === "disetujui"
+      );
+
+      if (akun) {
+        // Simpan info ke localStorage jika perlu
+        localStorage.setItem("penjualLogin", JSON.stringify(akun));
+
+        // Tampilkan data ke dashboard
+        document.getElementById("namaToko").textContent = akun["Nama Toko"];
+        document.getElementById("namaPemilik").textContent = akun["Pemilik"];
+
+        // Tampilkan dashboard, sembunyikan menu login
+        document.getElementById("dashboard-penjual").style.display = "block";
+        document.getElementById("loginPenjualPopup").style.display = "none";
+        document.getElementById("menuToko").style.display = "none";
+
+        alert(`✅ Selamat datang, ${akun["Nama Toko"]}!`);
+      } else {
+        alert("❌ Data tidak ditemukan atau belum disetujui.");
+      }
+    })
+    .catch(error => {
+      console.error("Login Error:", error);
+      alert("❌ Gagal login. Periksa koneksi atau coba ulang.");
+    });
+}
+
+
+
+//GAMBAR SEMUA PRODUK---
+
+function tampilkanProduk(data) {
+  const list = document.getElementById("produkList");
+  list.innerHTML = "";
+  data.forEach((p, i) => {
+    const card = document.createElement("div");
+    card.style = "border:1px solid #ccc;padding:10px;border-radius:8px;text-align:center;background:white;";
+    
+    // Simpan data produk sebagai data attribute agar bisa diambil saat klik tombol
+    card.innerHTML = `
+      <img src="${p.gambar}" style="width:100%; height:120px; object-fit:cover; border-radius:6px;">
+      <h4>${p.nama}</h4>
+      <p style="color:green;font-weight:bold;">Rp ${p.harga.toLocaleString()}</p>
+      <p style="font-size:12px;color:#555;">${p.toko}</p>
+      <button onclick='tambahKeKeranjangByIndex(${i})'>+ Keranjang</button>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function tambahKeKeranjangByIndex(i) {
+  const item = produkData[i];
+  tambahKeKeranjang(item);
+}
+
+function tampilkanKeranjang() {
+  const list = document.getElementById("keranjangList");
+  const totalEl = document.getElementById("totalKeranjang");
+  const area = document.getElementById("keranjangArea");
+  list.innerHTML = "";
+
+  if (keranjang.length === 0) {
+    area.style.display = "none";
+    totalEl.textContent = "Rp0";
+    return;
   }
 
-  function bayarSekarang() {
-    alert("Menu ini belum tersedia.");
-  }
+  area.style.display = "block";
+  let total = 0;
+  keranjang.forEach(item => {
+    total += item.harga;
+    const row = document.createElement("div");
+    row.style = "display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #ddd;";
+    row.innerHTML = `
+      <span>${item.nama}</span>
+      <span>Rp ${item.harga.toLocaleString()}</span>
+    `;
+    list.appendChild(row);
+  });
+
+  totalEl.textContent = "Rp " + total.toLocaleString();
+}
+
+
+
+
 </script>
 </script>
 </body>

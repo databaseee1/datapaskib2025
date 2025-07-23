@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Admin Toko</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+    h1 {
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 8px 16px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background-color: #2196F3;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background-color: #eee;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 2px;
+      font-size: 13px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .approve { background-color: #4CAF50; color: white; }
+    .suspend { background-color: #FFC107; color: white; }
+    .reject  { background-color: #F44336; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Panel Admin Toko Paskibra</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('penjual')">Data Penjual</button>
+    <button class="tab-btn" onclick="switchTab('pembeli')">Data Pembeli</button>
+    <button class="tab-btn" onclick="switchTab('produk')">Gudang Produk</button>
+    <button class="tab-btn" onclick="switchTab('order')">Orderan Penjual</button>
+    <button class="tab-btn" onclick="switchTab('pembayaran')">Pembayaran</button>
+    <button class="tab-btn" onclick="switchTab('laporan')">Laporan</button>
+    <button class="tab-btn" onclick="switchTab('profil')">Profil</button>
+  </div>
+
+  <!-- Data Penjual -->
+  <div id="penjual" class="tab-content active">
+    <table>
+      <thead>
+        <tr>
+          <th>Nama Toko</th>
+          <th>Pemilik</th>
+          <th>WhatsApp</th>
+          <th>Email</th>
+          <th>Rekening</th>
+          <th>Bank</th>
+          <th>Nama Rekening</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="bodyToko">
+        <tr><td colspan="9">Memuat data...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Data Pembeli -->
+  <div id="pembeli" class="tab-content">
+    <h2>Data Pembeli</h2>
+    <p>Belum terhubung</p>
+  </div>
+
+  <!-- Gudang Produk -->
+  <div id="produk" class="tab-content">
+    <h2>Gudang Produk</h2>
+    <p>Belum terhubung</p>
+  </div>
+
+  <!-- Orderan Penjual -->
+  <div id="order" class="tab-content">
+    <h2>Orderan Penjual</h2>
+    <p>Belum terhubung</p>
+  </div>
+
+  <!-- Pembayaran -->
+  <div id="pembayaran" class="tab-content">
+    <h2>Pembayaran</h2>
+    <p>Belum terhubung</p>
+  </div>
+
+  <!-- Laporan -->
+  <div id="laporan" class="tab-content">
+    <h2>Laporan</h2>
+    <p>Belum terhubung</p>
+  </div>
+
+  <!-- Profil -->
+  <div id="profil" class="tab-content">
+    <h2>Profil Admin</h2>
+    <p>Nama: Admin Paskibra</p>
+    <p>Email: admin@paskibra.com</p>
+  </div>
+
+  <script>
+    const sheetUrl = "https://script.google.com/macros/s/AKfycbwh6N48ftoKTxfuCGqCI2DQEbRk3ke3Q52afg_7GGCJDvsZwn6WGRPdphXfqaCWFj57/exec";
+
+    function switchTab(id) {
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    function loadToko() {
+      fetch(sheetUrl + "?action=getPenjual")
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById("bodyToko");
+          tbody.innerHTML = "";
+          data.forEach((row, index) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${row.namaToko}</td>
+              <td>${row.pemilik}</td>
+              <td>${row.whatsapp}</td>
+              <td>${row.email}</td>
+              <td>${row.rekening}</td>
+              <td>${row.bank}</td>
+              <td>${row.namaRekening}</td>
+              <td><strong>${row.status}</strong></td>
+              <td>
+                <button class="approve" onclick="ubahStatus(${index}, 'Disetujui')">Setujui</button>
+                <button class="suspend" onclick="ubahStatus(${index}, 'Ditunda')">Tunda</button>
+                <button class="reject" onclick="ubahStatus(${index}, 'Ditolak')">Tolak</button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        });
+    }
+
+    function ubahStatus(index, status) {
+      fetch(sheetUrl + "?action=updateStatus&index=" + index + "&status=" + status)
+        .then(res => res.json())
+        .then(res => {
+          if (res.success) {
+            alert("Status diperbarui ke: " + status);
+            loadToko();
+          } else {
+            alert("Gagal memperbarui status");
+          }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadToko);
+  </script>
+</body>
+</html>
