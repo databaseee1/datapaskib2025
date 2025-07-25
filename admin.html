@@ -1,191 +1,196 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Panel Admin Toko</title>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f8f8f8;
-    }
-    h1 {
-      text-align: center;
-    }
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 8px 16px;
-      background-color: #444;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .tab-btn.active {
-      background-color: #2196F3;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-      font-size: 14px;
-    }
-    th {
-      background-color: #eee;
-    }
-    button {
-      padding: 5px 10px;
-      margin: 2px;
-      font-size: 13px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .approve { background-color: #4CAF50; color: white; }
-    .suspend { background-color: #FFC107; color: white; }
-    .reject  { background-color: #F44336; color: white; }
+    body { font-family: sans-serif; margin: 20px; }
+    h2 { margin-top: 30px; }
+    section { margin-bottom: 40px; }
+    .card { background:#f9f9f9; padding:15px; border-radius:10px; margin:10px 0; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+    input, select, textarea, button { margin: 5px 0; padding: 8px; width: 100%; }
   </style>
 </head>
 <body>
-  <h1>Panel Admin Toko Paskibra</h1>
+  <h1>📊 Admin Panel Toko</h1>
 
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('penjual')">Data Penjual</button>
-    <button class="tab-btn" onclick="switchTab('pembeli')">Data Pembeli</button>
-    <button class="tab-btn" onclick="switchTab('produk')">Gudang Produk</button>
-    <button class="tab-btn" onclick="switchTab('order')">Orderan Penjual</button>
-    <button class="tab-btn" onclick="switchTab('pembayaran')">Pembayaran</button>
-    <button class="tab-btn" onclick="switchTab('laporan')">Laporan</button>
-    <button class="tab-btn" onclick="switchTab('profil')">Profil</button>
-  </div>
+  <section id="orderanBaru">
+    <h2>📦 Orderan Baru</h2>
+    <div id="listOrderan"></div>
+  </section>
 
-  <!-- Data Penjual -->
-  <div id="penjual" class="tab-content active">
-    <table>
-      <thead>
-        <tr>
-          <th>Nama Toko</th>
-          <th>Pemilik</th>
-          <th>WhatsApp</th>
-          <th>Email</th>
-          <th>Rekening</th>
-          <th>Bank</th>
-          <th>Nama Rekening</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody id="bodyToko">
-        <tr><td colspan="9">Memuat data...</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <section id="isiSaldoUser">
+    <h2>💰 Request Isi Saldo</h2>
+    <div id="listTopup"></div>
+  </section>
 
-  <!-- Data Pembeli -->
-  <div id="pembeli" class="tab-content">
-    <h2>Data Pembeli</h2>
-    <p>Belum terhubung</p>
-  </div>
+  <section id="uploadProduk">
+    <h2>🛍️ Upload Produk</h2>
+    <select id="jenisProduk">
+      <option value="digital">Produk Digital</option>
+      <option value="fisik">Produk Fisik</option>
+    </select>
+    <input type="text" id="namaProduk" placeholder="Nama Produk">
+    <input type="number" id="hargaProduk" placeholder="Harga Produk">
+    <button onclick="uploadProduk()">Upload Produk</button>
+  </section>
 
-  <!-- Gudang Produk -->
-  <div id="produk" class="tab-content">
-    <h2>Gudang Produk</h2>
-    <p>Belum terhubung</p>
-  </div>
+  <section id="laporanOrder">
+    <h2>📈 Laporan Order</h2>
+    <div id="laporan"></div>
+  </section>
 
-  <!-- Orderan Penjual -->
-  <div id="order" class="tab-content">
-    <h2>Orderan Penjual</h2>
-    <p>Belum terhubung</p>
-  </div>
+  <section id="dataPembeli">
+    <h2>🧑‍💼 Data Pembeli</h2>
+    <div id="listPembeli"></div>
+  </section>
 
-  <!-- Pembayaran -->
-  <div id="pembayaran" class="tab-content">
-    <h2>Pembayaran</h2>
-    <p>Belum terhubung</p>
-  </div>
-
-  <!-- Laporan -->
-  <div id="laporan" class="tab-content">
-    <h2>Laporan</h2>
-    <p>Belum terhubung</p>
-  </div>
-
-  <!-- Profil -->
-  <div id="profil" class="tab-content">
-    <h2>Profil Admin</h2>
-    <p>Nama: Admin Paskibra</p>
-    <p>Email: admin@paskibra.com</p>
-  </div>
+  <section id="gantiBanner">
+    <h2>🖼️ Ganti Banner Promosi</h2>
+    <input type="text" id="judulBanner" placeholder="Judul Promosi">
+    <input type="text" id="urlGambarBanner" placeholder="Link Gambar Banner">
+    <button onclick="gantiBanner()">Update Banner</button>
+    <div id="previewBanner"></div>
+  </section>
 
   <script>
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbwh6N48ftoKTxfuCGqCI2DQEbRk3ke3Q52afg_7GGCJDvsZwn6WGRPdphXfqaCWFj57/exec";
+ const firebaseConfig = {
+  apiKey: "AIzaSyDkkrmYKIh6hejmTWf3acvLVImIAMOMNKU",
+  authDomain: "users-96dc5.firebaseapp.com",
+  projectId: "users-96dc5",
+  storageBucket: "users-96dc5.appspot.com",
+  messagingSenderId: "483322415863",
+  appId: "1:483322415863:web:1397a8f2e808e66ad9e1f2"
+};
 
-    function switchTab(id) {
-      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
-      event.target.classList.add("active");
-      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // 1. Orderan Baru
+    db.ref("orderan").on("value", snap => {
+      const data = snap.val();
+      let html = "";
+      for (let id in data) {
+        const o = data[id];
+        html += `<div class="card">
+          <b>${o.namaProduk}</b><br>
+          Pembeli: ${o.nama} - ${o.whatsapp}<br>
+          Status: ${o.status}<br>
+          <button onclick="setOrderDiproses('${id}')">Tandai Diproses</button>
+        </div>`;
+      }
+      document.getElementById("listOrderan").innerHTML = html;
+    });
+
+    function setOrderDiproses(id) {
+      db.ref("orderan/" + id + "/status").set("Diproses");
     }
 
-    function loadToko() {
-      fetch(sheetUrl + "?action=getPenjual")
-        .then(res => res.json())
-        .then(data => {
-          const tbody = document.getElementById("bodyToko");
-          tbody.innerHTML = "";
-          data.forEach((row, index) => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td>${row.namaToko}</td>
-              <td>${row.pemilik}</td>
-              <td>${row.whatsapp}</td>
-              <td>${row.email}</td>
-              <td>${row.rekening}</td>
-              <td>${row.bank}</td>
-              <td>${row.namaRekening}</td>
-              <td><strong>${row.status}</strong></td>
-              <td>
-                <button class="approve" onclick="ubahStatus(${index}, 'Disetujui')">Setujui</button>
-                <button class="suspend" onclick="ubahStatus(${index}, 'Ditunda')">Tunda</button>
-                <button class="reject" onclick="ubahStatus(${index}, 'Ditolak')">Tolak</button>
-              </td>
-            `;
-            tbody.appendChild(tr);
-          });
-        });
+    // 2. Isi Saldo
+    db.ref("topup").on("value", snap => {
+      const data = snap.val();
+      let html = "";
+      for (let id in data) {
+        const t = data[id];
+        html += `<div class="card">
+          ${t.nama} - ${t.nominal} <br>
+          <button onclick="approveTopup('${id}', '${t.uid}', ${t.nominal})">Uprove</button>
+        </div>`;
+      }
+      document.getElementById("listTopup").innerHTML = html;
+    });
+
+    function approveTopup(id, uid, nominal) {
+      const saldoRef = db.ref("users/" + uid + "/saldo");
+      saldoRef.once("value").then(snap => {
+        const saldoLama = snap.val() || 0;
+        saldoRef.set(saldoLama + nominal);
+        db.ref("topup/" + id).remove();
+      });
     }
 
-    function ubahStatus(index, status) {
-      fetch(sheetUrl + "?action=updateStatus&index=" + index + "&status=" + status)
-        .then(res => res.json())
-        .then(res => {
-          if (res.success) {
-            alert("Status diperbarui ke: " + status);
-            loadToko();
-          } else {
-            alert("Gagal memperbarui status");
-          }
-        });
+    // 3. Upload Produk
+    function uploadProduk() {
+      const jenis = document.getElementById("jenisProduk").value;
+      const nama = document.getElementById("namaProduk").value;
+      const harga = parseInt(document.getElementById("hargaProduk").value);
+      if (!nama || !harga) return alert("Lengkapi data!");
+
+      const ref = jenis === "digital" ? "produkDigital" : "produkFisik";
+      db.ref(ref).push({ nama, harga });
+      alert("Produk ditambahkan");
     }
 
-    document.addEventListener("DOMContentLoaded", loadToko);
+    // 4. Laporan Order
+    db.ref("orderan").on("value", snap => {
+      let totalMasuk = 0;
+      let totalKeluar = 0;
+      snap.forEach(child => {
+        const o = child.val();
+        if (o.status === "Selesai") {
+          totalMasuk += parseInt(o.harga);
+        } else {
+          totalKeluar += parseInt(o.harga);
+        }
+      });
+      document.getElementById("laporan").innerHTML = `
+        <div class="card">
+          Total Masuk: Rp ${totalMasuk.toLocaleString()}<br>
+          Total Belum Diproses: Rp ${totalKeluar.toLocaleString()}
+        </div>`;
+    });
+
+    // 5. Data Pembeli
+    db.ref("users").on("value", snap => {
+      const data = snap.val();
+      let html = "";
+      for (let uid in data) {
+        const u = data[uid];
+        html += `<div class="card">
+          ${u.nama} - ${u.whatsapp}<br>
+          Email: ${u.email}<br>
+          <button onclick="banUser('${uid}')">Banned</button>
+          <button onclick="deleteUser('${uid}')">Delete</button>
+        </div>`;
+      }
+      document.getElementById("listPembeli").innerHTML = html;
+    });
+
+    function banUser(uid) {
+      db.ref("users/" + uid + "/banned").set(true);
+    }
+
+    function deleteUser(uid) {
+      db.ref("users/" + uid).remove();
+    }
+
+    // 6. Ganti Banner
+    function gantiBanner() {
+      const judul = document.getElementById("judulBanner").value;
+      const url = document.getElementById("urlGambarBanner").value;
+      db.ref("toko/banner").set({ judul, url });
+      document.getElementById("previewBanner").innerHTML = `
+        <div class="card">
+          <b>${judul}</b><br>
+          <img src="${url}" style="width:100%; max-width:300px;">
+        </div>`;
+    }
+
+    // Tampilkan banner saat ini
+    db.ref("toko/banner").on("value", snap => {
+      const data = snap.val();
+      if (data) {
+        document.getElementById("previewBanner").innerHTML = `
+          <div class="card">
+            <b>${data.judul}</b><br>
+            <img src="${data.url}" style="width:100%; max-width:300px;">
+          </div>`;
+      }
+    });
   </script>
 </body>
 </html>
