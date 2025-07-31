@@ -1565,10 +1565,7 @@ Jadilah bagian dari perjalanan menuju disiplin, tanggung jawab, dan semangat keb
   <button onclick="tutupProfil()" style="position:absolute; top:8px; right:8px; background:#e74c3c; color:#ffffff; border:none; padding:4px 10px; border-radius:4px; cursor:pointer;">X</button>
   <div id="isiProfil" style="margin-top:30px;"></div>
 </div>
-<div id="historess" style="display:none; background:#f9f9f9; padding:16px; border-radius:8px; margin-top:20px;">
-  <h3>History</h3>
-  <div id="hostoress"></div>
-</div>
+
 
 
 
@@ -1576,17 +1573,6 @@ Jadilah bagian dari perjalanan menuju disiplin, tanggung jawab, dan semangat keb
     <div style="background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">💰 Top Up Saldo</div>
     <div style="background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">💳 Saldo Saya</div>
 
-
- <!-- Tombol atau div keranjang -->
-<div onclick="tampilkanKeranjang()" style="background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">🛒 Keranjang</div>
-
-<!-- Halaman keranjang -->
-<div id="halamanKeranjang" style="display:none; padding:20px;">
-  <h3>historess</h3>
-  <div id="isiKeranjang"></div>
-  <button onclick="cekOut()" style="margin-top:10px; background:green; color:white; border:none; padding:8px 14px; border-radius:6px;">Bayar Sekarang</button>
-  <button onclick="document.getElementById('halamanKeranjang').style.display='none'" style="margin-top:10px; background:#ccc; color:#000; border:none; padding:8px 14px; border-radius:6px;">Tutup</button>
-</div>
 
 
 
@@ -1644,12 +1630,16 @@ Jadilah bagian dari perjalanan menuju disiplin, tanggung jawab, dan semangat keb
 
 
   <!-- Produk Digital -->
-  <h3 style="margin-top:30px;">📱 Produk Digital</h3>
-  <div class="produk-wrapper" id="produkDigital"></div>
+<h3 style="margin-top:30px;">📱 Produk Digital</h3>
+<div class="produk-wrapper" id="prodigitproduk"></div>
 
-  <!-- Produk Fisik -->
-  <h3 style="margin-top:30px;">📦 Produk Fisik</h3>
-  <div class="produk-wrapper" id="produkFisik"></div>
+<!-- Produk Fisik -->
+<h3 style="margin-top:30px;">📦 Produk Fisik</h3>
+<div class="produk-wrapper" id="prodfisikprod"></div>
+
+
+
+
 
   <!-- =================== POPUP CHECKOUT =================== -->
   <div id="popupCheckout" class="popup-overlay" style="display:none; position:fixed; inset:0; background:#00000099; justify-content:center; align-items:center; z-index:10000;">
@@ -3186,17 +3176,12 @@ document.getElementById("preview").innerHTML = `
   ///POP UP CAMAT ----------------------------POP UP camat--------
  function showPopupRajacamat() {
     const content = `
-      <h3 style="margin-bottom: 10px; color: #1e40af;">BAPAK CAMAT & WAKIL CAMAT</h3>
+      <h3 style="margin-bottom: 10px; color: #1e40af;">BAPAK CAMAT</h3>
       <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
         <div style="text-align:center;">
           <img src="camat.jpeg" style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
           <div style="font-weight:600; margin-top:5px;font-size:10px;">MUHAMMAD IZWANDA SE.Kp.M.SP (PNS)</div>
           <div style="font-size:6px; color:#1e3a8a;">(Camat)</div>
-        </div>
-        <div style="text-align:center;">
-          <img src="camat.jpeg" style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
-          <div style="font-weight:600;font-size:10px; margin-top:5px;">******,SE (PNS)</div>
-          <div style="font-size:6px; color:#1e3a8a;">(Wakil Camat)</div>
         </div>
       </div>
       <p style="margin-top:15px; font-size:14px; color:#333;">
@@ -3675,7 +3660,30 @@ Kegiatan hari itu ditutup dengan sesi foto bersama dan pemantapan materi baris-b
       gambar: "bajupertama.jpg"
     },
 
+          {
+      judul: "Makan Gratis untuk Anak Paskibra: Bentuk Kepedulian Camat Padang Tualang terhadap Generasi Penerus Bangsa",
+      tanggal: "2025-07-30",
+      deskripsi: `"Makan Gratis untuk Anak Paskibra: Bentuk Kepedulian Camat Padang Tualang terhadap Generasi Penerus Bangsa"
 
+Kecamatan Padang Tualang kembali menunjukkan komitmennya dalam membangun masa depan generasi muda. Di bawah kepemimpinan Bapak Camat Muhammad Izwanda, SE.Kp., M.SP (PNS), lahir sebuah inisiatif mulia berupa program makan gratis khusus untuk anggota Paskibra Kecamatan Padang Tualang. Program ini bukan sekadar bantuan logistik, namun menjadi simbol perhatian pemerintah terhadap semangat, perjuangan, dan dedikasi anak-anak muda dalam menjaga nilai kebangsaan.
+
+Penghargaan untuk Para Pejuang Muda
+Menjadi anggota Pasukan Pengibar Bendera (Paskibra) bukanlah perkara mudah. Dibalik tegaknya Sang Merah Putih pada upacara 17 Agustus, terdapat keringat, kedisiplinan, dan latihan panjang dari anak-anak yang terpilih melalui proses seleksi ketat. Di usia yang masih belia, mereka telah menunjukkan jiwa kepemimpinan, cinta tanah air, serta semangat gotong royong.
+
+Melihat dedikasi itulah, Bapak Muhammad Izwanda merasa terpanggil untuk memberi apresiasi nyata. Salah satunya adalah dengan menyediakan makan gratis berkualitas bagi seluruh anggota Paskibra selama masa latihan hingga pelaksanaan upacara HUT Kemerdekaan Republik Indonesia.
+
+Bentuk Pelaksanaan Program
+Program makan gratis ini berlangsung selama masa pelatihan intensif Paskibra yang biasanya dimulai sejak akhir Juli hingga pertengahan Agustus. Setiap hari, para anggota Paskibra mendapatkan jatah makan siang dan makan sore yang disiapkan dengan standar gizi yang baik.
+
+Pelaksanaannya melibatkan:
+
+Katering lokal dan UMKM Kecamatan Padang Tualang, sehingga sekaligus mendukung ekonomi masyarakat.
+
+Dapur sementara di halaman kantor camat atau aula kecamatan, di mana makanan dikirim atau disediakan langsung untuk para peserta.
+
+Dukungan dari guru-guru pendamping, pelatih, serta relawan yang membantu menjaga kualitas dan distribusi makanan.`,
+      gambar: "makan bersama dari camat.jpg"
+    },
 
 
     // Tambahkan berita lainnya
@@ -3832,95 +3840,9 @@ document.addEventListener("DOMContentLoaded", function () {
 //HALAMAN TOKO----
 
 // =================== VARIABEL KERANJANG ===================
- const keranjang = [];
 
-function tambahKeKeranjang(namaProduk, harga) {
-  keranjang.push({ nama: namaProduk, harga });
-  alert(`✅ ${namaProduk} ditambahkan ke keranjang.`);
-}
 
-function tampilkanKeranjang() {
-  const container = document.getElementById("isiKeranjang");
-  const halaman = document.getElementById("halamanKeranjang");
-  halaman.style.display = "block";
 
-  if (keranjang.length === 0) {
-    container.innerHTML = "<p>Keranjang kosong.</p>";
-    return;
-  }
-
-  let html = "";
-  let total = 0;
-
-  keranjang.forEach((item, index) => {
-    total += item.harga;
-    html += `
-      <div style="margin-bottom:10px; padding:10px; background:#fff; border-radius:6px; box-shadow:0 1px 2px rgba(0,0,0,0.1);">
-        <strong>${item.nama}</strong><br>
-        Harga: Rp${item.harga.toLocaleString()} <br>
-        <button onclick="hapusItemKeranjang(${index})" style="margin-top:5px; background:red; color:white; border:none; border-radius:4px; padding:4px 10px;">Hapus</button>
-      </div>
-    `;
-  });
-
-  html += `
-    <hr>
-    <p><strong>Total: Rp${total.toLocaleString()}</strong></p>
-    <button onclick="checkout()" style="background:green; color:white; border:none; padding:10px 20px; border-radius:6px; font-size:16px; cursor:pointer;">🧾 Checkout</button>
-  `;
-
-  container.innerHTML = html;
-}
-
-function hapusItemKeranjang(index) {
-  keranjang.splice(index, 1);
-  tampilkanKeranjang();
-}
-
-function checkout() {
-  if (keranjang.length === 0) {
-    alert("Keranjang masih kosong.");
-    return;
-  }
-
-  let detail = "🧾 Detail Produk:\n\n";
-  let total = 0;
-
-  keranjang.forEach((item, i) => {
-    detail += `${i + 1}. ${item.nama} - Rp${item.harga.toLocaleString()}\n`;
-    total += item.harga;
-  });
-
-  detail += `\nTotal: Rp${total.toLocaleString()}`;
-  alert(detail);
-}
-
-// =================== PRODUK DUMMY ===================
-const produkDigital = [
-  { nama: "Pulsa 10K", harga: 10000 },
-  { nama: "Pulsa 20K", harga: 20000 },
-  { nama: "Voucher Game", harga: 15000 },
-  { nama: "Kuota Internet", harga: 25000 },
-  { nama: "Token PLN", harga: 50000 },
-  { nama: "Langganan Netflix", harga: 60000 },
-  { nama: "Top Up Diamond", harga: 40000 },
-  { nama: "Spotify Premium", harga: 30000 },
-  { nama: "Voucher Steam", harga: 70000 },
-  { nama: "Langganan Zoom", harga: 45000 }
-];
-
-const produkFisik = [
-  { nama: "Kemeja Merah", harga: 120000 },
-  { nama: "Celana Cargo", harga: 95000 },
-  { nama: "Sepatu Hitam", harga: 230000 },
-  { nama: "Tas Ransel", harga: 175000 },
-  { nama: "Jam Tangan", harga: 210000 },
-  { nama: "Kaos Paskibra", harga: 85000 },
-  { nama: "Topi Custom", harga: 65000 },
-  { nama: "Jaket Hoodie", harga: 140000 },
-  { nama: "Sweater Polos", harga: 110000 },
-  { nama: "Kacamata Gaya", harga: 72000 }
-];
 
 // =================== FUNGSI BUKA TOKO ===================
 function bukaToko() {
@@ -3929,12 +3851,19 @@ function bukaToko() {
   document.getElementById("popupDetailProduk").style.display = "none";
 }
 
+const produkDigital = []; // atau isi sesuai produk digital
+const produkFisik = [];   // atau isi sesuai produk fisik
+
+
+
 // =================== RENDER PRODUK ===================
 function renderProduk(arr, containerId, prefix) {
   const wrap = document.getElementById(containerId);
+  if (!wrap) return; // cegah error jika elemen belum ada
+
   wrap.innerHTML = "";
   arr.forEach((item, index) => {
-    const gambar = `${prefix}${index + 1}-1.jpg`; // contoh: digital1-1.jpg
+    const gambar = `${prefix}${index + 1}-1.jpg`;
     wrap.innerHTML += `
       <div class="produk" onclick="tampilkanDetail('${item.nama}', ${item.harga}, '${gambar}')" style="border:1px solid #ddd; padding:10px; border-radius:8px; margin:10px 0; cursor:pointer;">
         <img src="${gambar}" alt="${item.nama}" style="width:100%; max-height:150px; object-fit:cover;">
@@ -3945,112 +3874,6 @@ function renderProduk(arr, containerId, prefix) {
   });
 }
 
-// =================== TAMBAH KERANJANG ===================
-function tambahKeKeranjang(nama, harga) {
-  keranjang.push({ nama, harga });
-  document.getElementById("keranjangJumlah").innerText = keranjang.length;
-  alert("Ditambahkan ke keranjang: " + nama);
-}
-
-// =================== CHECKOUT ===================
-function checkoutSekarang() {
-  if (keranjang.length === 0) return alert("Keranjang kosong!");
-  document.getElementById("popupCheckout").style.display = "flex";
-  let html = "";
-  let total = 0;
-  keranjang.forEach(item => {
-    html += `<div>${item.nama} - Rp${item.harga}</div>`;
-    total += item.harga;
-  });
-  document.getElementById("daftarCheckout").innerHTML = html;
-  document.getElementById("totalHarga").innerText = total;
-}
-
-function tutupPopup() {
-  document.getElementById("popupCheckout").style.display = "none";
-}
-
-function bayarSekarang() {
-  const metode = document.getElementById("metodeBayar").value;
-  const idPesanan = "#" + Math.random().toString(36).substr(2, 12);
-  alert(`Pesanan ID: ${idPesanan}\nMetode: ${metode}\nPesanan akan masuk ke admin!`);
-  tutupPopup();
-  keranjang = [];
-  document.getElementById("keranjangJumlah").innerText = 0;
-}
-
-// =================== DETAIL PRODUK ===================
-const endpoint = 'https://script.google.com/macros/s/AKfycbx.../exec';
-let produkAktif = "";
-let komentarPerProduk = {};
-let komentarList = [];
-let liked = false;
-
-function tampilkanDetail(nama, harga, gambar) {
-  document.getElementById("popupDetailProduk").style.display = "block";
-  document.getElementById("detailNama").innerText = nama;
-  document.getElementById("detailHarga").innerText = harga;
-  document.getElementById("detailDeskripsi").innerText = `Deskripsi lengkap ${nama} akan muncul di sini.`;
-  document.getElementById("detailGambar").src = gambar;
-
-  produkAktif = nama;
-
-  fetch(endpoint)
-    .then(res => res.json())
-    .then(data => {
-      const produk = data[nama] || { komentar: [], likes: 0, ratings: [] };
-      komentarList = produk.komentar;
-      document.getElementById("daftarKomentar").innerHTML = komentarList.map(k => `<div>${k}</div>`).join("");
-
-      const totalLike = produk.likes || 0;
-      document.getElementById("totalLike").innerText = totalLike + " Likes";
-
-      const ratingArray = produk.ratings || [];
-      const totalRating = ratingArray.length > 0 ? (ratingArray.reduce((a, b) => a + b) / ratingArray.length).toFixed(1) : "0";
-      document.getElementById("totalRating").innerText = `${totalRating} / 5`;
-
-      liked = false;
-      updateLikeTombol();
-    });
-}
-
-function kirimKomentar() {
-  const isi = document.getElementById("inputKomentar").value;
-  if (!isi.trim()) return;
-
-  fetch(endpoint, {
-    method: "POST",
-    body: JSON.stringify({ nama: produkAktif, komentar: isi })
-  }).then(() => tampilkanDetail(produkAktif, document.getElementById("detailHarga").innerText, document.getElementById("detailGambar").src));
-
-  document.getElementById("inputKomentar").value = "";
-}
-
-function toggleLike() {
-  if (liked) return;
-  liked = true;
-
-  fetch(endpoint, {
-    method: "POST",
-    body: JSON.stringify({ nama: produkAktif, like: true })
-  }).then(() => tampilkanDetail(produkAktif, document.getElementById("detailHarga").innerText, document.getElementById("detailGambar").src));
-}
-
-function beriRating(bintang) {
-  fetch(endpoint, {
-    method: "POST",
-    body: JSON.stringify({ nama: produkAktif, rating: bintang })
-  }).then(() => tampilkanDetail(produkAktif, document.getElementById("detailHarga").innerText, document.getElementById("detailGambar").src));
-  alert("Kamu memberi rating: " + bintang + " ⭐");
-}
-
-function updateLikeTombol() {
-  document.getElementById("likeButton").innerText = liked ? "❤️ Liked" : "🤍 Like";
-}
-
-function tutupDetail() {
-  document.getElementById("popupDetailProduk").style.display = "none";
-}
 
 
 
@@ -4247,12 +4070,6 @@ function tutupProfil() {
 
 
 
-
-
-
-
-
-
   // GANTI PASSWORD
   async function gantiPassword() {
     const passLama = document.getElementById("passLama").value;
@@ -4303,6 +4120,47 @@ function tutupProfil() {
     const isi = document.getElementById("isiPengaturan");
     isi.style.display = (isi.style.display === "none") ? "block" : "none";
   }
+
+
+  
+//tampilkan produk
+
+
+
+function tampilkanProduk() {
+  db.collection("produk").onSnapshot((snapshot) => {
+    const digitalContainer = document.getElementById("prodigitproduk");
+    const fisikContainer = document.getElementById("prodfisikprod");
+
+    // Kosongkan dulu
+    digitalContainer.innerHTML = "";
+    fisikContainer.innerHTML = "";
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      const div = document.createElement("div");
+      div.className = "produk-item";
+      div.innerHTML = `
+        <img src="${data.gambar}" alt="${data.nama}" style="width:100%; border-radius:12px;">
+        <h4 style="margin:5px 0 0;">${data.nama}</h4>
+        <p style="margin:0;">Rp${data.harga}</p>
+        <small>${data.kategori}</small>
+      `;
+
+      if (data.kategori === "digital") {
+        digitalContainer.appendChild(div);
+      } else {
+        fisikContainer.appendChild(div);
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", tampilkanProduk);
+
+
+
+
 
 
 </script>
