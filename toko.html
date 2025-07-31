@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Toko Online</title>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px;
+    }
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .produk-card {
+      background: white;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .produk-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .produk-card b {
+      display: block;
+      margin: 10px 0 4px;
+      font-size: 18px;
+    }
+    .produk-card span {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Toko Online</h1>
+
+  <h2>📦 Produk Fisik</h2>
+  <div id="produkFisik" class="produk-grid">Loading...</div>
+
+  <h2>💻 Produk Digital</h2>
+  <div id="produkDigital" class="produk-grid">Loading...</div>
+
+  <script>
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function tampilkanProduk(jenis) {
+      const container = document.getElementById("produk" + (jenis === "digital" ? "Digital" : "Fisik"));
+      db.ref("produk/" + jenis).on("value", snap => {
+        const data = snap.val();
+        if (!data) {
+          container.innerHTML = "<p>Belum ada produk.</p>";
+          return;
+        }
+
+        container.innerHTML = "";
+        Object.values(data).forEach(p => {
+          container.innerHTML += `
+            <div class="produk-card">
+              <img src="${p.url}" alt="${p.nama}">
+              <b>${p.nama}</b>
+              <span>Rp ${parseInt(p.harga).toLocaleString()}</span>
+            </div>
+          `;
+        });
+      });
+    }
+
+    tampilkanProduk("fisik");
+    tampilkanProduk("digital");
+  </script>
+
+</body>
+</html>
